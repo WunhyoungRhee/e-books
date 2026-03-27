@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>파란두루미 e-book 컬렉션</title>
+  <meta name="description" content="AI와 오픈소스, 경기도 광명시에서 시작된 e-book 컬렉션. 누구나 자유롭게 읽고, 나누고, 기여할 수 있습니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #FFF8F0;
+      --color-bg-alt: #FFF1E3;
+      --color-surface: #FFFFFF;
+      --color-primary: #E85D4A;
+      --color-primary-hover: #D14A38;
+      --color-primary-light: #FDEAE7;
+      --color-secondary: #2B8C8C;
+      --color-secondary-light: #E0F5F5;
+      --color-text: #3D2B1F;
+      --color-text-light: #6B5647;
+      --color-text-muted: #9B8A7D;
+      --color-border: #E8DDD4;
+      --color-border-light: #F0E8E0;
+      --color-shadow: rgba(61, 43, 31, 0.08);
+      --font-body: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --border-radius: 16px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #1A1410;
+      --color-bg-alt: #231C15;
+      --color-surface: #2A2118;
+      --color-primary: #F07A6A;
+      --color-primary-hover: #E85D4A;
+      --color-primary-light: #3D2520;
+      --color-secondary: #3AADAD;
+      --color-secondary-light: #1A3535;
+      --color-text: #F0E4D8;
+      --color-text-light: #C4B5A6;
+      --color-text-muted: #8A7B6D;
+      --color-border: #3D3228;
+      --color-border-light: #332920;
+      --color-shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      min-height: 100vh;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-toggle {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--color-text);
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--color-primary);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-emoji {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      word-break: keep-all;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--color-text-light);
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    .hero p strong {
+      color: var(--color-primary);
+    }
+
+    /* Book Grid */
+    .books-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .book-card {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px var(--color-shadow);
+      border-color: var(--color-primary);
+    }
+
+    .book-cover {
+      flex-shrink: 0;
+      width: 120px;
+      height: 160px;
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .book-card:hover .book-cover {
+      transform: scale(1.05);
+    }
+
+    .book-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .book-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background: var(--color-secondary-light);
+      color: var(--color-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 100px;
+      margin-bottom: 0.5rem;
+      width: fit-content;
+    }
+
+    .book-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .book-card:hover .book-title {
+      color: var(--color-primary);
+    }
+
+    .book-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .book-meta {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    .book-meta span {
+      margin-right: 1rem;
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      margin-top: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--color-bg-alt);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--border-radius);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--color-border-light);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .footer p {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      line-height: 1.8;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer a {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-highlight {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.75rem; }
+      .book-card { flex-direction: column; gap: 1.25rem; }
+      .book-cover { width: 100%; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="/" class="logo">
+      <span>📚</span>
+      <span>파란두루미 e-books</span>
+    </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="다크모드 전환">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon" style="display:none">🌙</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="hero-emoji">📖</span>
+      <h1>파란두루미 e-book 컬렉션</h1>
+      <p>
+        AI와 오픈소스, 그리고 <strong>경기도 광명시</strong>에서 시작된 이야기들.<br>
+        누구나 자유롭게 읽고, 나누고, 기여할 수 있습니다.
+      </p>
+    </section>
+
+    <section class="books-section">
+      <div class="section-label">e-Books</div>
+
+      <a href="skills-creation/" class="book-card">
+        <div class="book-cover">🛠️</div>
+        <div class="book-info">
+          <span class="book-badge">v1.0</span>
+          <h2 class="book-title">나만의 AI 스킬을 만들자</h2>
+          <p class="book-desc">
+            GenAI가 뭔지 모르는 완전 초보도 따라할 수 있는 AI 스킬 패키지 만들기 핸드북.
+            왜 스킬을 만드는지, 어떻게 만드는지, 오픈소스 정신까지 — 재미있게 알려드립니다.
+          </p>
+          <div class="book-meta">
+            <span>16 챕터</span>
+            <span>4 부록</span>
+            <span>한국어</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="coming-soon">
+        더 많은 e-book이 준비 중입니다. 기대해주세요! 🚀
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      이 프로젝트는 <span class="footer-highlight">오픈소스 정신</span>으로 만들어졌습니다.
+    </p>
+    <p>
+      <a href="https://github.com/parandurume-labs/e-books">GitHub</a> ·
+      <a href="LICENSE">라이선스 (GM-Social v2.0)</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--color-text-muted);">
+      &copy; 2026 이인희 / 파란두루미 · Made with AI in Gwangmyeong 🇰🇷
+    </p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const sun = toggle.querySelector('.icon-sun');
+    const moon = toggle.querySelector('.icon-moon');
+
+    function setTheme(dark) {
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      sun.style.display = dark ? 'none' : 'inline';
+      moon.style.display = dark ? 'inline' : 'none';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(saved ? saved === 'dark' : prefersDark);
+
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+    });
+  </script>
+
+</body>
+</html>

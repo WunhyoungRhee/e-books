@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="팀과 함께 쓰는 스킬 — 다른 사람과 스킬을 공유하고, 다른 사람의 스킬을 설치하는 방법">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 15: 팀과 함께 쓰는 스킬 — 공유와 설치 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 15</span>
+    <h1>팀과 함께 쓰는 스킬 — 공유와 설치</h1>
+    <p class="chapter-subtitle">맛있는 레시피를 만들었으면, 이웃에게 나눠주세요</p>
+  </header>
+
+  <!-- ILLUSTRATION: A warm Korean neighborhood scene. A person stands at their apartment door, happily handing a beautifully packaged recipe card (labeled "SKILL.md") to a neighbor. The neighbor receives it with an excited expression. Between them, a dotted line shows the journey of the recipe card: from a laptop screen → into a gift box with a GitHub logo ribbon → into the neighbor's hands → the neighbor using it on their own laptop. In the background, more neighbors lean out of their windows, reaching out to receive copies too. Warm cream and coral tones, friendly hand-drawn flat illustration. Community feeling. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>김치 담그기의 비밀</h2>
+
+      <p>한국에는 김장 문화가 있죠. 가을이 되면 온 동네가 모여서 김치를 담가요.</p>
+
+      <p>근데 진짜 맛있는 김치 레시피를 가진 분이 있다고 해봐요. 어머니에서 딸로, 대대로 내려온 비법 레시피. 이 레시피를 <strong>어떻게 공유</strong>하면 좋을까요?</p>
+
+      <p><strong>방법 1:</strong> 뒷마당에서 큰 소리로 외친다. "재료는요~! 배추 10포기에~! 고춧가루는~!"</p>
+
+      <p>아무도 제대로 못 들어요. 바람에 날아가고, 순서도 뒤죽박죽이 되겠죠.</p>
+
+      <p><strong>방법 2:</strong> 레시피를 깔끔하게 정리해서 카드에 적고, 필요한 사람에게 나눠준다.</p>
+
+      <p>이게 훨씬 낫죠? 받은 사람은 집에 가서 카드대로 따라하면 돼요.</p>
+
+      <p>AI 스킬 공유도 똑같아요. 잘 정리된 스킬을 <strong>쉽게 가져갈 수 있는 곳</strong>에 올려두면, 누구나 다운받아서 쓸 수 있어요.</p>
+
+      <p>그 "쉽게 가져갈 수 있는 곳"이 바로 <strong>GitHub</strong>이고, 오늘은 그 전체 과정을 배워볼 거예요.</p>
+    </section>
+
+    <!-- ====== Where Skills Live ====== -->
+    <section>
+      <h2>스킬은 어디에 사는가?</h2>
+
+      <p>먼저, 스킬이 여러분의 컴퓨터 어디에 있는지 알아야 해요.</p>
+
+      <p>Claude Code가 스킬을 찾는 장소는 정해져 있어요:</p>
+
+      <pre><code>~/.claude/skills/</code></pre>
+
+      <p>이 경로가 스킬의 "집"이에요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">경로 해석하기</p>
+        <p><code>~</code> = "내 홈 디렉토리" (Mac/Linux에서는 /Users/여러분이름/, Windows에서는 C:\Users\여러분이름\)<br>
+        <code>.claude</code> = Claude 설정 폴더 (앞에 점이 있으면 "숨김 폴더"라는 뜻)<br>
+        <code>skills</code> = 스킬 모음 폴더<br><br>
+        즉, <code>~/.claude/skills/my-skill/SKILL.md</code> 이런 식으로 스킬이 저장돼 있어요.</p>
+      </div>
+
+      <p>또한, 프로젝트 디렉토리 안에 <code>.claude/skills/</code> 폴더를 만들어서 프로젝트 전용 스킬을 둘 수도 있어요. 이 경우 해당 프로젝트에서만 그 스킬이 활성화돼요.</p>
+
+      <ul>
+        <li><strong>글로벌 스킬:</strong> <code>~/.claude/skills/</code> → 어디서든 사용 가능</li>
+        <li><strong>프로젝트 스킬:</strong> <code>프로젝트/.claude/skills/</code> → 해당 프로젝트에서만 사용</li>
+      </ul>
+
+      <p>팀 전체가 공유하는 스킬은 보통 <strong>프로젝트 스킬</strong>로 두는 게 좋아요. 프로젝트 저장소에 포함시키면, 팀원 모두가 자동으로 같은 스킬을 갖게 되니까요.</p>
+    </section>
+
+    <!-- ====== Sharing Your Skill ====== -->
+    <section>
+      <h2>내 스킬 공유하기 — 3단계</h2>
+
+      <p>스킬을 다른 사람에게 공유하는 건, 솔직히 말해서... <strong>엄청 간단해요</strong>.</p>
+
+      <p>복잡한 패키징 과정이나 빌드 도구가 필요 없어요. 스킬의 본체는 그냥 <strong>텍스트 파일</strong>이니까요.</p>
+
+      <h3>1단계: GitHub에 저장소 만들기</h3>
+
+      <p>GitHub.com에 가서 새 저장소(repository)를 만들어요.</p>
+
+      <ol>
+        <li>GitHub.com에 로그인</li>
+        <li>오른쪽 위 "+" 버튼 → "New repository" 클릭</li>
+        <li>이름 입력 (예: <code>my-awesome-skill</code>)</li>
+        <li>"Public"으로 설정 (누구나 볼 수 있게)</li>
+        <li>"Create repository" 클릭</li>
+      </ol>
+
+      <p>끝이에요. 저장소가 만들어졌어요.</p>
+
+      <h3>2단계: 스킬 파일을 올리기</h3>
+
+      <p>터미널에서 몇 줄만 입력하면 돼요:</p>
+
+      <pre><code># 스킬 폴더로 이동
+cd my-awesome-skill
+
+# Git 초기화 (처음 한 번만)
+git init
+
+# 파일 추가
+git add .
+
+# 커밋 (변경 기록 저장)
+git commit -m "첫 번째 스킬 업로드"
+
+# GitHub 저장소와 연결
+git remote add origin https://github.com/내아이디/my-awesome-skill.git
+
+# 올리기!
+git push -u origin main</code></pre>
+
+      <p>Git 명령어가 처음이라 무서울 수 있는데, 걱정 마세요. 이 6줄만 따라 치면 돼요. 한 번 해보면 "아, 별거 아니네" 하실 거예요.</p>
+
+      <div class="callout">
+        <p class="callout-title">Git이 처음이라면</p>
+        <p>Git은 "파일의 변경 기록을 저장해주는 도구"예요. 마치 문서 작업할 때 "버전 1", "버전 2", "최종", "진짜 최종" 이렇게 저장하는 것의 프로 버전이라고 생각하세요. Git 설치가 안 되어 있다면, <code>git-scm.com</code>에서 다운받을 수 있어요.</p>
+      </div>
+
+      <h3>3단계: 주소 공유하기</h3>
+
+      <p>GitHub에 올렸으면, 저장소 주소를 공유하면 끝이에요.</p>
+
+      <pre><code>https://github.com/내아이디/my-awesome-skill</code></pre>
+
+      <p>이 링크를 슬랙에 올리든, 이메일로 보내든, 카톡으로 보내든 — 받는 사람은 클릭 한 번으로 여러분의 스킬을 볼 수 있어요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">정말 이게 끝이에요?</p>
+        <p>네, 진짜 이게 끝이에요.<br><br>
+        다른 프로그래밍 도구들은 패키지 매니저, 빌드 도구, 배포 파이프라인... 복잡한 것들이 많은데, AI 스킬은 <strong>텍스트 파일</strong>이니까 GitHub에 올리기만 하면 공유 완료예요.<br><br>
+        이게 스킬 패키지의 아름다운 점이에요. <strong>단순함.</strong></p>
+      </div>
+    </section>
+
+    <!-- ILLUSTRATION: A simple three-step flow diagram drawn in a friendly style. Step 1: A laptop with a skill file being prepared (with a small GitHub cat logo). Step 2: An arrow going up to a cloud labeled "GitHub" with the file floating into it. Step 3: Multiple arrows going down from the cloud to different laptops belonging to different people (a student, an office worker, a designer), each receiving the skill file with happy expressions. The whole thing looks like a gift delivery system. Warm cream background, coral for the upload arrow, teal for the download arrows. Clean, minimal flat illustration. -->
+
+    <!-- ====== Installing Others' Skills ====== -->
+    <section>
+      <h2>다른 사람의 스킬 설치하기</h2>
+
+      <p>이번엔 반대로, 다른 사람이 만든 스킬을 가져오는 방법이에요.</p>
+
+      <p>누군가가 "이 스킬 좋으니까 써봐"라며 GitHub 링크를 보내줬다고 해봐요.</p>
+
+      <h3>방법 1: Git으로 클론하기 (추천)</h3>
+
+      <pre><code># 글로벌 스킬로 설치
+cd ~/.claude/skills/
+git clone https://github.com/만든사람/awesome-skill.git</code></pre>
+
+      <p>이게 끝이에요. <code>git clone</code>은 "저 저장소의 파일들을 그대로 다운받아" 라는 뜻이에요.</p>
+
+      <p>이 방법의 좋은 점? 나중에 스킬 만든 사람이 업데이트를 하면, 여러분도 쉽게 업데이트할 수 있어요:</p>
+
+      <pre><code># 업데이트 받기
+cd ~/.claude/skills/awesome-skill
+git pull</code></pre>
+
+      <p><code>git pull</code> — "최신 버전 당겨와" 한 줄이면 업데이트 완료.</p>
+
+      <h3>방법 2: 수동 다운로드</h3>
+
+      <p>Git이 어렵다면, GitHub에서 직접 다운로드할 수도 있어요.</p>
+
+      <ol>
+        <li>GitHub 저장소 페이지로 이동</li>
+        <li>초록색 "Code" 버튼 클릭</li>
+        <li>"Download ZIP" 클릭</li>
+        <li>다운받은 ZIP 파일을 <code>~/.claude/skills/</code>에 압축 해제</li>
+      </ol>
+
+      <p>다만 이 방법은 나중에 업데이트를 받으려면 다시 다운로드해야 하니까, 가능하면 Git을 쓰는 게 좋아요.</p>
+
+      <h3>방법 3: 프로젝트에 포함시키기</h3>
+
+      <p>팀 프로젝트라면, 프로젝트 저장소 안에 직접 스킬을 넣는 것도 좋은 방법이에요.</p>
+
+      <pre><code># 프로젝트 루트에서
+mkdir -p .claude/skills
+cd .claude/skills
+git clone https://github.com/만든사람/awesome-skill.git</code></pre>
+
+      <p>이러면 팀원들이 프로젝트를 받을 때 스킬도 자동으로 따라와요. 별도 설치 과정 없이!</p>
+    </section>
+
+    <!-- ====== Version Control ====== -->
+    <section>
+      <h2>버전 관리: 왜 Git이 중요한가</h2>
+
+      <p>스킬을 공유하는 데 Git이 꼭 필요한 건 아니에요. 카톡으로 파일을 보내도 되긴 해요.</p>
+
+      <p>근데 Git을 쓰면 <strong>차원이 다른 경험</strong>이 됩니다.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">Git이 없으면 vs 있으면</p>
+        <p><strong>Git 없이:</strong><br>
+        "스킬_최종.md"<br>
+        "스킬_최종_수정.md"<br>
+        "스킬_진짜최종.md"<br>
+        "스킬_진짜최종_v2_이게진짜.md"<br>
+        ...아 어떤 게 최신이야?<br><br>
+        <strong>Git 있으면:</strong><br>
+        변경 기록이 자동 저장. 누가 언제 뭘 바꿨는지 다 보여요. 실수로 망쳤으면? 이전 버전으로 돌아가면 돼요.</p>
+      </div>
+
+      <p>특히 팀으로 스킬을 관리할 때, Git은 필수예요.</p>
+
+      <ul>
+        <li><strong>변경 이력 추적:</strong> "지난주에 description 바꿨더니 이상해졌어" → Git 로그 보고 이전 버전으로 복구</li>
+        <li><strong>충돌 해결:</strong> 두 사람이 동시에 같은 파일을 수정했을 때, Git이 알려줘요</li>
+        <li><strong>브랜치:</strong> "새 기능 실험해볼게" → 따로 브랜치 만들어서 실험, 괜찮으면 합치기</li>
+      </ul>
+    </section>
+
+    <!-- ====== Collaborating ====== -->
+    <section>
+      <h2>여러 사람이 함께 스킬 개선하기</h2>
+
+      <p>혼자 만든 스킬도 좋지만, 여러 사람이 함께 다듬으면 더 좋아져요.</p>
+
+      <p>챕터 3에서 오픈소스 이야기했죠? "한 사람이 풀면, 모두가 혜택을 받는다." 스킬도 마찬가지예요.</p>
+
+      <h3>협업의 흐름</h3>
+
+      <ol>
+        <li><strong>공유:</strong> 여러분이 스킬을 GitHub에 올린다</li>
+        <li><strong>사용:</strong> 팀원 A가 써보고, 개선점을 발견한다</li>
+        <li><strong>제안:</strong> 팀원 A가 수정사항을 Pull Request로 보낸다 (다음 챕터에서 자세히!)</li>
+        <li><strong>검토:</strong> 여러분이 "오, 좋은 제안이네!" 하고 받아들인다</li>
+        <li><strong>적용:</strong> 스킬이 더 좋아진다</li>
+        <li><strong>반복:</strong> 더 많은 사람이 쓰고, 더 많은 개선이 일어난다</li>
+      </ol>
+
+      <p>이 과정이 반복되면, 혼자 만들 때보다 <strong>훨씬 빠르게 품질이 올라가요</strong>.</p>
+
+      <div class="callout">
+        <p class="callout-title">실전 팁: 좋은 README 쓰기</p>
+        <p>다른 사람이 여러분의 스킬을 보고 "이게 뭐하는 건지, 어떻게 쓰는 건지" 바로 이해할 수 있게 <code>README.md</code>를 잘 써두세요.<br><br>
+        좋은 README에 포함할 것:<br>
+        - 이 스킬이 <strong>뭘 하는지</strong> (한 문장 설명)<br>
+        - <strong>어떻게 설치하는지</strong> (복붙 가능한 명령어)<br>
+        - <strong>사용 예시</strong> (실제로 어떻게 쓰는지)<br>
+        - <strong>주의사항</strong> (있다면)<br><br>
+        README는 스킬의 "첫인상"이에요. 첫인상이 좋으면 사람들이 써볼 확률이 높아져요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Tips ====== -->
+    <section>
+      <h2>공유의 에티켓</h2>
+
+      <p>마지막으로, 스킬을 공유하고 받을 때 알아두면 좋은 에티켓 몇 가지.</p>
+
+      <p><strong>공유하는 사람으로서:</strong></p>
+
+      <ul>
+        <li>개인 정보(API 키, 비밀번호, 회사 내부 URL 등)가 포함되지 않았는지 확인하세요</li>
+        <li>하드코딩된 경로 (<code>/Users/내이름/...</code>) 대신, 범용적인 설명을 쓰세요</li>
+        <li>스킬이 어떤 환경(Mac? Windows? 특정 도구 필요?)에서 작동하는지 적어주세요</li>
+        <li>피드백을 환영한다는 걸 README에 적어두면 좋아요</li>
+      </ul>
+
+      <p><strong>받는 사람으로서:</strong></p>
+
+      <ul>
+        <li>남이 만든 스킬을 쓰기 전에, <code>SKILL.md</code>를 한 번 읽어보세요. 어떤 도구를 사용하는지, 어떤 권한이 필요한지 확인</li>
+        <li>문제가 있으면 GitHub Issue로 정중하게 알려주세요. 만든 사람도 사람이에요!</li>
+        <li>유용하게 썼다면, GitHub에서 Star를 눌러주세요. 만든 사람에게 큰 힘이 돼요</li>
+      </ul>
+
+      <div class="scenario-box">
+        "좋은 스킬을 만들었다면 공유하고, 좋은 스킬을 발견했다면 감사하고, 더 좋게 만들 수 있다면 기여하세요."
+      </div>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li>스킬은 <code>~/.claude/skills/</code> (글로벌) 또는 <code>프로젝트/.claude/skills/</code> (프로젝트 전용)에 위치해요.</li>
+        <li>스킬 공유 3단계: <strong>GitHub 저장소 만들기 → 파일 올리기 → 주소 공유하기</strong>. 끝!</li>
+        <li>다른 사람의 스킬 설치: <code>git clone</code> 한 줄이면 완료.</li>
+        <li><strong>Git</strong>을 쓰면 버전 관리, 업데이트, 협업이 훨씬 쉬워져요.</li>
+        <li>좋은 <code>README.md</code>를 쓰면, 더 많은 사람이 여러분의 스킬을 사용해요.</li>
+        <li>공유 전에 <strong>개인 정보와 하드코딩된 경로</strong>를 반드시 제거하세요!</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>공유를 넘어, 이제 진짜 <strong>오픈소스 기여자</strong>가 되어봅시다.<br>
+      Pull Request를 보내고, 피드백을 주고받고, 커뮤니티에 참여하는 법을 배워요.<br>
+      챕터 3에서 꿈꿨던 <strong>"나도 오픈소스에 기여하는 사람"</strong>이 될 시간이에요!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch14.html" class="prev">이전: 모노레포 패턴</a>
+    <a href="ch16.html" class="next">다음: 커뮤니티에 기여하기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

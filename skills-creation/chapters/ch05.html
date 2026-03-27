@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="뼈대 살펴보기 — 스킬 패키지의 파일 구조와 규칙. 얇은 스킬에서 두꺼운 스킬까지">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 5: 뼈대 살펴보기 — 파일 구조와 규칙 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 5</span>
+    <h1>뼈대 살펴보기 — 파일 구조와 규칙</h1>
+    <p class="chapter-subtitle">포스트잇에서 백과사전까지, 스킬의 세 가지 레벨</p>
+  </header>
+
+  <!-- ILLUSTRATION: Three buildings side by side on a street, representing three tiers of complexity. LEFT: A tiny, adorable one-room house (like a Korean 원룸) with a single window and a sign saying "SKILL.md" — this is the "thin" skill. CENTER: A cozy three-story building (like a small Korean 빌라) with multiple windows and a sign saying "SKILL.md + references/" — the "medium" skill. RIGHT: A grand, impressive office building (like a Korean 오피스텔) with many floors, an antenna on top, and signs for "SKILL.md", "references/", "bin/", "src/" — the "thick" skill. All three buildings share the same warm cream and coral color palette. Hand-drawn style, friendly and non-intimidating. A small character stands in front, looking at them thoughtfully. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>모든 건물에는 설계도가 있다</h2>
+
+      <p>노래를 생각해보세요.</p>
+
+      <p>어떤 노래든 대부분 이런 구조를 따르잖아요: <strong>인트로 → 벌스 → 후렴 → 벌스 → 후렴 → 브릿지 → 후렴 → 아웃트로.</strong></p>
+
+      <p>BTS의 "Dynamite"도, 아이유의 "좋은 날"도, 여러분이 좋아하는 어떤 노래든 이 구조를 크게 벗어나지 않아요.</p>
+
+      <p>건물도 마찬가지예요. 아파트든, 카페든, 학교든 — 기초, 기둥, 벽, 지붕이라는 기본 구조가 있어요.</p>
+
+      <p>스킬 패키지도 <strong>예측 가능한 구조</strong>가 있어요.</p>
+
+      <p>이 구조를 알면 엄청난 이점이 있어요: <strong>어떤 스킬이든 열어보는 순간 "아, 이렇게 되어 있구나" 하고 바로 이해할 수 있거든요.</strong> 마치 처음 가보는 아파트에서도 "현관 → 거실 → 부엌 → 방" 순서를 예상할 수 있는 것처럼요.</p>
+
+      <p>오늘은 스킬 패키지의 뼈대를 세 가지 레벨로 나눠서 살펴볼 거예요.</p>
+    </section>
+
+    <!-- ====== Three Tiers ====== -->
+    <section>
+      <h2>스킬의 세 가지 레벨</h2>
+
+      <p>스킬 패키지는 복잡도에 따라 크게 세 가지 단계로 나눌 수 있어요. 제가 이름을 붙여봤어요:</p>
+
+      <ol>
+        <li><strong>얇은 스킬 (Thin)</strong> — 포스트잇 한 장</li>
+        <li><strong>보통 스킬 (Medium)</strong> — 직원 핸드북</li>
+        <li><strong>두꺼운 스킬 (Thick)</strong> — 전체 교육 프로그램</li>
+      </ol>
+
+      <p>하나씩 살펴볼게요.</p>
+
+      <h3>레벨 1: 얇은 스킬 — 포스트잇 한 장</h3>
+
+      <p>가장 단순한 형태예요. 지난 챕터에서 본 바로 그것:</p>
+
+      <pre><code>my-thin-skill/
+└── SKILL.md</code></pre>
+
+      <p>끝이에요. 폴더 하나, 파일 하나.</p>
+
+      <p>이건 어떨 때 쓸까요? <strong>지식만 전달하면 되는 경우</strong>예요.</p>
+
+      <p>예를 들면:</p>
+
+      <ul>
+        <li>"이메일 쓸 때 항상 이 양식을 써줘"</li>
+        <li>"코드 리뷰할 때 이 체크리스트를 따라줘"</li>
+        <li>"한국어로 답변할 때 이 문체 가이드를 지켜줘"</li>
+      </ul>
+
+      <p>별도의 참고 자료나 스크립트 없이, SKILL.md 안에 모든 것이 담겨 있는 거예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">일상 비유</p>
+        <p><strong>얇은 스킬 = 냉장고에 붙여놓는 포스트잇</strong><br><br>
+        "우유 사올 것. 저지방으로. 매일유업."<br><br>
+        짧지만, 필요한 정보는 다 있잖아요? 얇은 스킬도 그래요. 짧지만 AI가 일하는 데 충분한 정보가 들어있어요.</p>
+      </div>
+
+      <p>초보자라면? <strong>무조건 여기서 시작하세요.</strong> 스킬 만들기의 "Hello, World"예요.</p>
+
+      <h3>레벨 2: 보통 스킬 — 직원 핸드북</h3>
+
+      <p>스킬이 조금 복잡해지면, SKILL.md 하나로는 부족해질 때가 와요. "이 내용도 넣어야 하고, 저 내용도 넣어야 하는데, 파일이 너무 길어진다..."</p>
+
+      <p>그때 <code>references/</code> 폴더가 등장합니다:</p>
+
+      <pre><code>my-medium-skill/
+├── SKILL.md
+└── references/
+    ├── STYLE-GUIDE.md
+    ├── TEMPLATES.md
+    └── EXAMPLES.md</code></pre>
+
+      <p><code>references/</code>는 이름 그대로 <strong>"참고 자료" 폴더</strong>예요.</p>
+
+      <p>SKILL.md가 "메인 설명서"라면, references/ 안의 파일들은 "부록"이에요. 교과서의 본문과 부록의 관계라고 생각하면 돼요.</p>
+
+      <ul>
+        <li><code>STYLE-GUIDE.md</code>: "이런 스타일로 써줘" (문체, 톤앤매너 가이드)</li>
+        <li><code>TEMPLATES.md</code>: "이 양식을 사용해" (재사용 가능한 템플릿 모음)</li>
+        <li><code>EXAMPLES.md</code>: "이런 식으로 하면 돼" (예시 모음)</li>
+      </ul>
+
+      <p>언제 이 레벨이 필요할까요?</p>
+
+      <ul>
+        <li>SKILL.md가 너무 길어져서 읽기 어려울 때</li>
+        <li>여러 스킬이 같은 참고 자료를 공유해야 할 때</li>
+        <li>참고 자료를 따로 관리하고 싶을 때</li>
+      </ul>
+
+      <div class="fun-box">
+        <p class="fun-box-title">일상 비유</p>
+        <p><strong>보통 스킬 = 신입사원에게 주는 직원 핸드북</strong><br><br>
+        핸드북의 첫 페이지에는 "당신의 역할은 이것입니다"라고 써 있고 (= SKILL.md),<br>
+        뒤에 부록으로 "회사 용어 사전", "보고서 양식", "자주 쓰는 이메일 템플릿"이 붙어 있어요 (= references/).<br><br>
+        하나의 책으로 묶여 있지만, 역할이 다른 거예요.</p>
+      </div>
+
+      <!-- ILLUSTRATION: A cozy librarian scene. A friendly AI character (soft glowing entity) sits at a desk with SKILL.md open in front of them like a main textbook. Behind them is a small bookshelf labeled "references/" with three neatly organized books: "STYLE-GUIDE", "TEMPLATES", "EXAMPLES". The AI reaches back to grab one of the reference books while working. Warm cream background, coral accents on the book spines. Hand-drawn style. The scene conveys organized knowledge — everything has its place. -->
+
+      <h3>레벨 3: 두꺼운 스킬 — 전체 교육 프로그램</h3>
+
+      <p>가끔은 스킬이 정말 많은 일을 해야 할 때가 있어요. 단순히 "글을 써줘"가 아니라, "스크립트를 실행하고, 파일을 생성하고, API를 호출해"처럼요.</p>
+
+      <p>그때 <code>bin/</code>과 <code>src/</code> 폴더가 추가됩니다:</p>
+
+      <pre><code>my-thick-skill/
+├── SKILL.md
+├── references/
+│   ├── SHARED-PREAMBLE.md
+│   ├── ARCHITECTURE.md
+│   └── API-GUIDE.md
+├── bin/
+│   ├── setup.sh
+│   └── deploy.sh
+└── src/
+    ├── helpers.js
+    └── templates/
+        ├── report.hbs
+        └── email.hbs</code></pre>
+
+      <p>와, 갑자기 복잡해 보이죠? 근데 걱정 마세요. 하나씩 볼게요:</p>
+
+      <ul>
+        <li><code>SKILL.md</code>: 여전히 메인 설명서. 항상 여기가 시작점이에요.</li>
+        <li><code>references/</code>: 참고 자료 폴더 (레벨 2와 동일)</li>
+        <li><code>bin/</code>: 실행 가능한 스크립트들이 들어가는 곳. "bin"은 "binary"의 줄임말인데, 쉽게 말해 "실행 파일 모음"이에요.</li>
+        <li><code>src/</code>: 소스 코드가 들어가는 곳. "source"의 줄임말이에요.</li>
+      </ul>
+
+      <p>"잠깐, 스크립트? 코드? 코딩 못하는데요?"</p>
+
+      <p>걱정 마세요! 두꺼운 스킬은 <strong>나중에</strong> 필요할 때 만드는 거예요. 그리고 그때쯤이면 이 책을 다 읽고, AI에게 코드 작성을 시키는 방법도 알게 될 거예요. 지금은 "이런 구조도 있구나" 정도만 알면 충분해요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">일상 비유</p>
+        <p><strong>두꺼운 스킬 = 기업의 전체 교육 프로그램</strong><br><br>
+        강의 교재도 있고 (SKILL.md),<br>
+        참고 도서도 있고 (references/),<br>
+        실습 도구도 있고 (bin/),<br>
+        과제 소스 파일도 있어요 (src/).<br><br>
+        규모가 큰 대신, 할 수 있는 일도 훨씬 많아요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Comparison Table ====== -->
+    <section>
+      <h2>세 레벨 한눈에 비교</h2>
+
+      <p>표로 정리하면 이렇게 돼요:</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">세 가지 레벨 비교</p>
+        <p><strong>얇은 스킬 (Thin)</strong><br>
+        구성: SKILL.md만<br>
+        비유: 포스트잇<br>
+        용도: 간단한 지식 전달, 양식 가이드<br>
+        난이도: 초보자 OK<br><br>
+
+        <strong>보통 스킬 (Medium)</strong><br>
+        구성: SKILL.md + references/<br>
+        비유: 직원 핸드북<br>
+        용도: 복잡한 가이드, 여러 참고자료 필요<br>
+        난이도: 초보자도 가능 (조금 연습 후)<br><br>
+
+        <strong>두꺼운 스킬 (Thick)</strong><br>
+        구성: SKILL.md + references/ + bin/ + src/<br>
+        비유: 교육 프로그램<br>
+        용도: 스크립트 실행, 복잡한 자동화<br>
+        난이도: 중급 이상</p>
+      </div>
+
+      <p>중요한 건, <strong>어떤 레벨이든 SKILL.md는 항상 있다</strong>는 거예요. SKILL.md가 "정문"이에요. AI는 항상 SKILL.md를 먼저 읽고, 거기에 적힌 안내에 따라 다른 파일들을 참고해요.</p>
+    </section>
+
+    <!-- ====== Naming Conventions ====== -->
+    <section>
+      <h2>이름 짓기 규칙</h2>
+
+      <p>스킬 패키지를 만들 때 지켜야 할 이름 짓기 규칙이 있어요. 어렵지 않으니까 가볍게 읽어주세요.</p>
+
+      <h3>폴더 이름: 케밥 케이스</h3>
+
+      <p>"케밥 케이스(kebab-case)"라는 이름이 재미있죠? 이게 뭐냐면, <strong>단어를 하이픈(-)으로 연결</strong>하는 거예요.</p>
+
+      <pre><code># 좋은 예
+weekly-report-writer
+code-review-helper
+email-template-maker
+
+# 나쁜 예
+weeklyReportWriter     (카멜 케이스 - 여기선 안 써요)
+Weekly_Report_Writer   (스네이크 케이스 - 여기선 안 써요)
+weeklyreportwriter     (읽기 어려워요)</code></pre>
+
+      <p>왜 케밥 케이스를 쓰냐고요? 읽기 쉬우니까요! 그리고 URL이나 파일 시스템에서 문제가 안 생기거든요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">왜 "케밥"이냐면</p>
+        <p><code>weekly-report-writer</code>를 옆으로 눕혀서 보면...<br><br>
+        <code>●—●—●</code><br><br>
+        마치 꼬치에 꽂힌 케밥 같지 않아요? 그래서 "케밥 케이스"예요. 진짜로요. 프로그래머들의 유머 감각이란...</p>
+      </div>
+
+      <h3>파일 이름: 대문자 마크다운</h3>
+
+      <p>스킬의 주요 파일들은 <strong>대문자</strong>로 이름을 짓는 게 관례예요:</p>
+
+      <pre><code>SKILL.md          (메인 설명서 - 필수!)
+SHARED-PREAMBLE.md  (공유 서문)
+STYLE-GUIDE.md    (스타일 가이드)
+TEMPLATES.md      (템플릿 모음)
+EXAMPLES.md       (예시 모음)</code></pre>
+
+      <p>대문자를 쓰는 이유? <strong>눈에 띄게 하려고요.</strong> 폴더를 열었을 때 "이게 중요한 파일이구나!" 하고 바로 알 수 있잖아요.</p>
+
+      <p>이건 사실 오래된 프로그래밍 관례예요. <code>README.md</code>라는 파일 이름 들어보셨나요? 오픈소스 프로젝트에서 "나를 먼저 읽어!"라는 뜻으로 대문자로 쓰는 건데, 같은 원리예요.</p>
+    </section>
+
+    <!-- ====== The Golden Rule ====== -->
+    <section>
+      <h2>황금 규칙: SKILL.md는 항상 정문이다</h2>
+
+      <p>이 챕터에서 딱 하나만 기억한다면, 이걸 기억하세요:</p>
+
+      <div class="callout">
+        <p class="callout-title">황금 규칙</p>
+        <p><strong>SKILL.md는 항상 정문이다.</strong><br><br>
+        AI는 스킬을 읽을 때 반드시 SKILL.md부터 읽어요. 다른 파일이 아무리 많아도, 시작은 언제나 SKILL.md. 마치 건물에 들어갈 때 항상 정문으로 들어가는 것처럼요.</p>
+      </div>
+
+      <p>이게 왜 중요하냐면요. 스킬 패키지를 처음 보는 사람(혹은 AI)은 <strong>어디서부터 읽어야 할지</strong> 알아야 하거든요. SKILL.md가 그 "시작점" 역할을 해요.</p>
+
+      <p>SKILL.md 안에는 이런 내용이 들어가요:</p>
+
+      <ul>
+        <li>이 스킬이 뭘 하는지 (소개)</li>
+        <li>어떻게 사용하는지 (사용법)</li>
+        <li>어떤 참고 자료를 봐야 하는지 (references/ 안내)</li>
+        <li>어떤 규칙을 지켜야 하는지 (제약 조건)</li>
+      </ul>
+
+      <p>그래서 아무리 복잡한 스킬이라도, SKILL.md만 열어보면 전체 그림을 파악할 수 있어요.</p>
+
+      <p>마치 뮤지컬의 프로그램 북처럼요. 공연장에 들어가서 프로그램 북을 보면, 전체 줄거리, 배우 소개, 막 구성이 다 적혀 있잖아요. SKILL.md도 그런 역할이에요.</p>
+    </section>
+
+    <!-- ====== Which Tier to Start ====== -->
+    <section>
+      <h2>어디서 시작하면 좋을까?</h2>
+
+      <p>대답은 명확해요: <strong>무조건 얇은 스킬부터.</strong></p>
+
+      <p>이건 요리를 배울 때와 같아요. 처음부터 코스 요리를 만들려고 하면 좌절하잖아요? 라면부터 끓이세요. 라면이 잘 되면 볶음밥. 볶음밥이 잘 되면 파스타. 이렇게 단계를 밟아가는 거예요.</p>
+
+      <p>스킬도 마찬가지예요:</p>
+
+      <ol>
+        <li><strong>얇은 스킬</strong>로 시작 → SKILL.md 하나 잘 쓰는 법을 익히기</li>
+        <li><strong>보통 스킬</strong>로 확장 → 참고 자료를 분리하는 법 익히기</li>
+        <li><strong>두꺼운 스킬</strong>로 진화 → 스크립트와 코드를 연동하는 법 익히기</li>
+      </ol>
+
+      <p>이 책에서도 이 순서대로 진행할 거예요. 제3부에서 직접 얇은 스킬을 만들어보고, 그 다음에 점점 키워나갈 거예요.</p>
+
+      <div class="scenario-box">
+        "근데 제가 만들고 싶은 건 복잡한 건데요?"<br><br>
+        괜찮아요! 복잡한 스킬도 처음에는 SKILL.md 하나에서 시작해요. 일단 얇게 만들고, 잘 작동하면, 그때 파일을 추가하면서 키우면 돼요. 처음부터 완벽한 설계를 할 필요 없어요.
+      </div>
+    </section>
+
+    <!-- ILLUSTRATION: A growth progression scene, like a plant growing. Three stages shown left to right: (1) A tiny seedling in a small pot labeled "Thin" — simple and cute, with just one leaf (SKILL.md). (2) A medium plant in a bigger pot labeled "Medium" — with several branches and leaves, plus a small bookshelf beside it (references/). (3) A full, magnificent tree labeled "Thick" — with many branches, fruits, and a complex root system visible through a transparent pot. Tools hang from the branches (bin/) and source code scrolls are tucked among the leaves (src/). Warm cream background, coral and green accents. Hand-drawn style. The message: start small, grow naturally. -->
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li>스킬 패키지는 세 가지 레벨이 있어요: <strong>얇은 스킬</strong>(SKILL.md만), <strong>보통 스킬</strong>(+ references/), <strong>두꺼운 스킬</strong>(+ bin/ + src/)</li>
+        <li>어떤 레벨이든 <strong>SKILL.md는 항상 있어요</strong>. SKILL.md가 정문이에요.</li>
+        <li>폴더 이름은 <strong>케밥 케이스</strong>(kebab-case), 주요 파일은 <strong>대문자</strong>로 이름 지어요.</li>
+        <li><strong>무조건 얇은 스킬부터 시작</strong>하세요. 나중에 키우면 돼요.</li>
+        <li>복잡한 스킬도 얇은 스킬에서 시작해서 자란 거예요. <strong>처음부터 완벽할 필요 없어요.</strong></li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>SKILL.md 파일을 열어보면 맨 위에 뭔가 특별한 게 있어요. <strong>프론트매터(frontmatter)</strong>라고 불리는 것인데,<br>
+      이건 스킬의 <strong>"신분증"</strong> 같은 거예요. 이름, 설명, 자격증까지 — 스킬이 누구인지 알려주는 ID 카드를 살펴봅니다!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch04.html" class="prev">이전: 스킬 패키지란?</a>
+    <a href="ch06.html" class="next">다음: 프론트매터: 스킬의 신분증</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

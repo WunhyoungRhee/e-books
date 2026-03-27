@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="프론트매터: 스킬의 신분증 — YAML 헤더로 스킬의 정체를 알려주는 방법">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 6: 프론트매터: 스킬의 신분증 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 6</span>
+    <h1>프론트매터: 스킬의 신분증</h1>
+    <p class="chapter-subtitle">이름, 설명, 자격증 — AI에게 "너 누구야?"라고 물으면 보여주는 카드</p>
+  </header>
+
+  <!-- ILLUSTRATION: A fun scene at a "Skill ID Office" — like a Korean 주민센터 but for AI skills. A cute SKILL.md document (personified as a friendly character) sits at a counter getting their ID card made. The ID card is being printed and shows fields: "name:", "description:", "allowed-tools:" with a small photo of the skill character. Behind the counter, a friendly government worker (representing the system) is processing the card. Other skill documents wait in line behind. The office has warm cream walls with coral accents. Hand-drawn style, humorous and light. Think of it like a DMV but actually pleasant. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>주민등록증을 떠올려보세요</h2>
+
+      <p>여러분의 주민등록증(또는 운전면허증)을 한번 떠올려보세요.</p>
+
+      <p>거기에 뭐가 적혀있나요?</p>
+
+      <ul>
+        <li><strong>이름:</strong> 홍길동</li>
+        <li><strong>생년월일:</strong> 1995.03.15</li>
+        <li><strong>주소:</strong> 서울시 강남구...</li>
+        <li><strong>사진:</strong> (말 안 할게요... 신분증 사진은 다 못생기게 나오니까)</li>
+      </ul>
+
+      <p>이 작은 카드 한 장으로 "이 사람이 누구인지"를 빠르게 알 수 있어요.</p>
+
+      <p>스킬 패키지에도 이런 "신분증"이 있어요. SKILL.md 파일을 열면 맨 위에 적혀 있는 특별한 영역인데, 이걸 <strong>프론트매터(frontmatter)</strong>라고 불러요.</p>
+
+      <p>오늘은 이 프론트매터를 뜯어볼 거예요. 어렵지 않아요 — 약속!</p>
+    </section>
+
+    <!-- ====== What is YAML ====== -->
+    <section>
+      <h2>잠깐, YAML이 뭐예요?</h2>
+
+      <p>프론트매터를 이해하려면, 먼저 <strong>YAML</strong>이라는 걸 아주 살짝만 알아야 해요.</p>
+
+      <p>"야... 뭐?" 네, YAML(야믈)이에요. 이름이 좀 이상하죠. 원래 "YAML Ain't Markup Language"의 약자인데, 그건 몰라도 돼요.</p>
+
+      <p>YAML은 딱 한 마디로 설명하면 이거예요:</p>
+
+      <div class="callout">
+        <p class="callout-title">YAML이란?</p>
+        <p><strong>"사람이 읽기 쉬운 데이터 형식."</strong><br>
+        그냥 <code>키: 값</code> 형태로 정보를 적는 거예요. 설문조사 응답지처럼요.</p>
+      </div>
+
+      <p>예를 들어볼게요. 여러분이 카페에서 주문서를 작성한다고 해봐요:</p>
+
+      <pre><code>이름: 홍길동
+음료: 아이스 아메리카노
+사이즈: 벤티
+샷 추가: 2
+테이크아웃: 네</code></pre>
+
+      <p>이게 YAML이에요. (거의요.)</p>
+
+      <p><strong>"키: 값"</strong> 형태. 왼쪽에 항목 이름, 콜론(:), 오른쪽에 내용. 끝이에요.</p>
+
+      <p>어렵지 않죠? 엑셀 시트의 A열(항목)과 B열(내용)을 세로로 쓴 거라고 생각하면 돼요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">YAML = 설문조사 응답지</p>
+        <p>설문조사에서 이런 거 작성해본 적 있죠?<br><br>
+        <strong>이름:</strong> ________<br>
+        <strong>나이:</strong> ________<br>
+        <strong>직업:</strong> ________<br><br>
+        YAML은 이거의 디지털 버전이에요. 정말로요. 빈칸을 채우는 것처럼 정보를 적으면 돼요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Frontmatter Example ====== -->
+    <section>
+      <h2>프론트매터, 실제로 이렇게 생겼어요</h2>
+
+      <p>자, 이제 진짜 SKILL.md의 프론트매터를 볼게요. SKILL.md 파일을 열면 맨 위에 이렇게 생긴 부분이 있어요:</p>
+
+      <pre><code>---
+name: weekly-report-writer
+description: >-
+  매주 월요일 주간 현황 보고 이메일을 작성해주는 스킬입니다.
+  사용자에게 주요 성과와 수치를 물어보고, 정해진 양식에 맞춰
+  깔끔한 보고서를 생성합니다.
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+  - Edit
+---
+
+# 주간 보고서 작성 스킬
+
+이 스킬은 매주 주간 보고서를 작성합니다...
+(이하 스킬 본문)</code></pre>
+
+      <p>보이시나요? <code>---</code> 세 개로 시작하고, 다시 <code>---</code> 세 개로 끝나는 영역. <strong>이 사이가 프론트매터</strong>예요.</p>
+
+      <p>프론트매터가 끝나면 그 아래부터가 스킬의 본문(실제 지시사항)이에요.</p>
+
+      <p>마치 편지 봉투에 보내는 사람, 받는 사람, 주소를 적고, 봉투를 열면 실제 편지 내용이 나오는 것과 같아요. 프론트매터 = 봉투 겉면, 본문 = 봉투 안 편지.</p>
+    </section>
+
+    <!-- ====== Field Explanations ====== -->
+    <section>
+      <h2>각 항목 뜯어보기</h2>
+
+      <p>프론트매터의 각 항목을 하나씩 살펴볼게요.</p>
+
+      <h3>1. name — 스킬의 이름</h3>
+
+      <pre><code>name: weekly-report-writer</code></pre>
+
+      <p>말 그대로 <strong>스킬의 이름</strong>이에요. 사람의 이름처럼, 이 스킬을 부르는 방법이에요.</p>
+
+      <p>규칙:</p>
+      <ul>
+        <li>케밥 케이스로 쓰기 (챕터 5에서 배웠죠!)</li>
+        <li>짧지만 뭘 하는지 알 수 있게 쓰기</li>
+        <li>영어로 쓰기 (시스템이 인식해야 하니까)</li>
+      </ul>
+
+      <div class="fun-box">
+        <p class="fun-box-title">좋은 이름 vs 나쁜 이름</p>
+        <p><strong>좋은 이름:</strong><br>
+        <code>weekly-report-writer</code> (주간 보고서 작성기라는 걸 바로 알 수 있음)<br>
+        <code>code-review-helper</code> (코드 리뷰 도우미라는 걸 알 수 있음)<br>
+        <code>meeting-note-taker</code> (회의록 작성기)<br><br>
+        <strong>나쁜 이름:</strong><br>
+        <code>my-skill</code> (뭐 하는 스킬인지 전혀 모름)<br>
+        <code>thing</code> (대체 뭔데요...)<br>
+        <code>asdf</code> (키보드를 발로 친 건가요?)</p>
+      </div>
+
+      <h3>2. description — 스킬의 자기소개</h3>
+
+      <pre><code>description: >-
+  매주 월요일 주간 현황 보고 이메일을 작성해주는 스킬입니다.
+  사용자에게 주요 성과와 수치를 물어보고, 정해진 양식에 맞춰
+  깔끔한 보고서를 생성합니다.</code></pre>
+
+      <p>이 항목이 <strong>가장 중요해요.</strong> 왜냐하면, Claude가 "이 스킬을 쓸까 말까"를 결정할 때 <strong>description을 보고 판단</strong>하거든요.</p>
+
+      <p>면접 때 자기소개와 같아요. 자기소개를 잘 하면 면접관이 "오, 이 사람 적합하네!" 하고 뽑아주듯, description을 잘 쓰면 Claude가 "오, 이 스킬이 딱 맞네!" 하고 사용해줘요.</p>
+
+      <p>좋은 description을 쓰는 팁:</p>
+
+      <ul>
+        <li><strong>뭘 하는지</strong> 명확하게 쓰기 ("주간 보고서를 작성한다")</li>
+        <li><strong>언제 쓰는지</strong> 쓰기 ("매주 월요일")</li>
+        <li><strong>어떻게 하는지</strong> 간략히 쓰기 ("사용자에게 물어보고 양식에 맞춰 생성")</li>
+      </ul>
+
+      <p>참고로 <code>>-</code>는 "여러 줄을 한 줄처럼 이어서 읽어줘"라는 YAML 문법이에요. 긴 설명을 줄바꿈하면서 쓸 수 있게 해줘요. 지금은 "description이 길 때 이렇게 쓰는구나" 정도만 기억하면 돼요.</p>
+
+      <!-- ILLUSTRATION: A job interview scene but humorous. A SKILL.md document (personified as a cute character in a suit) is sitting across from Claude AI (a friendly, wise-looking entity) at an interview table. The SKILL.md character is presenting their ID card showing their "description" field in big text. Claude is reading it carefully with reading glasses, nodding thoughtfully. On the wall behind them is a sign: "AI 스킬 면접장". Other skill documents wait nervously outside the door. Warm cream background, coral accents. Hand-drawn, humorous style. -->
+
+      <h3>3. allowed-tools — 스킬의 자격증</h3>
+
+      <pre><code>allowed-tools:
+  - Bash
+  - Read
+  - Write
+  - Edit</code></pre>
+
+      <p>이건 <strong>이 스킬이 사용할 수 있는 도구 목록</strong>이에요.</p>
+
+      <p>비유하면 "자격증"이에요. 병원에서 의사만 수술할 수 있듯이, 스킬도 허용된 도구만 사용할 수 있어요.</p>
+
+      <ul>
+        <li><code>Bash</code>: 터미널 명령어를 실행할 수 있는 도구</li>
+        <li><code>Read</code>: 파일을 읽을 수 있는 도구</li>
+        <li><code>Write</code>: 파일을 새로 만들 수 있는 도구</li>
+        <li><code>Edit</code>: 기존 파일을 수정할 수 있는 도구</li>
+      </ul>
+
+      <p>목록 형식 (앞에 <code>-</code>가 붙는 것)은 YAML에서 "여러 개의 항목"을 나열하는 방법이에요. 쇼핑 리스트를 쓸 때 각 항목 앞에 점(-)을 찍는 것과 같아요.</p>
+
+      <div class="callout">
+        <p class="callout-title">왜 도구를 제한하나요?</p>
+        <p><strong>안전 때문이에요.</strong> 모든 스킬이 모든 도구를 자유롭게 쓸 수 있으면, 실수로 중요한 파일을 삭제하거나 위험한 명령어를 실행할 수도 있거든요. allowed-tools는 "이 스킬은 이것만 해도 돼"라는 울타리 역할을 해요.</p>
+      </div>
+
+      <h3>4. 그 외 선택 항목들</h3>
+
+      <p>이 세 가지(name, description, allowed-tools)가 핵심이지만, 필요에 따라 더 추가할 수 있어요:</p>
+
+      <pre><code>---
+name: weekly-report-writer
+description: >-
+  매주 월요일 주간 현황 보고 이메일을 작성해주는 스킬입니다.
+allowed-tools:
+  - Read
+  - Write
+version: 1.0.0
+author: hong-gildong
+license: MIT
+tags:
+  - productivity
+  - email
+  - korean
+---</code></pre>
+
+      <ul>
+        <li><code>version</code>: 스킬의 버전 (앱 업데이트처럼, 1.0 → 1.1 → 2.0)</li>
+        <li><code>author</code>: 누가 만들었는지</li>
+        <li><code>license</code>: 다른 사람이 이 스킬을 어떻게 쓸 수 있는지 (챕터 3에서 배운 오픈소스 라이선스!)</li>
+        <li><code>tags</code>: 검색할 때 찾기 쉽게 해주는 키워드</li>
+      </ul>
+
+      <p>이것들은 선택사항이에요. 없어도 스킬은 작동해요. 하지만 있으면 스킬을 관리하고 공유할 때 편해요. 마치 책에 ISBN 번호가 없어도 읽을 수 있지만, 있으면 도서관에서 찾기 쉬운 것처럼요.</p>
+    </section>
+
+    <!-- ====== Common Mistakes ====== -->
+    <section>
+      <h2>초보자가 자주 하는 실수</h2>
+
+      <p>YAML은 간단하지만, 몇 가지 함정이 있어요. 미리 알려드릴게요.</p>
+
+      <h3>실수 1: 탭(Tab) 대신 스페이스를 써야 해요</h3>
+
+      <p>YAML에서 들여쓰기는 <strong>반드시 스페이스(공백)</strong>로 해야 해요. Tab 키를 누르면 안 돼요.</p>
+
+      <pre><code># 맞는 예 (스페이스 2칸으로 들여쓰기)
+allowed-tools:
+  - Bash
+  - Read
+
+# 틀린 예 (탭으로 들여쓰기 - 오류 발생!)
+allowed-tools:
+	- Bash
+	- Read</code></pre>
+
+      <p>"아니, 눈으로 보면 똑같은데 왜 안 되는 거예요?" 이건 프로그래밍 세계의 오래된 논쟁거리예요. 스페이스와 탭은 눈에 보이는 건 같지만, 컴퓨터에게는 다른 문자거든요. YAML은 탭을 싫어해요. 그냥 그렇다고 외우세요.</p>
+
+      <h3>실수 2: 들여쓰기를 맞춰야 해요</h3>
+
+      <pre><code># 맞는 예 (같은 레벨은 같은 들여쓰기)
+allowed-tools:
+  - Bash
+  - Read
+  - Write
+
+# 틀린 예 (들여쓰기가 제각각)
+allowed-tools:
+  - Bash
+    - Read
+ - Write</code></pre>
+
+      <p>YAML은 들여쓰기로 구조를 파악해요. 같은 그룹에 속하는 항목은 같은 칸수로 들여써야 해요. 마치 아웃라인을 쓸 때 같은 레벨의 항목을 같은 위치에 쓰는 것처럼요.</p>
+
+      <h3>실수 3: 콜론(:) 뒤에 공백이 있어야 해요</h3>
+
+      <pre><code># 맞는 예
+name: weekly-report-writer
+
+# 틀린 예 (콜론 뒤에 공백 없음)
+name:weekly-report-writer</code></pre>
+
+      <p><code>키: 값</code> 형태에서 콜론 뒤에 반드시 공백(스페이스)이 하나 있어야 해요. 이거 빼먹으면 오류가 나요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">YAML 실수 방지 3대 규칙</p>
+        <p>1. <strong>탭 금지!</strong> 무조건 스페이스 (보통 2칸)<br>
+        2. <strong>들여쓰기 맞추기!</strong> 같은 레벨은 같은 칸수<br>
+        3. <strong>콜론 뒤에 공백!</strong> <code>key: value</code> (O) / <code>key:value</code> (X)</p>
+        <p>이 세 가지만 지키면 YAML 오류의 90%를 피할 수 있어요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Analogy Wrap-up ====== -->
+    <section>
+      <h2>프론트매터 = 책의 표지</h2>
+
+      <p>마지막으로 전체를 관통하는 비유 하나 더 할게요.</p>
+
+      <p>서점에 가면 책을 어떻게 고르시나요? 대부분 <strong>표지</strong>를 먼저 보죠.</p>
+
+      <ul>
+        <li><strong>제목</strong>을 보고 → "아, 이런 주제구나" (= name)</li>
+        <li><strong>뒷표지 소개글</strong>을 읽고 → "아, 이런 내용이구나" (= description)</li>
+        <li><strong>저자, 출판사</strong>를 확인하고 → "아, 이 사람이 썼구나" (= author, version)</li>
+      </ul>
+
+      <p>표지만 보고 "이 책 읽어볼까 말까"를 결정하잖아요?</p>
+
+      <p>Claude도 똑같이 해요. 프론트매터를 보고 "이 스킬 쓸까 말까"를 결정해요. 그래서 프론트매터를 <strong>잘 쓰는 게 중요한 거예요.</strong></p>
+
+      <p>표지가 어수선하고 소개글이 모호한 책은 안 집어들게 되잖아요? 프론트매터가 엉성한 스킬도 Claude가 잘 안 써요. 반대로, 프론트매터가 깔끔하고 description이 명확한 스킬은 Claude가 딱 필요한 순간에 "아, 이 스킬이 있네!" 하고 꺼내줘요.</p>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>프론트매터</strong>는 SKILL.md 맨 위에 <code>---</code>로 감싸진 영역이에요. 스킬의 "신분증"이에요.</li>
+        <li><strong>YAML</strong>은 <code>키: 값</code> 형태의 간단한 데이터 형식이에요. 설문조사 응답지와 비슷해요.</li>
+        <li>핵심 3개 항목: <strong>name</strong>(이름), <strong>description</strong>(설명), <strong>allowed-tools</strong>(사용 가능 도구)</li>
+        <li><strong>description이 가장 중요해요!</strong> Claude가 스킬을 쓸지 말지 판단하는 기준이에요.</li>
+        <li>YAML 실수 방지: <strong>탭 금지, 들여쓰기 맞추기, 콜론 뒤 공백</strong>. 이 세 가지만 기억하세요!</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>스킬에 들어있는 <strong>references/ 폴더</strong>를 살펴봅니다.<br>
+      SKILL.md가 "메인 교과서"라면, references/는 "참고 도서 모음"이에요.<br>
+      왜 모든 걸 SKILL.md에 넣으면 안 되는지, 어떻게 지식을 나눠서 관리하는지 — <strong>모듈화의 마법</strong>을 알아봐요!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch05.html" class="prev">이전: 뼈대 살펴보기</a>
+    <a href="ch07.html" class="next">다음: references/ 폴더</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="첫 번째 스킬 만들기 — Hello World! 가장 간단한 AI 스킬을 직접 만들어봅니다">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 8: 첫 번째 스킬: "인사하기" — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 8</span>
+    <h1>첫 번째 스킬: "인사하기"</h1>
+    <p class="chapter-subtitle">Hello World! 드디어 직접 만드는 시간입니다</p>
+  </header>
+
+  <!-- ILLUSTRATION: A young Korean person standing at a workbench in a cozy workshop, holding up a glowing card labeled "SKILL.md" with both hands, looking excited and proud. The card emits warm coral light. Around the workbench are simple tools: a folder icon, a text editor icon, and a terminal window. Confetti and sparkles float in the air. The mood is celebratory, like a first creation moment. Warm cream background, coral and teal accents, playful hand-drawn illustration style. A small banner reads "My First Skill!" -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>지금부터 여러분은 만드는 사람(Maker)입니다</h2>
+
+      <p>여기까지 오신 분들, 진심으로 축하드려요.</p>
+
+      <p>1부에서 AI가 뭔지 배웠고, 2부에서 스킬 패키지의 구조를 해부했죠. 재미있었지만, 솔직히 말하면 지금까지는 <strong>"구경"</strong>이었어요. 다른 사람이 만든 걸 들여다본 거예요.</p>
+
+      <p>이제 달라집니다.</p>
+
+      <div class="scenario-box">
+        지금부터 여러분은 <strong>구경하는 사람</strong>이 아니라 <strong>만드는 사람</strong>이에요. 코드를 읽는 사람이 아니라 코드를 쓰는 사람. 스킬을 쓰는 사람이 아니라 스킬을 만드는 사람.
+      </div>
+
+      <p>긴장되시나요? 괜찮아요. 프로그래밍의 오랜 전통이 하나 있거든요.</p>
+
+      <p>모든 것은 <strong>"Hello, World!"</strong>에서 시작한다는 것.</p>
+
+      <p>1972년, 프로그래밍 언어 C를 만든 브라이언 커니핸이 교재에 "Hello, World!"를 화면에 출력하는 예제를 처음 넣었어요. 그 이후 50년 동안, 새로운 기술을 배울 때는 항상 가장 간단한 것부터 만들어보는 게 전통이 됐죠.</p>
+
+      <p>우리도 그 전통을 따릅니다. 가장 간단하고, 가장 쉽고, 가장 빨리 결과를 볼 수 있는 스킬부터 만들어볼 거예요.</p>
+
+      <p>이름하여: <strong>"인사하기" 스킬</strong>.</p>
+    </section>
+
+    <!-- ====== What We'll Build ====== -->
+    <section>
+      <h2>뭘 만들 거예요?</h2>
+
+      <p>우리가 만들 스킬은 이거예요:</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">인사하기 스킬</p>
+        <p>사용자가 "안녕"이라고 말하면, AI가 따뜻한 한국어 인사와 함께 오늘에 대한 재미있는 사실을 알려주는 스킬.</p>
+      </div>
+
+      <p>단순하죠? <strong>바로 그게 포인트예요.</strong></p>
+
+      <p>첫 번째 스킬은 단순해야 해요. 복잡하면 중간에 막히고, 막히면 재미없고, 재미없으면 포기하니까. 일단 성공의 맛을 봐야 다음으로 갈 수 있어요.</p>
+
+      <p>자, 시작합시다. 딱 3단계면 됩니다.</p>
+    </section>
+
+    <!-- ====== Step 1 ====== -->
+    <section>
+      <h2>Step 1: 폴더 만들기</h2>
+
+      <p>모든 스킬은 <strong>폴더 하나</strong>에서 시작해요. 스킬의 집을 짓는 거라고 생각하면 돼요.</p>
+
+      <p>터미널(명령어 창)을 열고, 다음 명령어를 입력하세요:</p>
+
+<pre><code>mkdir hello-skill
+cd hello-skill</code></pre>
+
+      <p>끝이에요. 정말로요. 폴더 하나 만들고 들어간 게 전부예요.</p>
+
+      <p>"이게 다예요?" 네, 이게 다예요. 스킬 패키지는 기본적으로 <strong>폴더 안에 파일을 넣는 것</strong>이거든요. 대단한 설치 과정이나 복잡한 설정 같은 거 없어요.</p>
+
+      <div class="callout">
+        <p class="callout-title">터미널이 뭔지 모르겠다면?</p>
+        <p>걱정 마세요! 터미널은 컴퓨터와 글자로 대화하는 창이에요. Windows에서는 "명령 프롬프트" 또는 "PowerShell"을, Mac에서는 "터미널"을 검색해서 열면 됩니다. 거기에 위의 명령어를 타이핑하고 Enter를 누르면 돼요.</p>
+      </div>
+
+      <p>지금 우리 폴더 구조는 이렇게 생겼어요:</p>
+
+<pre><code>hello-skill/
+  (아직 비어 있음)</code></pre>
+
+      <p>텅 빈 집이죠. 이제 여기에 가장 중요한 파일을 넣을 거예요.</p>
+    </section>
+
+    <!-- ====== Step 2 ====== -->
+    <section>
+      <h2>Step 2: SKILL.md 작성하기</h2>
+
+      <p>자, 이제 스킬의 심장을 만들 차례예요. <code>SKILL.md</code> 파일이요.</p>
+
+      <p>2부에서 배웠죠? <code>SKILL.md</code>는 AI에게 주는 레시피 카드라고요. 이 파일 하나가 스킬의 전부예요.</p>
+
+      <p><code>hello-skill</code> 폴더 안에 <code>SKILL.md</code> 파일을 만들고, 다음 내용을 <strong>그대로</strong> 입력하세요:</p>
+
+<pre><code>---
+description: "사용자에게 따뜻한 한국어 인사를 해주는 스킬"
+---
+
+# 인사하기 스킬
+
+당신은 따뜻하고 친근한 한국어 인사 전문가입니다.
+
+사용자가 인사를 하면 (예: "안녕", "하이", "hello", "좋은 아침") 다음을 수행하세요:
+
+1. 시간대에 맞는 따뜻한 한국어 인사로 응답하세요
+   - 아침이면 "좋은 아침이에요! ☀️"
+   - 낮이면 "안녕하세요! 좋은 하루 보내고 계신가요? 😊"
+   - 저녁이면 "좋은 저녁이에요! 오늘 하루 수고 많으셨어요 🌙"
+2. 오늘 날짜에 대한 재미있는 사실을 하나 알려주세요
+   - 역사적 사건, 유명인 생일, 특별한 기념일 등
+3. 하루를 응원하는 짧은 한마디를 덧붙이세요
+
+## 톤과 스타일
+- 친구처럼 편하지만 예의 바르게
+- 이모지를 적절히 사용
+- 너무 길지 않게, 3-5줄 정도로
+
+## 예시 응답
+"좋은 아침이에요! ☀️
+
+오늘은 3월 27일인데요, 1845년에 뢴트겐이 X선을 발견한 날이에요!
+눈에 보이지 않는 것도 발견할 수 있다니, 오늘 하루도 새로운 발견이
+있는 멋진 날이 되길 바랄게요! 💪"</code></pre>
+
+      <p>다 입력하셨나요? 그러면 저장하세요.</p>
+
+      <p>지금 폴더 구조:</p>
+
+<pre><code>hello-skill/
+  └── SKILL.md    ← 이게 전부!</code></pre>
+
+      <!-- ILLUSTRATION: A close-up of a text editor screen showing the SKILL.md file content. The screen has a warm, dark background with syntax-highlighted text. At the top, the frontmatter between --- markers is highlighted in teal. The body text is in cream/white. On the side, a friendly cartoon character (Korean person) is pointing at the screen with an expression of "See? That's all!" Warm lighting from the screen illuminates their face. Cream and coral color palette, cozy atmosphere, hand-drawn style. A thought bubble shows "이게 전부?!" (That's all?!) -->
+
+      <h3>잠깐, 이 파일을 해부해볼까요?</h3>
+
+      <p>방금 만든 파일이 뭘 하는 건지 하나하나 뜯어볼게요.</p>
+
+      <p><strong>1. 프론트매터 (맨 위 --- 사이 부분)</strong></p>
+
+<pre><code>---
+description: "사용자에게 따뜻한 한국어 인사를 해주는 스킬"
+---</code></pre>
+
+      <p>이건 스킬의 "명찰"이에요. Claude Code가 "이 스킬이 뭘 하는 거지?"를 빠르게 파악하는 데 사용해요. 사용자가 인사를 하면, Claude Code가 이 description을 보고 "아, 인사하기 스킬을 쓰면 되겠다!"라고 판단하는 거예요.</p>
+
+      <p><strong>2. 제목과 역할 (# 인사하기 스킬)</strong></p>
+
+<pre><code># 인사하기 스킬
+
+당신은 따뜻하고 친근한 한국어 인사 전문가입니다.</code></pre>
+
+      <p>AI에게 <strong>"너는 이런 사람이야"</strong>라고 역할을 부여하는 부분이에요. 배우에게 "너는 인사 전문가야"라고 대본을 주는 것과 같아요.</p>
+
+      <p><strong>3. 지시사항 (번호 목록)</strong></p>
+
+      <p>"이런 순서로 이렇게 해"라는 구체적인 지시예요. 요리 레시피의 조리 순서와 같죠.</p>
+
+      <p><strong>4. 톤과 스타일</strong></p>
+
+      <p>"어떤 느낌으로 해"라는 스타일 가이드예요. "친구처럼 편하지만 예의 바르게" — 이 한 줄이 AI의 응답 분위기를 결정해요.</p>
+
+      <p><strong>5. 예시 응답</strong></p>
+
+      <p>"이런 식으로 해줘"라는 샘플이에요. AI는 예시를 보면 훨씬 더 정확하게 의도를 파악해요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">놀라운 사실</p>
+        <p>방금 여러분이 한 건 <strong>프로그래밍이 아니에요</strong>. 한국어로 글을 쓴 거예요. "이렇게 인사해줘"를 체계적으로 정리한 것뿐이에요. 그런데 이게 AI를 움직이는 스킬이 됩니다. 이게 2020년대의 마법이에요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Step 3 ====== -->
+    <section>
+      <h2>Step 3: 설치하고 테스트하기</h2>
+
+      <p>스킬을 만들었으니, 이제 Claude Code에게 알려줘야 해요. "이런 스킬이 있으니 써봐!"라고요.</p>
+
+      <h3>설치 방법</h3>
+
+      <p>방법은 아주 간단해요. 우리가 만든 <code>hello-skill</code> 폴더를 Claude Code의 스킬 폴더에 넣으면 됩니다.</p>
+
+      <p><strong>방법 A: 프로젝트 스킬로 설치 (추천)</strong></p>
+
+      <p>작업 중인 프로젝트 폴더에 <code>.claude/skills/</code> 디렉토리를 만들고, 거기에 넣으면 돼요:</p>
+
+<pre><code># 프로젝트 폴더에서 실행
+mkdir -p .claude/skills/
+cp -r hello-skill .claude/skills/</code></pre>
+
+      <p>이렇게 하면 해당 프로젝트에서 Claude Code를 실행할 때 자동으로 스킬을 인식해요.</p>
+
+      <p><strong>방법 B: 글로벌 스킬로 설치</strong></p>
+
+      <p>어디서든 쓰고 싶으면, 홈 디렉토리의 스킬 폴더에 넣으면 돼요:</p>
+
+<pre><code># 글로벌 스킬 폴더에 설치
+mkdir -p ~/.claude/skills/
+cp -r hello-skill ~/.claude/skills/</code></pre>
+
+      <h3>테스트!</h3>
+
+      <p>설치했으면, 이제 Claude Code를 실행하고 인사해보세요:</p>
+
+<pre><code>claude</code></pre>
+
+      <p>Claude Code가 실행되면, 간단하게 이렇게 말해보세요:</p>
+
+<pre><code>안녕!</code></pre>
+
+      <p>그러면... 두근두근...</p>
+
+      <div class="scenario-box">
+        "좋은 오후예요! 😊<br><br>
+        오늘은 3월 27일인데요, 1886년에 아파치 족의 전설적인 지도자 제로니모가 항복한 날이래요. 포기하지 않는 정신은 정말 대단하죠!<br><br>
+        오늘 하루도 포기하지 않고 멋지게 보내세요! 💪"
+      </div>
+
+      <p><strong>작동합니다!</strong></p>
+
+      <p>여러분이 방금 만든 스킬이, AI의 응답 방식을 바꿨어요. 그냥 "안녕하세요"라고만 대답하던 AI가, 재미있는 사실과 응원 메시지까지 전해주는 친구가 됐어요.</p>
+
+      <p>축하합니다! 여러분은 방금 <strong>첫 번째 AI 스킬을 만들었어요!</strong></p>
+    </section>
+
+    <!-- ====== What Just Happened ====== -->
+    <section>
+      <h2>뒤에서 무슨 일이 일어난 걸까?</h2>
+
+      <p>"그래, 작동은 하는데... 도대체 어떻게 되는 거야?"</p>
+
+      <p>좋은 질문이에요. 여러분이 "안녕!"이라고 입력한 순간부터 응답이 나올 때까지, 뒤에서 일어나는 일을 순서대로 볼게요:</p>
+
+      <ol>
+        <li><strong>사용자 입력:</strong> 여러분이 "안녕!"이라고 타이핑</li>
+        <li><strong>스킬 탐색:</strong> Claude Code가 설치된 스킬들의 <code>description</code>을 훑어봄</li>
+        <li><strong>매칭:</strong> "사용자에게 따뜻한 한국어 인사를 해주는 스킬" — 오, 이게 딱이네!</li>
+        <li><strong>스킬 로드:</strong> <code>SKILL.md</code>의 내용을 읽어서 AI의 지시사항에 추가</li>
+        <li><strong>응답 생성:</strong> AI가 스킬의 지시를 따라 인사 + 재미있는 사실 + 응원 메시지를 생성</li>
+        <li><strong>출력:</strong> 완성된 응답이 화면에 표시!</li>
+      </ol>
+
+      <p>핵심은 3번과 4번이에요. Claude Code가 <strong>자동으로</strong> 적절한 스킬을 찾아서 적용하는 거예요. 여러분이 "/인사하기"라고 명시적으로 스킬을 호출하지 않아도, AI가 문맥을 보고 "아, 이 상황에서는 이 스킬이 맞겠다"고 판단하는 거죠.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">레스토랑 비유로 다시 보면</p>
+        <p>여러분 = 손님 ("안녕!")<br>
+        Claude Code = 웨이터 (어떤 레시피를 쓸지 판단)<br>
+        SKILL.md = 레시피 (인사 전문가처럼 응답하라)<br>
+        AI = 셰프 (레시피대로 응답 만들기)<br>
+        응답 = 완성된 요리 (따뜻한 인사 + 재미있는 사실)</p>
+      </div>
+    </section>
+
+    <!-- ====== Variations ====== -->
+    <section>
+      <h2>변형 도전! 나만의 색깔 입히기</h2>
+
+      <p>첫 스킬이 작동하는 걸 확인했으니, 이제 조금씩 바꿔볼 차례예요. 스킬의 매력은 <strong>내 마음대로 고칠 수 있다</strong>는 거예요.</p>
+
+      <h3>변형 1: 사투리 인사 스킬</h3>
+
+      <p><code>SKILL.md</code>의 톤 부분을 이렇게 바꿔보세요:</p>
+
+<pre><code>## 톤과 스타일
+- 부산 사투리로 인사하기
+- 구수하고 정겨운 느낌
+- "~하이가", "~아이가" 같은 부산 특유의 어미 사용</code></pre>
+
+      <p>그러면 AI가 이렇게 응답해요: "오, 왔나! 좋은 아침이다 아이가! ☀️"</p>
+
+      <h3>변형 2: 격식체 인사 스킬</h3>
+
+<pre><code>## 톤과 스타일
+- 조선시대 선비처럼 격식 있게
+- "~하옵니다", "~이로소이다" 같은 고풍스러운 어미
+- 한자 성어를 하나 포함</code></pre>
+
+      <h3>변형 3: 랩퍼 인사 스킬</h3>
+
+<pre><code>## 톤과 스타일
+- 힙합 스타일로 인사하기
+- 라임을 넣어서 리듬감 있게
+- "yo!", "check it" 같은 표현 자연스럽게 섞기</code></pre>
+
+      <p>어때요? 톤 부분 몇 줄만 바꿨는데, 완전히 다른 스킬이 되죠?</p>
+
+      <p>이게 바로 스킬의 힘이에요. <strong>한국어로 글을 바꾸면, AI의 행동이 바뀌어요.</strong> 코드를 짤 줄 몰라도, 글을 쓸 줄 알면 AI를 원하는 대로 움직일 수 있어요.</p>
+
+      <!-- ILLUSTRATION: Three versions of the same AI assistant character, each with a different style. Left: wearing a traditional Korean hanbok (선비 style) with a scroll, speaking formally. Center: wearing casual streetwear with a boombox, making a peace sign (래퍼 style). Right: wearing a cozy Busan fisherman vest, waving warmly (사투리 style). Each has a speech bubble with their respective greeting style. Warm cream background, coral accents, playful and humorous illustration style. Shows the same AI can have totally different personalities. -->
+    </section>
+
+    <!-- ====== Common Issues ====== -->
+    <section>
+      <h2>혹시 안 되나요? 당황하지 마세요</h2>
+
+      <p>처음 만들 때 안 되는 건 당연해요. 몇 가지 흔한 문제와 해결법을 알려드릴게요.</p>
+
+      <p><strong>"스킬이 인식이 안 돼요"</strong></p>
+      <ul>
+        <li>파일 이름이 정확히 <code>SKILL.md</code>인지 확인 (대문자!)</li>
+        <li>파일이 <code>hello-skill/SKILL.md</code> 경로에 있는지 확인</li>
+        <li>Claude Code를 재시작해보세요</li>
+      </ul>
+
+      <p><strong>"스킬이 적용되는 것 같지 않아요"</strong></p>
+      <ul>
+        <li><code>description</code> 필드가 있는지 확인 — 이게 없으면 Claude Code가 스킬을 찾을 수 없어요</li>
+        <li>프론트매터의 <code>---</code>가 정확히 두 줄 있는지 확인</li>
+      </ul>
+
+      <p><strong>"응답이 내 기대와 좀 달라요"</strong></p>
+      <ul>
+        <li>이건 정상이에요! AI는 매번 조금씩 다르게 응답해요</li>
+        <li>더 정확한 응답을 원하면, 지시사항을 더 구체적으로 적으면 돼요 (이건 다음 챕터에서!)</li>
+      </ul>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li>AI 스킬 만들기는 <strong>딱 3단계</strong>: 폴더 만들기 → SKILL.md 작성 → 설치/테스트</li>
+        <li><code>SKILL.md</code>는 프론트매터(description)와 본문(지시사항)으로 구성돼요</li>
+        <li>스킬의 본문은 <strong>한국어로 쓰는 지시문</strong>이에요. 코딩이 아니에요!</li>
+        <li>톤과 스타일 부분만 바꿔도 <strong>완전히 다른 성격의 스킬</strong>이 돼요</li>
+        <li>안 되면 당황하지 말고, 파일명과 경로를 차근차근 확인하세요</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>스킬이 작동하긴 하는데, 응답이 좀... 아쉬울 때가 있죠?<br>
+      "요약해줘"라고 하면 어떤 때는 3줄, 어떤 때는 30줄로 요약하는 AI.<br>
+      다음 챕터에서는 <strong>프롬프트 엔지니어링</strong> — AI에게 정확히 원하는 결과를 뽑아내는 기술을 배워요.<br>
+      영화 감독이 배우에게 연기 지도하듯, AI에게 "역할 부여"하는 비법을 알려드릴게요!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch07.html" class="prev">이전: 스킬의 구성 요소</a>
+    <a href="ch09.html" class="next">다음: 프롬프트 엔지니어링 기초</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

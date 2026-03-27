@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="템플릿과 변수 — SKILL.md.tmpl로 비슷한 스킬을 효율적으로 만드는 방법">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 12: 템플릿과 변수 — SKILL.md.tmpl 활용 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 12</span>
+    <h1>템플릿과 변수 — SKILL.md.tmpl 활용</h1>
+    <p class="chapter-subtitle">쿠키 커터: 같은 틀, 다른 맛</p>
+  </header>
+
+  <!-- ILLUSTRATION: A bakery scene with a cookie-cutting analogy. A Korean baker character is using cookie cutters (labeled "SKILL.md.tmpl") to stamp out cookies from dough. Each cookie comes out the same shape but is decorated differently: one cookie is labeled "JavaScript Review", another "Python Review", another "Go Review" — same base shape, different toppings/decorations. The cookie cutter has "{{LANGUAGE}}" written on it in a fun font. Baking sheets with finished cookies line the background. Warm cream background, coral apron on the baker, teal cookie decorations, playful hand-drawn style. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>같은 모양, 다른 맛</h2>
+
+      <p>크리스마스 쿠키를 만드는 걸 상상해보세요.</p>
+
+      <p>별 모양 쿠키 커터가 하나 있어요. 이 커터로 반죽을 누르면 별 모양 쿠키가 나와요. 근데 재미있는 건, 같은 별 모양이라도:</p>
+
+      <ul>
+        <li>초콜릿 반죽으로 누르면 → 초콜릿 별 쿠키</li>
+        <li>바닐라 반죽으로 누르면 → 바닐라 별 쿠키</li>
+        <li>딸기 반죽으로 누르면 → 딸기 별 쿠키</li>
+      </ul>
+
+      <p><strong>같은 틀에서 다른 맛</strong>이 나오는 거예요.</p>
+
+      <p>AI 스킬에서도 이런 일이 자주 있어요. 예를 들어, "코드 리뷰" 스킬을 만들었는데:</p>
+
+      <ul>
+        <li>JavaScript 코드 리뷰 스킬이 필요하고</li>
+        <li>Python 코드 리뷰 스킬이 필요하고</li>
+        <li>Go 코드 리뷰 스킬도 필요해요</li>
+      </ul>
+
+      <p>리뷰하는 <strong>과정은 같은데</strong> (코드 스타일 확인, 보안 체크, 성능 검토), <strong>세부 내용만 다른</strong> 거예요 (JavaScript는 var 대신 const를 쓰라, Python은 PEP 8을 따르라...).</p>
+
+      <p>이런 상황에서 SKILL.md를 3개 따로 만들면? 비효율적이고, 공통 부분을 고칠 때 3개를 다 수정해야 하죠.</p>
+
+      <p>여기서 등장하는 게 바로 <strong>템플릿</strong>이에요.</p>
+    </section>
+
+    <!-- ====== What is Template ====== -->
+    <section>
+      <h2>SKILL.md.tmpl이 뭔가요?</h2>
+
+      <p><code>SKILL.md.tmpl</code>은 <code>SKILL.md</code>를 <strong>자동으로 생성</strong>해주는 틀이에요. "tmpl"은 template(템플릿)의 줄임말이에요.</p>
+
+      <p>핵심은 <strong>변수(variable)</strong>예요. 변수는 "나중에 채워 넣을 빈칸"이에요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">빈칸 채우기</p>
+        <p>여러분 어릴 때 이런 문제 풀어봤죠?<br><br>
+        "나는 ___를 좋아합니다. ___는 맛있기 때문입니다."<br><br>
+        빈칸에 "피자"를 넣으면 → "나는 피자를 좋아합니다. 피자는 맛있기 때문입니다."<br>
+        빈칸에 "치킨"을 넣으면 → "나는 치킨을 좋아합니다. 치킨은 맛있기 때문입니다."<br><br>
+        SKILL.md.tmpl도 이거예요. <code>{{LANGUAGE}}</code> 같은 빈칸을 만들어두고, 나중에 실제 값으로 채우는 거예요.</p>
+      </div>
+
+      <p>실제로 보면 이렇게 생겼어요:</p>
+
+<pre><code>---
+description: "{{LANGUAGE}} 코드 리뷰를 해주는 스킬"
+---
+
+# {{LANGUAGE}} 코드 리뷰 스킬
+
+당신은 {{LANGUAGE}} 전문 시니어 개발자입니다.
+{{LANGUAGE}}의 베스트 프랙티스와 일반적인 실수 패턴을
+잘 알고 있으며, 건설적인 코드 리뷰를 제공합니다.</code></pre>
+
+      <p><code>{{LANGUAGE}}</code>가 빈칸이에요. 여기에 "JavaScript"를 넣으면 JavaScript 코드 리뷰 스킬이 되고, "Python"을 넣으면 Python 코드 리뷰 스킬이 돼요.</p>
+    </section>
+
+    <!-- ====== Practical Example ====== -->
+    <section>
+      <h2>실전: 언어별 코드 리뷰 스킬 템플릿</h2>
+
+      <p>직접 만들어볼게요. 완전한 코드 리뷰 템플릿을 하나 작성해봅시다.</p>
+
+      <p><strong>SKILL.md.tmpl:</strong></p>
+
+<pre><code>---
+description: "{{LANGUAGE}} 코드를 리뷰하고 개선점을 제안하는 스킬"
+allowed-tools: ["Read", "Glob", "Grep"]
+---
+
+# {{LANGUAGE}} 코드 리뷰 스킬
+
+당신은 {{EXPERIENCE_YEARS}}년 경력의 {{LANGUAGE}} 시니어 개발자입니다.
+{{LANGUAGE}} 커뮤니티의 베스트 프랙티스를 잘 알고 있으며,
+코드 품질 향상에 열정적입니다.
+
+## 리뷰 체크리스트
+
+1. **코드 스타일**: {{STYLE_GUIDE}}를 따르고 있는가?
+2. **보안**: 일반적인 보안 취약점이 없는가?
+3. **성능**: 비효율적인 패턴이 없는가?
+4. **가독성**: 다른 개발자가 이해하기 쉬운가?
+5. **테스트**: 테스트 커버리지가 충분한가?
+
+## {{LANGUAGE}} 특화 검토 항목
+{{LANGUAGE_SPECIFIC_CHECKS}}
+
+## 출력 형식
+
+```
+## 코드 리뷰 결과
+
+### 👍 잘한 점
+- ...
+
+### 🔧 개선 제안 (중요도 순)
+1. [심각] ...
+2. [보통] ...
+3. [사소] ...
+
+### 📚 학습 포인트
+- ...
+```
+
+## 톤
+- 건설적이고 교육적으로
+- "이건 틀렸다"보다 "이렇게 하면 더 좋을 수 있다"
+- 좋은 점을 반드시 먼저 언급</code></pre>
+
+      <p>이 템플릿에서 변수는 다음과 같아요:</p>
+
+      <ul>
+        <li><code>{{LANGUAGE}}</code> — 프로그래밍 언어 이름</li>
+        <li><code>{{EXPERIENCE_YEARS}}</code> — 경력 연수</li>
+        <li><code>{{STYLE_GUIDE}}</code> — 해당 언어의 스타일 가이드</li>
+        <li><code>{{LANGUAGE_SPECIFIC_CHECKS}}</code> — 언어별 특화 검토 항목</li>
+      </ul>
+
+      <h3>JavaScript 버전으로 변환하면:</h3>
+
+<pre><code>{{LANGUAGE}} → JavaScript
+{{EXPERIENCE_YEARS}} → 10
+{{STYLE_GUIDE}} → Airbnb JavaScript Style Guide
+{{LANGUAGE_SPECIFIC_CHECKS}} →
+- var 대신 const/let 사용하고 있는가?
+- 콜백 헬 대신 async/await를 사용하고 있는가?
+- === 대신 == 를 잘못 사용한 곳은 없는가?
+- 미사용 import가 남아있지 않은가?
+- TypeScript 타입 정의가 any로 방치된 곳은 없는가?</code></pre>
+
+      <h3>Python 버전으로 변환하면:</h3>
+
+<pre><code>{{LANGUAGE}} → Python
+{{EXPERIENCE_YEARS}} → 10
+{{STYLE_GUIDE}} → PEP 8
+{{LANGUAGE_SPECIFIC_CHECKS}} →
+- PEP 8 스타일을 따르고 있는가?
+- type hint가 적절히 사용되고 있는가?
+- list comprehension을 활용할 수 있는 for 루프는 없는가?
+- with 문으로 리소스 관리를 하고 있는가?
+- f-string을 일관되게 사용하고 있는가?</code></pre>
+
+      <p>한 템플릿에서 두 가지 다른 스킬이 나왔어요! 공통 구조(리뷰 체크리스트, 출력 형식, 톤)는 그대로 유지하면서, 언어별 세부 사항만 바뀐 거죠.</p>
+    </section>
+
+    <!-- ILLUSTRATION: A factory conveyor belt illustration. On one end, a template document goes in (labeled "SKILL.md.tmpl" with {{variable}} holes visible). The conveyor belt passes through a machine that stamps different values into the holes. Out the other end come completed SKILL.md documents: one for JavaScript (blue-tinted), one for Python (green-tinted), one for Go (teal-tinted). Each has the same basic structure but different content in the variable spots. Fun, mechanical, Willy-Wonka-factory vibe. Warm cream background, coral machine accents, playful hand-drawn style. -->
+
+    <!-- ====== Built-in Variables ====== -->
+    <section>
+      <h2>시스템이 제공하는 변수들</h2>
+
+      <p>직접 정의한 변수 외에, 시스템이 자동으로 제공하는 변수들도 있어요. 이 변수들은 스킬이 실행되는 환경에 따라 자동으로 값이 채워져요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">유용한 시스템 변수</p>
+        <p><strong>{{PREAMBLE}}</strong> — 기본 시스템 프리앰블. Claude Code가 기본적으로 사용하는 설정이에요. 이걸 포함하면 스킬이 기본 동작을 유지하면서 추가 기능만 얹을 수 있어요.<br><br>
+        <strong>{{BASE_BRANCH_DETECT}}</strong> — Git의 기본 브랜치를 자동 감지해요. main인지 master인지 develop인지 — 프로젝트마다 다르니까, 자동 감지가 편하죠.</p>
+      </div>
+
+      <p>예를 들어, Git 작업을 하는 스킬에서:</p>
+
+<pre><code>---
+description: "PR을 리뷰하고 머지하는 스킬"
+allowed-tools: ["Bash", "Read", "Glob", "Grep"]
+---
+
+{{PREAMBLE}}
+
+# PR 리뷰 & 머지 스킬
+
+기본 브랜치: {{BASE_BRANCH_DETECT}}
+
+PR을 리뷰할 때는 {{BASE_BRANCH_DETECT}} 브랜치와의
+차이를 비교하여 분석하세요.</code></pre>
+
+      <p><code>{{BASE_BRANCH_DETECT}}</code> 덕분에, 프로젝트의 기본 브랜치가 <code>main</code>이든 <code>master</code>이든 상관없이 자동으로 맞춰져요.</p>
+    </section>
+
+    <!-- ====== When to Use ====== -->
+    <section>
+      <h2>솔직한 이야기: 대부분은 아직 안 써도 돼요</h2>
+
+      <p>여기서 솔직하게 말씀드릴게요.</p>
+
+      <p><strong>대부분의 초보자는 템플릿이 필요 없어요.</strong></p>
+
+      <p>SKILL.md 직접 작성하는 것만으로 충분해요. 템플릿은 다음과 같은 상황에서 진가를 발휘해요:</p>
+
+      <ul>
+        <li>비슷한 구조의 스킬을 <strong>5개 이상</strong> 만들어야 할 때</li>
+        <li>팀에서 스킬을 <strong>표준화</strong>하고 싶을 때</li>
+        <li>환경에 따라 스킬이 <strong>자동으로 달라져야</strong> 할 때 (예: 브랜치 이름)</li>
+      </ul>
+
+      <p>그러니까 지금 당장 "템플릿을 써야 해!"라고 부담 갖지 마세요. "아, 이런 게 있구나. 나중에 필요하면 쓰면 되겠다" 정도면 충분해요.</p>
+
+      <div class="callout">
+        <p class="callout-title">프로 팁</p>
+        <p>처음에는 SKILL.md를 직접 작성하세요. 그러다 "어, 이 스킬이랑 저 스킬이랑 구조가 90% 같은데?"라는 생각이 들면 — 그때가 템플릿을 도입할 타이밍이에요. 필요를 느끼기 전에 도입하면, 오히려 복잡해져요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Template vs Direct ====== -->
+    <section>
+      <h2>정리: 언제 뭘 쓸까?</h2>
+
+      <div class="fun-box">
+        <p class="fun-box-title">선택 가이드</p>
+        <p><strong>SKILL.md 직접 작성:</strong><br>
+        - 스킬이 1-2개일 때<br>
+        - 각 스킬이 독립적일 때<br>
+        - 초보자일 때 (지금!)<br><br>
+        <strong>SKILL.md.tmpl 사용:</strong><br>
+        - 같은 구조의 스킬이 3개 이상 필요할 때<br>
+        - 팀에서 스킬 구조를 통일하고 싶을 때<br>
+        - 환경 변수(브랜치 이름 등)를 자동으로 넣고 싶을 때</p>
+      </div>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>SKILL.md.tmpl</strong>은 SKILL.md를 자동 생성하는 템플릿이에요. 쿠키 커터 같은 거!</li>
+        <li><code>{{VARIABLE_NAME}}</code> 형태의 <strong>변수</strong>가 핵심 — "나중에 채울 빈칸"이에요</li>
+        <li>시스템 변수 <code>{{PREAMBLE}}</code>, <code>{{BASE_BRANCH_DETECT}}</code>는 자동으로 값이 채워져요</li>
+        <li>같은 구조의 스킬이 여러 개 필요할 때 템플릿이 빛을 발해요</li>
+        <li><strong>초보자는 SKILL.md 직접 작성으로 충분해요!</strong> 필요를 느낄 때 도입하세요</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>스킬을 만들었으면, 이제 가장 중요한 단계가 남았어요: <strong>테스트</strong>.<br>
+      셰프도 음식을 내기 전에 반드시 맛을 보잖아요?<br>
+      다음 챕터에서는 스킬을 테스트하고, 문제를 찾고, 다듬는 방법을 배워요.<br>
+      <strong>"만들기는 50%, 다듬기가 나머지 50%"</strong>라는 진리를 체험할 시간이에요!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch11.html" class="prev">이전: references로 지식 확장하기</a>
+    <a href="ch13.html" class="next">다음: 테스트하고 다듬기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

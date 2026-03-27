@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="내가 만든 도구를 나눠준다 — 오픈소스의 정신과 AI 스킬 공유 문화">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 3: "내가 만든 도구를 나눠준다" — 오픈소스 이야기 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 3</span>
+    <h1>"내가 만든 도구를 나눠준다"</h1>
+    <p class="chapter-subtitle">오픈소스라는 아름다운 문화, 그리고 AI 스킬의 미래</p>
+  </header>
+
+  <!-- ILLUSTRATION: A warm, magical scene of a large communal kitchen/workshop. People of diverse backgrounds are gathered around a giant shared table. Some are adding ingredients to a big pot (representing contributing code), others are tasting and giving thumbs up (testing), someone is writing down a recipe on a card and pinning it to a big cork board (sharing documentation). In the center of the table is a glowing open book with code-like text that morphs into real tools — hammers, paintbrushes, musical instruments — floating upward. The atmosphere is joyful and collaborative. Warm cream and coral color palette, cozy lighting, hand-drawn illustration style. A banner overhead reads "OPEN SOURCE" in a friendly font. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>1991년, 핀란드의 한 대학생</h2>
+
+      <p>1991년 8월 25일. 핀란드 헬싱키 대학교의 21살 학생이 인터넷 게시판에 글을 하나 올렸어요.</p>
+
+      <div class="scenario-box">
+        "안녕하세요, 저는 운영체제를 하나 만들고 있는데요. 취미로요. 대단한 건 아니에요. 혹시 관심 있으신 분 있으면 피드백 주세요."
+      </div>
+
+      <p>이 학생의 이름은 <strong>리누스 토르발스(Linus Torvalds)</strong>. 그리고 그가 "취미로" 만들던 운영체제의 이름은 <strong>리눅스(Linux)</strong>.</p>
+
+      <p>지금 리눅스는 어디에서 돌아가고 있을까요?</p>
+
+      <ul>
+        <li>여러분의 <strong>안드로이드 폰</strong> — 리눅스 기반이에요</li>
+        <li><strong>넷플릭스, 유튜브, 인스타그램</strong>의 서버 — 리눅스</li>
+        <li>전 세계 <strong>슈퍼컴퓨터의 100%</strong> — 리눅스</li>
+        <li><strong>테슬라 자동차</strong>의 컴퓨터 — 리눅스</li>
+        <li><strong>국제우주정거장(ISS)</strong> — 리눅스</li>
+      </ul>
+
+      <p>21살 대학생이 취미로 만든 프로그램이 30년 후 <strong>전 세계 인터넷의 기반</strong>이 됐어요.</p>
+
+      <p>어떻게 이런 일이 가능했을까요?</p>
+
+      <p>비밀은 하나예요. 리누스가 이 프로그램을 <strong>공짜로 공유했기 때문</strong>이에요.</p>
+
+      <p>"가져가세요. 마음대로 쓰세요. 고치고 싶으면 고치세요. 더 좋게 만들었으면 저한테도 알려주세요."</p>
+
+      <p>이것이 <strong>오픈소스(Open Source)</strong>의 시작이에요.</p>
+    </section>
+
+    <!-- ====== What is Open Source ====== -->
+    <section>
+      <h2>오픈소스, 쉽게 말하면</h2>
+
+      <p>"오픈소스"라는 단어, 어디서 들어보셨을 수도 있어요. 근데 정확히 뭔지는 좀 모호하죠?</p>
+
+      <p>아주 쉽게 설명할게요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">오픈소스 = 레시피 공개 식당</p>
+        <p>보통 식당은 레시피가 비밀이에요. "우리 집 비법 소스"는 절대 안 알려주죠.<br><br>
+        근데 어떤 식당이 이렇게 한다고 상상해보세요:<br>
+        <strong>"우리 레시피 전부 공개합니다. 집에서 따라 해도 되고, 변형해도 되고, 다른 식당에서 써도 돼요. 대신 더 맛있게 만들었으면, 그 레시피도 공유해주세요."</strong><br><br>
+        이게 오픈소스예요.</p>
+      </div>
+
+      <p>소프트웨어로 바꿔 말하면:</p>
+
+      <ul>
+        <li><strong>소스 코드</strong>(프로그램의 설계도)를 공개하고</li>
+        <li>누구나 <strong>무료로 사용</strong>할 수 있게 하고</li>
+        <li>누구나 <strong>수정하고 개선</strong>할 수 있게 하고</li>
+        <li>개선한 것도 다시 <strong>공유하는</strong> 문화</li>
+      </ul>
+
+      <p>"왜? 돈 안 받고? 미쳤나?"</p>
+
+      <p>당연한 의문이죠. 근데 이유를 들으면 "아, 오히려 천재적이네" 하실 거예요.</p>
+    </section>
+
+    <!-- ====== Why Share ====== -->
+    <section>
+      <h2>왜 공짜로 나눠줄까?</h2>
+
+      <p>오픈소스를 처음 접하면 다들 같은 질문을 해요. "왜 힘들게 만든 걸 공짜로 줘요?"</p>
+
+      <p>여러 이유가 있는데, 제일 중요한 것부터 말할게요.</p>
+
+      <h3>이유 1: 혼자보다 같이가 낫다</h3>
+
+      <p>리누스 혼자 리눅스를 만들었다면? 아마 "꽤 괜찮은 취미 프로젝트"로 끝났을 거예요.</p>
+
+      <p>근데 코드를 공개하자, 전 세계 개발자들이 달려들었어요. 버그를 찾아주고, 새 기능을 추가하고, 성능을 개선해줬어요. 리누스 혼자 100년 걸릴 일을, <strong>수천 명이 함께해서 몇 년 만에</strong> 해낸 거예요.</p>
+
+      <div class="callout">
+        <p class="callout-title">아이작 뉴턴의 명언</p>
+        <p>"내가 더 멀리 보았다면, 그것은 거인들의 어깨 위에 서 있었기 때문이다."<br><br>
+        오픈소스의 핵심이 바로 이거예요. 다른 사람이 만든 것 위에 서서, 더 높이 올라가는 것.</p>
+      </div>
+
+      <h3>이유 2: 나도 다른 사람의 도움을 받았으니까</h3>
+
+      <p>프로그래머들 사이에는 이런 문화가 있어요. 초보 시절, 다른 사람이 공개한 코드를 보면서 공부했고, 무료 도구를 써서 성장했어요. 그래서 내가 만든 것도 다시 돌려주는 거예요.</p>
+
+      <p>"받은 만큼 돌려준다." 아름답지 않나요?</p>
+
+      <h3>이유 3: 문제를 한 번만 풀면 된다</h3>
+
+      <p>이게 실용적으로 가장 중요한 이유예요.</p>
+
+      <p>전 세계에서 비슷한 문제로 고민하는 사람이 <strong>수천, 수만 명</strong>이에요. 같은 문제를 수만 명이 각자 풀고 있다면? 엄청난 낭비죠.</p>
+
+      <p>한 사람이 풀어서 공유하면, 나머지 수만 명은 그 문제에 시간을 쓰지 않아도 돼요. 대신 <strong>다른 문제를 풀 수 있죠</strong>. 그리고 그 사람이 푼 다른 문제도 공유하면...</p>
+
+      <p><strong>결국 모두가 모두의 문제를 풀어주는 거예요.</strong></p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">마을 비유</p>
+        <p>작은 마을에 100명이 살아요. 모두가 농사도 짓고, 옷도 만들고, 집도 짓고, 요리도 한다면? 다들 모든 걸 "그럭저럭" 하겠죠.<br><br>
+        근데 농사 잘하는 사람이 농사를 맡고, 요리 잘하는 사람이 요리를 맡고, 각자 잘하는 걸 하면서 서로 나누면? <strong>모두의 삶이 좋아져요.</strong><br><br>
+        오픈소스가 바로 이 마을이에요. 전 세계가 하나의 마을이 되어, 각자 잘하는 걸 만들고 나누는 것.</p>
+      </div>
+    </section>
+
+    <!-- ILLUSTRATION: A visual representation of the "standing on shoulders of giants" concept, reimagined as a playful tower of diverse people standing on each other's shoulders, each holding a different tool or creation. At the bottom: someone holding a stone tablet (ancient knowledge). Middle: people holding books, blueprints, early computers. Near top: people holding smartphones and code screens. At the very top: a person planting a flag that says "My First Skill" with a big smile. The tower is colorful and joyful, not precarious — everyone is supporting each other happily. Background is warm cream with coral accents. Stars and sparkles around the top. Flat, friendly illustration style. -->
+
+    <!-- ====== Real Examples ====== -->
+    <section>
+      <h2>오픈소스가 만든 세상</h2>
+
+      <p>오픈소스가 얼마나 대단한지, 실제 예를 보면 입이 떡 벌어져요.</p>
+
+      <h3>리눅스 — 인터넷의 보이지 않는 심장</h3>
+
+      <p>아까 말씀드렸듯, 리눅스는 전 세계 서버의 대부분을 돌리고 있어요. 여러분이 카카오톡을 보낼 때, 넷플릭스를 볼 때, 구글에서 검색할 때 — 그 뒤에서 리눅스가 일하고 있어요.</p>
+
+      <p>21살 대학생이 시작한 취미 프로젝트가요.</p>
+
+      <h3>위키피디아 — 인류의 공유 백과사전</h3>
+
+      <p>위키피디아는 엄밀히 말하면 소프트웨어 오픈소스는 아니지만, 정신은 완전히 같아요. <strong>"지식을 공개하고, 누구나 기여할 수 있게 한다."</strong></p>
+
+      <p>6300만 개 이상의 문서. 300개 이상의 언어. 모두 자원봉사자들이 쓰고 수정한 거예요. 누가 시켜서가 아니라, <strong>"이 지식이 다른 사람에게도 도움이 될 거야"</strong>라는 마음으로요.</p>
+
+      <h3>안드로이드 — 주머니 속의 오픈소스</h3>
+
+      <p>삼성, LG, 구글 폰에 들어가는 안드로이드 운영체제. 이것도 오픈소스예요. 기본 코드가 공개되어 있어서, 삼성이 자기만의 기능을 추가해서 갤럭시를 만들 수 있는 거예요.</p>
+
+      <p>만약 안드로이드가 오픈소스가 아니었다면? 스마트폰은 지금보다 훨씬 비쌌을 거예요.</p>
+
+      <h3>그 밖에도...</h3>
+
+      <ul>
+        <li><strong>Python</strong> — 가장 인기 있는 프로그래밍 언어. 오픈소스.</li>
+        <li><strong>WordPress</strong> — 전 세계 웹사이트의 40%를 돌리는 플랫폼. 오픈소스.</li>
+        <li><strong>Firefox</strong> — 웹 브라우저. 오픈소스.</li>
+        <li><strong>VS Code</strong> — 개발자들이 가장 많이 쓰는 편집기. 오픈소스.</li>
+        <li><strong>TensorFlow, PyTorch</strong> — AI를 만드는 도구들. 오픈소스.</li>
+      </ul>
+
+      <p>눈치채셨나요? <strong>AI 자체를 만드는 도구도 오픈소스</strong>라는 것. 오픈소스 없이는 지금의 AI 혁명도 없었어요.</p>
+    </section>
+
+    <!-- ====== AI Skills Continue This Tradition ====== -->
+    <section>
+      <h2>AI 스킬, 오픈소스의 새로운 장</h2>
+
+      <p>자, 이제 이 이야기를 우리 책의 주제와 연결해볼게요.</p>
+
+      <p>오픈소스의 역사를 보면 이런 흐름이 있어요:</p>
+
+      <ol>
+        <li><strong>1990년대:</strong> 운영체제(리눅스)를 공유하자</li>
+        <li><strong>2000년대:</strong> 웹 프레임워크와 라이브러리를 공유하자</li>
+        <li><strong>2010년대:</strong> AI 모델과 도구를 공유하자</li>
+        <li><strong>2020년대:</strong> <strong>AI 스킬을 공유하자</strong></li>
+      </ol>
+
+      <p>지금 우리는 오픈소스 역사의 새로운 장을 열고 있어요.</p>
+
+      <p>생각해보세요. 예전에는 프로그래밍 실력이 있어야 오픈소스에 기여할 수 있었어요. 코드를 읽고, 짜고, 테스트해야 했으니까.</p>
+
+      <p>근데 AI 스킬은 다릅니다. <strong>한국어로 잘 쓰면 돼요.</strong></p>
+
+      <p>마케터가 자기만의 마케팅 분석 스킬을 만들어서 공유할 수 있어요.<br>
+      디자이너가 디자인 리뷰 스킬을 만들어서 공유할 수 있어요.<br>
+      선생님이 수업 계획서 작성 스킬을 만들어서 공유할 수 있어요.<br>
+      작가가 소설 플롯 구성 스킬을 만들어서 공유할 수 있어요.</p>
+
+      <p><strong>프로그래머가 아닌 사람도 오픈소스에 기여할 수 있는 시대</strong>가 된 거예요.</p>
+
+      <div class="callout">
+        <p class="callout-title">이건 정말 혁명적이에요</p>
+        <p>오픈소스가 30년 동안 "코드를 짤 줄 아는 사람들의 문화"였다면, AI 스킬은 이 문을 활짝 열어서 <strong>"모든 사람의 문화"</strong>로 만들 수 있어요. 여러분의 전문 지식 + AI 스킬 작성 능력 = 세상에 기여하는 힘.</p>
+      </div>
+    </section>
+
+    <!-- ====== GitHub ====== -->
+    <section>
+      <h2>GitHub — 공유의 장터</h2>
+
+      <p>"공유한다"는 건 좋은데, 어디서 공유할까요?</p>
+
+      <p>오픈소스 세계에는 <strong>GitHub</strong>라는 곳이 있어요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">GitHub을 쉽게 설명하면</p>
+        <p><strong>GitHub = 코드와 스킬의 도서관 겸 장터</strong><br><br>
+        도서관처럼 누구나 와서 무료로 열람할 수 있고,<br>
+        장터처럼 자기가 만든 것을 올려서 다른 사람에게 공유할 수 있어요.<br><br>
+        전 세계 1억 명 이상의 개발자가 사용하는, 세계 최대의 코드 공유 플랫폼이에요.</p>
+      </div>
+
+      <p>GitHub에서는 이런 일이 일어나요:</p>
+
+      <ul>
+        <li>누군가가 유용한 프로젝트를 올린다</li>
+        <li>다른 사람이 가져다 쓴다</li>
+        <li>"이 부분 이렇게 고치면 더 좋겠어요"라고 제안한다 (이걸 <strong>Pull Request</strong>라고 해요)</li>
+        <li>원래 만든 사람이 "좋네요!"하고 받아들인다</li>
+        <li>프로젝트가 점점 더 좋아진다</li>
+      </ul>
+
+      <p>이 과정이 전 세계에서 하루 24시간, 쉬지 않고 일어나고 있어요. 미국에서 잠든 사이에 한국 개발자가 버그를 고치고, 한국이 잠든 사이에 브라질 개발자가 기능을 추가하고.</p>
+
+      <p><strong>태양이 지지 않는 협업.</strong> 멋지지 않나요?</p>
+
+      <p>AI 스킬도 GitHub에서 공유해요. 스킬 패키지를 GitHub에 올리면, 전 세계 누구나 설치해서 쓸 수 있어요. 이 책에서 만들 스킬도 결국 GitHub에 올리는 것이 최종 목표예요.</p>
+    </section>
+
+    <!-- ILLUSTRATION: A bird's-eye view of a cozy, bustling global village marketplace at twilight. Small stalls from different cultures (Korean hanok-style booth, Scandinavian wooden stand, Brazilian colorful tent, Japanese minimalist booth) are arranged in a circle around a central glowing tree. Each stall has people offering something: one offers a scroll labeled "Linux," another a book labeled "Wikipedia," another a glowing card labeled "AI Skill." People walk between stalls, exchanging items freely with smiles. Above the scene, dotted lines connect the stalls like a network graph, with the GitHub octocat logo subtly incorporated into the tree. Warm cream sky with coral sunset. Whimsical, heartwarming flat illustration. -->
+
+    <!-- ====== The Spirit ====== -->
+    <section>
+      <h2>"유용한 걸 만들었어. 여기, 너도 가져."</h2>
+
+      <p>오픈소스의 핵심 정신을 한 문장으로 줄이면 이거예요:</p>
+
+      <div class="scenario-box">
+        "나는 이 문제를 해결했다. 너도 같은 문제로 고민하고 있다면, 이걸 가져가. 공짜야."
+      </div>
+
+      <p>단순하지만, 이 정신이 세상을 바꿨어요.</p>
+
+      <p>그리고 여기에는 아름다운 선순환이 있어요.</p>
+
+      <p><strong>내가 스킬을 만들어서 공유한다</strong><br>
+      → 다른 사람이 써보고 피드백을 준다<br>
+      → 그 피드백으로 스킬이 더 좋아진다<br>
+      → 더 많은 사람이 쓰게 된다<br>
+      → 누군가가 내 스킬을 기반으로 더 좋은 스킬을 만든다<br>
+      → 그 스킬도 공유된다<br>
+      → <strong>모두가 더 좋은 도구를 갖게 된다</strong></p>
+
+      <p>이걸 "거인의 어깨 위에 서기"라고 했죠. 리누스가 만든 리눅스 위에 구글이 안드로이드를 만들고, 안드로이드 위에 수백만 개의 앱이 만들어졌어요. 각각의 사람이 이전 사람의 성과 위에 서서 더 높이 올라간 거예요.</p>
+
+      <p>AI 스킬도 마찬가지예요. 누군가가 만든 기본 스킬 위에 더 정교한 스킬을 만들고, 그 위에 또 다른 스킬을 만들고. <strong>층층이 쌓이면서 점점 더 강력해지는 것.</strong></p>
+    </section>
+
+    <!-- ====== Your Turn ====== -->
+    <section>
+      <h2>그래서, 당신의 차례</h2>
+
+      <p>이쯤 되면 이런 생각이 들 수도 있어요.</p>
+
+      <p>"리눅스니 위키피디아니, 그건 천재들 이야기잖아. 나 같은 초보가 뭘 공유해?"</p>
+
+      <p>아뇨. <strong>천만에요.</strong></p>
+
+      <p>리눅스가 처음부터 전 세계를 바꿀 거대한 프로젝트였나요? 아니요. 대학생의 취미 프로젝트였어요. 위키피디아가 처음부터 6300만 개 문서를 목표로 시작했나요? 아니요. 문서 몇 개로 시작했어요.</p>
+
+      <p><strong>모든 위대한 것은 작게 시작해요.</strong></p>
+
+      <p>여러분의 첫 번째 스킬은 아마 아주 단순할 거예요. "회의록 정리해줘" 수준일 수도 있어요. 그게 대수롭지 않아 보일 수 있죠.</p>
+
+      <p>근데 생각해보세요. 전 세계에서 매주 회의록을 쓰느라 고민하는 사람이 몇 명일까요? 수백만 명? 수천만 명?</p>
+
+      <p>여러분이 만든 회의록 스킬이 그 중 단 <strong>100명</strong>의 시간을 아껴준다면?</p>
+
+      <p>100명 x 매주 30분 = <strong>매주 50시간</strong>을 아끼는 거예요. 1년이면 <strong>2,600시간</strong>. 풀타임으로 일하는 사람 1명이 1년 넘게 일하는 시간이에요.</p>
+
+      <p>여러분이 한 번 만든 스킬 하나가 <strong>1명 분의 1년 치 노동</strong>을 절약하는 거예요.</p>
+
+      <p>이게 공유의 힘이에요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">작은 것이 모이면</p>
+        <p>눈송이 하나는 아무것도 아니에요. 근데 눈송이가 모이면 겨울 왕국이 되잖아요.<br><br>
+        스킬 하나는 작아 보여요. 근데 수천 명이 각자 자기만의 스킬을 하나씩 만들어서 공유하면?<br><br>
+        <strong>AI로 할 수 있는 모든 일의 레시피북이 완성되는 거예요.</strong><br>
+        그리고 그 레시피북의 한 페이지를, 여러분이 쓰는 거예요.</p>
+      </div>
+    </section>
+
+    <!-- ====== What's Coming ====== -->
+    <section>
+      <h2>이 책이 끝나면 여러분은</h2>
+
+      <p>자, 여기까지 제1부의 이야기를 마칠게요. 지금까지 우리가 다룬 건:</p>
+
+      <ol>
+        <li><strong>챕터 1:</strong> 생성형 AI가 뭔지, 프롬프팅이 뭔지</li>
+        <li><strong>챕터 2:</strong> 왜 스킬이 필요한지, 스킬이 뭔지</li>
+        <li><strong>챕터 3 (지금):</strong> 왜 공유가 중요한지, 오픈소스의 정신</li>
+      </ol>
+
+      <p>이제 "왜?"에 대한 답을 얻었어요.</p>
+
+      <ul>
+        <li><strong>왜 AI를 알아야 해?</strong> → 이미 세상을 바꾸고 있으니까.</li>
+        <li><strong>왜 스킬을 만들어야 해?</strong> → 반복을 없애고, 진짜 중요한 일에 집중하려고.</li>
+        <li><strong>왜 공유해야 해?</strong> → 한 사람의 해결이 만 명의 해결이 되니까.</li>
+      </ul>
+
+      <p>다음 챕터부터는 드디어 <strong>"어떻게?"</strong>에 대한 이야기를 시작합니다.</p>
+
+      <p>스킬 패키지가 실제로 어떻게 생겼는지, 파일 하나하나 뜯어보면서 알아볼 거예요. "아, 이렇게 간단한 거였어?" 하실 거예요.</p>
+
+      <p>그리고 이 책을 다 읽고 나면, 여러분은:</p>
+
+      <div class="scenario-box">
+        자기만의 AI 스킬을 만들어서, GitHub에 올리고, 전 세계 사람들이 쓸 수 있게 공유하게 됩니다.<br><br>
+        리누스가 "취미로 만든 건데요"라고 했던 것처럼, 여러분도 "별거 아닌데, 유용하면 가져다 쓰세요"라고 말하게 될 거예요.<br><br>
+        그게 오픈소스 정신이고, 그게 이 책의 최종 목표예요.
+      </div>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>오픈소스</strong>는 "내가 만든 것을 공개하고, 누구나 쓰고 개선할 수 있게 하는 문화"예요.</li>
+        <li>리눅스, 위키피디아, 안드로이드 — <strong>세상을 바꾼 것들 대부분이 오픈소스</strong>예요.</li>
+        <li>오픈소스의 힘은 <strong>"한 사람이 풀면, 모두가 혜택을 받는다"</strong>는 것.</li>
+        <li>AI 스킬은 <strong>프로그래머가 아닌 사람도 오픈소스에 기여</strong>할 수 있게 해주는 새로운 기회예요.</li>
+        <li><strong>GitHub</strong>은 코드와 스킬을 공유하는 세계 최대의 플랫폼이에요.</li>
+        <li>여러분의 작은 스킬 하나가 수백, 수천 명의 시간을 아낄 수 있어요.</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>드디어 제2부 시작! "스킬 패키지"를 실제로 열어봅니다.<br>
+      <code>SKILL.md</code>라는 파일 하나가 어떻게 AI에게 마법 같은 능력을 부여하는지,<br>
+      뚜껑을 열어서 직접 살펴볼 거예요. <strong>진짜 재미있는 부분이 시작됩니다!</strong></p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch02.html" class="prev">이전: 반복은 지겹다</a>
+    <a href="ch04.html" class="next">다음: 스킬 패키지란?</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

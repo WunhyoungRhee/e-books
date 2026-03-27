@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="프롬프트 엔지니어링 기초 — AI에게 역할을 부여하고 정확한 결과를 뽑아내는 기술">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 9: 프롬프트 엔지니어링 기초 — AI에게 역할 부여하기 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 9</span>
+    <h1>프롬프트 엔지니어링 기초</h1>
+    <p class="chapter-subtitle">AI에게 역할 부여하기 — 영화 감독이 되어봅시다</p>
+  </header>
+
+  <!-- ILLUSTRATION: A movie director (Korean person) sitting in a director's chair with a megaphone, directing an AI character (friendly, translucent, coral-glowing figure) who is standing on a small stage. The director holds a script labeled "SKILL.md". Around them are different costume racks — one with a lab coat (scientist role), one with a chef hat (cook role), one with a graduation cap (teacher role). The AI character is trying on different hats. Warm cream background, spotlight effects, playful hand-drawn illustration style. The mood is fun and creative, like a theater workshop. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>같은 배우, 다른 연기</h2>
+
+      <p>영화를 찍는다고 상상해보세요. 아주 재능 있는 배우가 한 명 있어요. 어떤 역할이든 소화할 수 있는 만능 배우예요.</p>
+
+      <p>그런데 이 배우에게 이렇게만 말하면 어떻게 될까요?</p>
+
+      <div class="scenario-box">
+        "슬프게 연기해."
+      </div>
+
+      <p>배우는 아마... 대충 눈물을 흘리겠죠? 근데 감독이 원하는 게 이런 건 아닐 수도 있어요.</p>
+
+      <p>이번엔 이렇게 말해볼게요:</p>
+
+      <div class="scenario-box">
+        "20년 함께 산 강아지가 무지개다리를 건넌 날 저녁, 거실 소파에 앉아서 강아지가 좋아하던 공을 만지작거리면서, 눈물은 참으려 하는데 눈가가 젖어드는 장면. 대사는 없이, 공에서 시선을 들어 빈 쿠션을 바라보는 것으로 마무리."
+      </div>
+
+      <p>완전히 다른 연기가 나오겠죠?</p>
+
+      <p><strong>AI도 정확히 같아요.</strong></p>
+
+      <p>"요약해줘"라고 하면 대충 요약하고, 구체적으로 지시하면 정확하게 해내요. 이 <strong>"구체적으로 지시하는 기술"</strong>이 바로 <strong>프롬프트 엔지니어링</strong>이에요.</p>
+
+      <p>그리고 좋은 소식: 스킬의 본문이 바로 프롬프트예요. <strong>좋은 프롬프트를 쓰는 법을 배우면, 좋은 스킬을 만들 수 있어요.</strong></p>
+    </section>
+
+    <!-- ====== Principle 1 ====== -->
+    <section>
+      <h2>원칙 1: 구체적으로 말하기</h2>
+
+      <p>가장 중요한 원칙부터 시작할게요. 이것만 기억해도 스킬의 품질이 2배는 좋아져요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">카톡으로 이해하는 구체성</p>
+        <p><strong>모호한 카톡:</strong> "밥 먹자" → 언제? 어디서? 뭐?<br>
+        <strong>구체적인 카톡:</strong> "내일 점심 12시 강남역 일식집 어때?" → 완벽!</p>
+        <p><strong>모호한 프롬프트:</strong> "요약해줘"<br>
+        <strong>구체적인 프롬프트:</strong> "3문장으로 핵심만 요약하되, 초등학생도 이해할 수 있게 쉬운 단어로"</p>
+      </div>
+
+      <p>비교해볼게요. 같은 "요약" 스킬인데:</p>
+
+      <p><strong>v1 (모호한 버전):</strong></p>
+
+<pre><code>---
+description: "텍스트를 요약해주는 스킬"
+---
+
+# 요약 스킬
+
+사용자가 텍스트를 주면 요약해주세요.</code></pre>
+
+      <p>이러면 AI는 어떻게 할까요? 5줄로 요약할 수도 있고, 20줄로 요약할 수도 있어요. "요약"의 기준이 없으니까요.</p>
+
+      <p><strong>v2 (구체적인 버전):</strong></p>
+
+<pre><code>---
+description: "텍스트를 3줄로 핵심 요약해주는 스킬"
+---
+
+# 3줄 요약 스킬
+
+사용자가 텍스트를 주면 다음 규칙에 따라 요약하세요:
+
+1. 정확히 3문장으로 요약
+2. 첫 문장: 주제 (무엇에 관한 글인지)
+3. 둘째 문장: 핵심 내용 (가장 중요한 포인트)
+4. 셋째 문장: 결론 또는 시사점
+5. 초등학생도 이해할 수 있는 쉬운 단어 사용
+6. 전문 용어가 나오면 괄호 안에 쉬운 설명 추가</code></pre>
+
+      <p>v1과 v2, 어느 쪽이 일관된 결과를 낼까요? 당연히 v2예요. 매번 "3문장, 쉬운 단어"라는 명확한 기준이 있으니까요.</p>
+    </section>
+
+    <!-- ====== Principle 2 ====== -->
+    <section>
+      <h2>원칙 2: 역할 부여하기</h2>
+
+      <p>"당신은 ___입니다"라고 시작하면, AI의 성능이 확 달라져요.</p>
+
+      <p>왜일까요? AI는 학습 과정에서 다양한 전문가의 글을 읽었어요. "당신은 10년 경력의 개발자입니다"라고 하면, AI가 학습한 수많은 개발자들의 사고 방식과 표현을 끌어오는 거예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">역할 부여의 마법</p>
+        <p><strong>역할 없이:</strong> "이 코드 봐줘" → 일반적인 피드백<br>
+        <strong>역할 부여:</strong> "당신은 보안 전문가입니다. 이 코드에서 보안 취약점을 찾아주세요" → 보안에 집중된 전문적 분석</p>
+      </div>
+
+      <p>실제로 스킬에 적용하면 이런 식이에요:</p>
+
+<pre><code>---
+description: "코드 리뷰를 해주는 시니어 개발자 스킬"
+---
+
+# 코드 리뷰 스킬
+
+당신은 15년 경력의 시니어 소프트웨어 엔지니어입니다.
+코드 품질, 가독성, 성능에 대한 높은 기준을 가지고 있으며,
+후배 개발자를 가르치는 것을 좋아합니다.
+
+코드를 리뷰할 때는:
+- 좋은 점을 먼저 언급하고 (motivation)
+- 개선할 점을 건설적으로 제안하고
+- 왜 그렇게 해야 하는지 이유를 설명합니다</code></pre>
+
+      <p>"15년 경력의 시니어" — 이 설정 하나로 AI가 훨씬 깊이 있는 리뷰를 해요. 또한 "후배를 가르치는 것을 좋아한다" 덕분에 설명이 친절해지죠.</p>
+    </section>
+
+    <!-- ====== Principle 3 ====== -->
+    <section>
+      <h2>원칙 3: 예시 보여주기 (Few-shot)</h2>
+
+      <p>말로 백 번 설명하는 것보다, 예시 하나가 더 효과적이에요. 이걸 전문 용어로 <strong>Few-shot Prompting</strong>이라고 해요. 무서운 이름이지만, 그냥 "예시를 몇 개 보여주는 것"이에요.</p>
+
+<pre><code>## 응답 예시
+
+### 입력: "오늘 날씨 어때?"
+### 응답:
+"오늘 서울 날씨요? ☀️ 맑고 선선해요!
+최고 18도, 최저 8도. 가벼운 자켓 하나 걸치면 딱이에요.
+미세먼지는 '좋음' — 산책하기 완벽한 날이네요! 🚶‍♂️"
+
+### 입력: "내일 비 와?"
+### 응답:
+"내일은 오후부터 비 소식이 있어요 🌧️
+낮 기온 15도로 좀 쌀쌀하니, 우산이랑 따뜻한 옷 챙기세요!
+비 오는 날엔 따뜻한 국물 요리 어떨까요? 🍜"</code></pre>
+
+      <p>이 예시를 본 AI는 "아, 이모지도 쓰고, 온도 정보도 넣고, 마지막에 활동 제안도 하는 거구나!"를 정확히 파악해요.</p>
+
+      <div class="callout">
+        <p class="callout-title">예시의 힘</p>
+        <p>연구에 따르면, 예시를 2-3개만 보여줘도 AI의 응답 품질이 <strong>크게</strong> 향상돼요. 특히 톤, 형식, 길이를 맞추는 데 예시가 매우 효과적이에요. 스킬을 만들 때 <strong>반드시 예시를 포함</strong>하세요!</p>
+      </div>
+    </section>
+
+    <!-- ILLUSTRATION: A split-screen showing AI learning from examples. Left side: a confused AI character with a question mark above its head, receiving a vague instruction bubble saying "좋게 써줘" (Write it well). Right side: the same AI character now confident with a lightbulb above its head, looking at three example cards pinned to a board, each showing a before→after transformation. The AI is now producing output that matches the examples perfectly. Warm cream background, coral highlights, hand-drawn style. Shows the power of examples vs vague instructions. -->
+
+    <!-- ====== Principle 4 ====== -->
+    <section>
+      <h2>원칙 4: 하지 말아야 할 것 정하기</h2>
+
+      <p>의외로 중요한 거예요. "뭘 해라"만큼이나 <strong>"뭘 하지 마라"</strong>도 중요해요.</p>
+
+<pre><code>## 주의사항 (하지 말 것)
+- 전문 용어를 설명 없이 사용하지 마세요
+- 한 문장이 50자를 넘지 않게 하세요
+- "~할 수 있습니다", "~하겠습니다" 같은 딱딱한 존댓말 대신
+  "~해요", "~예요" 체를 사용하세요
+- 이모지를 3개 이상 연속으로 사용하지 마세요
+- 영어 단어를 불필요하게 섞지 마세요</code></pre>
+
+      <p>이런 제약이 있으면, AI가 "안전한 범위" 안에서 응답해요. 울타리를 쳐주는 거예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">비유: 소풍 가는 아이</p>
+        <p>"뛰어놀아!"만 말하면 차도로 뛰어들 수 있어요.<br>
+        "뛰어놀아! 근데 저 빨간 울타리 안에서만!" 하면 안전하게 놀죠.<br><br>
+        AI도 마찬가지예요. "하지 말 것"은 AI의 안전한 활동 범위를 정해주는 울타리예요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Principle 5 ====== -->
+    <section>
+      <h2>원칙 5: 출력 형식 지정하기</h2>
+
+      <p>"어떤 모양으로 대답해"를 알려주면, 결과가 훨씬 깔끔해져요.</p>
+
+<pre><code>## 출력 형식
+
+다음 형식으로 응답하세요:
+
+### 📋 요약
+(3줄 요약)
+
+### 🔑 핵심 키워드
+- 키워드1
+- 키워드2
+- 키워드3
+
+### 💡 한줄 인사이트
+(이 글에서 얻을 수 있는 가장 중요한 교훈 한 줄)</code></pre>
+
+      <p>이렇게 형식을 정해주면, AI가 매번 같은 구조로 응답해요. 일관성이 생기는 거예요.</p>
+    </section>
+
+    <!-- ====== Evolution Example ====== -->
+    <section>
+      <h2>실전: 스킬의 진화 — v1에서 v3까지</h2>
+
+      <p>이론은 충분해요. 이제 실전으로 가봅시다. 챕터 8에서 만든 인사하기 스킬을 5가지 원칙을 적용해서 업그레이드해볼게요.</p>
+
+      <h3>v1: 우리가 처음 만든 버전</h3>
+
+<pre><code>---
+description: "사용자에게 따뜻한 한국어 인사를 해주는 스킬"
+---
+
+# 인사하기 스킬
+
+당신은 따뜻하고 친근한 한국어 인사 전문가입니다.
+사용자가 인사를 하면 따뜻하게 응답하세요.</code></pre>
+
+      <p>나쁘지 않지만, 좀 모호해요. "따뜻하게"가 어느 정도인지 기준이 없죠.</p>
+
+      <h3>v2: 구체성 + 역할 강화</h3>
+
+<pre><code>---
+description: "따뜻한 한국어 인사와 오늘의 이야기를 전해주는 스킬"
+---
+
+# 인사하기 스킬
+
+당신은 동네 카페의 따뜻한 바리스타입니다.
+매일 아침 단골손님에게 인사하듯이, 친근하고 편안하게 대화해요.
+단골손님의 하루가 좋아지는 한마디를 건네는 게 당신의 특기예요.
+
+## 인사 규칙
+1. 시간대에 맞는 인사 (아침/오후/저녁/밤)
+2. 오늘 날짜와 관련된 재미있는 이야기 하나
+3. 하루를 응원하는 따뜻한 한마디
+
+## 스타일
+- "~해요" 체 사용 (친근하지만 예의 바르게)
+- 이모지는 문장당 최대 1개
+- 전체 5줄 이내</code></pre>
+
+      <h3>v3: 예시 + 제약 + 형식까지</h3>
+
+<pre><code>---
+description: "따뜻한 한국어 인사와 오늘의 이야기를 전해주는 카페 바리스타 스킬"
+---
+
+# 인사하기 스킬
+
+당신은 동네 카페의 따뜻한 바리스타입니다.
+매일 아침 단골손님에게 인사하듯이, 친근하고 편안하게 대화해요.
+단골손님의 하루가 좋아지는 한마디를 건네는 게 당신의 특기예요.
+
+## 응답 형식
+
+[시간대 인사] [이모지 1개]
+
+오늘은 [날짜]인데요, [재미있는 사실 1-2문장]
+
+[응원 한마디] [이모지 1개]
+
+## 규칙
+- 반드시 3개 파트(인사, 사실, 응원)로 구성
+- 전체 5줄 이내
+- "~해요" 체 사용
+- 이모지는 파트당 최대 1개 (총 2-3개)
+
+## 하지 말 것
+- 날씨 이야기 금지 (모르니까)
+- "오늘도 화이팅!" 같은 진부한 표현 금지
+- 부정적인 역사 사실 금지 (재미있는 것만)
+
+## 예시
+
+입력: "안녕"
+응답:
+"좋은 아침이에요! ☀️
+
+오늘은 3월 27일인데요, 1998년에 FDA가 비아그라를 승인한 날이래요.
+세상을 바꾼 발견은 뜻밖의 곳에서 온다고 하죠!
+
+오늘도 뜻밖의 좋은 일이 찾아오길 바랄게요 🍀"</code></pre>
+
+      <p>v1 → v2 → v3 변화가 보이시나요?</p>
+
+      <p>같은 "인사하기" 스킬인데, 구체성이 올라갈수록 AI의 응답이 <strong>일관적이고 예측 가능해져요</strong>. 이게 프롬프트 엔지니어링의 핵심이에요.</p>
+    </section>
+
+    <!-- ====== Practice ====== -->
+    <section>
+      <h2>실습: 여러분의 스킬을 업그레이드하세요</h2>
+
+      <p>챕터 8에서 만든 인사하기 스킬을 열어보세요. 그리고 오늘 배운 5가지 원칙을 적용해보세요:</p>
+
+      <ol>
+        <li><strong>구체적으로</strong> — "따뜻하게"를 "동네 카페 바리스타처럼"으로</li>
+        <li><strong>역할 부여</strong> — "당신은 ___입니다" 추가</li>
+        <li><strong>예시 추가</strong> — 원하는 응답 예시 1-2개</li>
+        <li><strong>하지 말 것</strong> — 원하지 않는 행동 3개 이상</li>
+        <li><strong>출력 형식</strong> — 응답의 구조를 정해주기</li>
+      </ol>
+
+      <p>직접 해보면, "아, 이렇게 바꾸면 결과가 달라지는구나!"를 체감하실 거예요.</p>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>프롬프트 엔지니어링</strong> = AI에게 정확한 결과를 뽑아내는 지시 기술이에요</li>
+        <li><strong>5가지 핵심 원칙:</strong>
+          <ol>
+            <li>구체적으로 말하기 — "요약해줘" 대신 "3문장으로 쉽게 요약해줘"</li>
+            <li>역할 부여하기 — "당신은 15년 경력의 시니어 개발자입니다"</li>
+            <li>예시 보여주기 — 원하는 응답의 샘플 2-3개</li>
+            <li>하지 말 것 정하기 — AI의 활동 범위에 울타리 치기</li>
+            <li>출력 형식 지정 — 응답의 구조를 미리 정해주기</li>
+          </ol>
+        </li>
+        <li>스킬의 본문 = 프롬프트. <strong>좋은 프롬프트 = 좋은 스킬</strong></li>
+        <li>같은 스킬도 프롬프트를 다듬으면 품질이 <strong>확 달라져요</strong></li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>지금까지 우리 스킬은 "말만" 할 수 있었어요. 텍스트를 읽고 텍스트를 쓰는 것뿐이죠.<br>
+      근데 스킬이 <strong>파일을 읽고, 명령어를 실행하고, 코드를 검색</strong>할 수 있다면?<br>
+      다음 챕터에서는 <strong>도구 연결하기</strong> — <code>allowed-tools</code>의 세계에 들어갑니다.<br>
+      주방 도구 없는 셰프에서, 풀장비 셰프로 업그레이드하는 시간이에요!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch08.html" class="prev">이전: 첫 번째 스킬: "인사하기"</a>
+    <a href="ch10.html" class="next">다음: 도구 연결하기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

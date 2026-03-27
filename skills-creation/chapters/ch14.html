@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="여러 스킬을 하나로 — 모노레포 패턴으로 관련 스킬들을 체계적으로 관리하는 방법">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 14: 여러 스킬을 하나로 — 모노레포 패턴 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 14</span>
+    <h1>여러 스킬을 하나로 — 모노레포 패턴</h1>
+    <p class="chapter-subtitle">한 지붕 아래, 여러 주방이 돌아가는 푸드코트의 비밀</p>
+  </header>
+
+  <!-- ILLUSTRATION: A cheerful bird's-eye view of a Korean food court (푸드코트). Multiple small kitchen stalls are arranged in a circle under one big, modern roof. Each stall has a different sign: "리뷰 스킬", "배포 스킬", "테스트 스킬", "모니터링 스킬". In the center, a shared ingredients storage area labeled "공유 참조 파일" connects to all stalls via conveyor belts. A friendly manager character with a clipboard stands in the middle, coordinating everything. Warm cream background, coral and teal accents, flat hand-drawn illustration style. The atmosphere is organized yet lively. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>식당 하나 vs 푸드코트</h2>
+
+      <p>여러분, 동네 맛집 하나를 상상해보세요. 김치찌개 하나만 파는 작은 식당이에요. 메뉴도 간단하고, 주방도 하나, 셰프도 한 명. 깔끔하죠?</p>
+
+      <p>근데 시간이 지나면서 이 셰프가 재능이 넘치는 거예요. 김치찌개만 하기엔 아까워서, 된장찌개도 만들고, 비빔밥도 만들고, 냉면도 만들어요.</p>
+
+      <p>처음에는 하나의 주방에서 다 해결했는데, 메뉴가 5개, 10개로 늘어나니 문제가 생겨요.</p>
+
+      <div class="scenario-box">
+        "김치찌개 육수 끓이는 동안 냉면 면 삶으랴, 비빔밥 나물 볶으랴... 주방이 너무 좁아!"
+      </div>
+
+      <p>그래서 결심합니다. <strong>"차라리 푸드코트를 차리자."</strong></p>
+
+      <p>같은 건물 안에 여러 개의 전문 주방을 두는 거예요. 김치찌개 전문 주방, 비빔밥 전문 주방, 냉면 전문 주방. 각 주방은 독립적으로 운영되지만, <strong>식재료 창고는 공유</strong>하고, <strong>같은 위생 기준</strong>을 따르고, <strong>한 명의 매니저</strong>가 전체를 관리해요.</p>
+
+      <p>이게 바로 오늘 배울 <strong>모노레포(Monorepo) 패턴</strong>이에요.</p>
+
+      <p>스킬 하나만 만들 때는 폴더 하나면 충분했죠. 근데 관련된 스킬이 3개, 5개, 10개로 늘어나면? 각각 따로 관리하는 것보다 <strong>하나의 저장소(레포지토리)에 모아두는 게</strong> 훨씬 효율적이에요.</p>
+    </section>
+
+    <!-- ====== What is a Monorepo ====== -->
+    <section>
+      <h2>모노레포가 뭔데?</h2>
+
+      <p>"모노레포"라는 단어가 어렵게 느껴질 수 있는데, 아주 간단해요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">이름 풀이</p>
+        <p><strong>모노(Mono)</strong> = 하나<br>
+        <strong>레포(Repo)</strong> = 저장소(Repository)의 줄임말<br><br>
+        합치면: <strong>"하나의 저장소"</strong><br><br>
+        여러 개의 관련 프로젝트(스킬)를 하나의 저장소에 모아서 관리하는 방식이에요.</p>
+      </div>
+
+      <p>반대 개념은 <strong>폴리레포(Polyrepo)</strong>예요. 폴리(Poly) = 여러 개. 즉, 스킬마다 각각 별도의 저장소를 만드는 거죠.</p>
+
+      <p>비유로 정리하면:</p>
+
+      <ul>
+        <li><strong>폴리레포</strong> = 독립 식당 5개. 각각 다른 건물, 다른 주인, 다른 식재료 창고.</li>
+        <li><strong>모노레포</strong> = 푸드코트 1개. 같은 건물, 같은 매니저, 공유 식재료 창고. 주방만 각각 분리.</li>
+      </ul>
+
+      <h3>언제 모노레포를 써야 할까?</h3>
+
+      <p>모든 상황에 모노레포가 좋은 건 아니에요. <strong>이럴 때</strong> 쓰면 좋아요:</p>
+
+      <ul>
+        <li><strong>관련된 스킬이 3개 이상일 때</strong> — 혼자 사는 것보다 함께 사는 게 효율적인 수준</li>
+        <li><strong>스킬들이 공통 참조 파일을 공유할 때</strong> — 같은 코딩 컨벤션, 같은 회사 규칙 등</li>
+        <li><strong>스킬들이 하나의 워크플로우에 속할 때</strong> — 리뷰 → 배포 → 모니터링처럼 연결되는 경우</li>
+        <li><strong>같은 팀이 여러 스킬을 관리할 때</strong> — 버전 관리와 업데이트를 일괄 처리하고 싶을 때</li>
+      </ul>
+
+      <p>반대로, <strong>이럴 때는 굳이 모노레포를 안 써도 돼요:</strong></p>
+
+      <ul>
+        <li>스킬이 1~2개뿐이고, 관련성도 없을 때</li>
+        <li>완전히 다른 분야의 스킬일 때 (요리 스킬 + 코드 리뷰 스킬 = 관련 없음)</li>
+        <li>혼자 쓰는 간단한 스킬일 때</li>
+      </ul>
+    </section>
+
+    <!-- ====== Structure ====== -->
+    <section>
+      <h2>모노레포의 구조 살펴보기</h2>
+
+      <p>자, 실제로 어떻게 생겼는지 봅시다. 디렉토리 구조를 보면 바로 이해가 될 거예요.</p>
+
+      <pre><code>my-skill-suite/
+├── package.json          ← (선택) 도구 설정용
+├── shared-references/    ← 공유 참조 파일들
+│   ├── SHARED-PREAMBLE.md
+│   ├── coding-standards.md
+│   └── team-conventions.md
+├── skill-review/         ← 코드 리뷰 스킬
+│   ├── SKILL.md
+│   └── references/
+│       └── review-checklist.md
+├── skill-deploy/         ← 배포 스킬
+│   ├── SKILL.md
+│   └── references/
+│       └── deploy-process.md
+└── skill-monitor/        ← 모니터링 스킬
+    ├── SKILL.md
+    └── references/
+        └── alert-rules.md</code></pre>
+
+      <p>보이시나요? 핵심 구조를 하나하나 뜯어볼게요.</p>
+
+      <h3>1. 최상위 폴더 = 푸드코트 건물</h3>
+
+      <p><code>my-skill-suite/</code>가 전체를 감싸는 폴더예요. 이게 하나의 Git 저장소가 됩니다. GitHub에 올릴 때도 이 폴더 전체를 하나의 프로젝트로 올려요.</p>
+
+      <h3>2. shared-references/ = 공유 식재료 창고</h3>
+
+      <p>이게 모노레포의 <strong>가장 큰 장점</strong>이에요. 모든 스킬이 공통으로 참조하는 파일을 여기에 모아둡니다.</p>
+
+      <p>예를 들어:</p>
+
+      <ul>
+        <li><code>SHARED-PREAMBLE.md</code> — "우리 팀은 이런 코딩 스타일을 씁니다"라는 공통 규칙</li>
+        <li><code>coding-standards.md</code> — 변수명 규칙, 들여쓰기 규칙 등</li>
+        <li><code>team-conventions.md</code> — 팀 내 약속들 (커밋 메시지 형식, 브랜치 전략 등)</li>
+      </ul>
+
+      <p>이 파일들이 변경되면, 모든 스킬에 자동으로 반영돼요. <strong>한 번 고치면, 전부 업데이트.</strong> 이걸 폴리레포로 하면? 저장소 3개에 같은 수정을 3번 해야 하죠. 끔찍해요.</p>
+
+      <h3>3. 각 스킬 폴더 = 개별 주방</h3>
+
+      <p>각 스킬은 자기만의 폴더 안에서 독립적으로 존재해요. <code>SKILL.md</code>도 각자 있고, 스킬 전용 <code>references/</code>도 각자 있어요.</p>
+
+      <p>푸드코트에서 각 주방이 자기만의 레시피와 특수 재료를 갖고 있는 것처럼요.</p>
+
+      <!-- ILLUSTRATION: A clear, educational diagram showing a monorepo folder structure as a building blueprint. The top-level folder is drawn as a building floor plan with "my-skill-suite" written on the roof. Inside, three rooms (skill-review, skill-deploy, skill-monitor) each have their own door and small storage shelf (references/). In the center, a large shared room labeled "shared-references/" has conveyor belts going to each of the three rooms. Small icons float above each room: a magnifying glass for review, a rocket for deploy, and a radar dish for monitor. Clean, architectural flat illustration, warm cream and coral tones. -->
+    </section>
+
+    <!-- ====== Real Example: gstack ====== -->
+    <section>
+      <h2>실제 사례: gstack 모노레포</h2>
+
+      <p>이론만 하면 재미없으니까, 실제 사례를 볼게요.</p>
+
+      <p>이 책에서 여러 번 언급한 <strong>gstack</strong> 기억하시죠? gstack은 여러 스킬이 하나의 모노레포에 들어있어요.</p>
+
+      <ul>
+        <li><strong>/browse</strong> — 웹 브라우저로 사이트를 탐색하고 테스트</li>
+        <li><strong>/benchmark</strong> — 성능을 측정하고 비교</li>
+        <li><strong>/canary</strong> — 배포 후 모니터링</li>
+        <li><strong>/review</strong> — 코드 리뷰</li>
+        <li><strong>/qa</strong> — QA 테스트</li>
+        <li><strong>/design-review</strong> — 디자인 검토</li>
+      </ul>
+
+      <p>이 스킬들이 왜 모노레포에 있을까요?</p>
+
+      <p><strong>첫째, 워크플로우가 연결돼 있어요.</strong> 코드를 짜면 → 리뷰하고 → 배포하고 → 모니터링해요. 이 과정이 자연스럽게 이어지기 때문에, 같은 저장소에 있는 게 맞아요.</p>
+
+      <p><strong>둘째, 공통 인프라를 공유해요.</strong> browse 스킬이 사용하는 브라우저 도구를, benchmark나 canary도 같이 써요. 공유 자원이 있으니 모노레포가 효율적이죠.</p>
+
+      <p><strong>셋째, 같은 팀이 관리해요.</strong> 업데이트할 때 한 번에 모든 스킬을 확인하고 수정할 수 있어요.</p>
+
+      <div class="callout">
+        <p class="callout-title">실전 팁: 이름 짓기</p>
+        <p>모노레포 안의 각 스킬 폴더 이름은 <strong>일관된 규칙</strong>을 따르는 게 좋아요.<br><br>
+        예시: <code>skill-review</code>, <code>skill-deploy</code>, <code>skill-monitor</code> — 접두어 <code>skill-</code>을 통일.<br>
+        또는: <code>review/</code>, <code>deploy/</code>, <code>monitor/</code> — 더 간결하게.<br><br>
+        아무 규칙이나 괜찮은데, <strong>통일하는 게 중요</strong>합니다.</p>
+      </div>
+    </section>
+
+    <!-- ====== Benefits ====== -->
+    <section>
+      <h2>모노레포의 장점 정리</h2>
+
+      <p>지금까지 이야기한 장점을 깔끔하게 정리해볼게요.</p>
+
+      <p><strong>1. 공유 참조 파일 — "한 번 쓰고 여러 번 쓰기"</strong></p>
+
+      <p>팀의 코딩 규칙이 바뀌었다고 해봐요. 모노레포라면? <code>shared-references/coding-standards.md</code> 하나만 수정하면 끝. 폴리레포라면? 스킬 10개의 저장소를 하나하나 열어서 똑같은 수정을 10번 해야 해요.</p>
+
+      <p><strong>2. 일관된 버전 관리 — "다 같이 업데이트"</strong></p>
+
+      <p>Git에서 커밋(변경 기록) 하나로 여러 스킬을 동시에 업데이트할 수 있어요. "이번 변경은 리뷰 스킬과 배포 스킬 모두에 영향을 줘" — 이런 수정을 하나의 커밋으로 깔끔하게 기록할 수 있죠.</p>
+
+      <p><strong>3. 쉬운 테스트 — "한 자리에서 전부 확인"</strong></p>
+
+      <p>모든 스킬이 한 곳에 있으니, 전체를 한 번에 테스트하기가 쉬워요. "리뷰 스킬 고쳤는데, 배포 스킬에 영향 없나?" 같은 걸 바로 확인할 수 있죠.</p>
+
+      <p><strong>4. 발견 가능성 — "아, 이런 스킬도 있었어?"</strong></p>
+
+      <p>팀원이 모노레포를 둘러보다가 "오, 모니터링 스킬도 있네? 이거 몰랐는데!" 하고 발견할 수 있어요. 각각 다른 저장소에 흩어져 있었다면, 존재 자체를 모를 수도 있었을 거예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">모노레포 vs 폴리레포 한눈에 비교</p>
+        <p><strong>모노레포:</strong><br>
+        공유 파일 수정 → 1번<br>
+        버전 관리 → 통합<br>
+        새 스킬 추가 → 폴더 하나 추가<br>
+        팀원이 전체 구조 파악 → 쉬움<br><br>
+        <strong>폴리레포:</strong><br>
+        공유 파일 수정 → N번 (스킬 수만큼)<br>
+        버전 관리 → 각각<br>
+        새 스킬 추가 → 새 저장소 생성<br>
+        팀원이 전체 구조 파악 → 어려움</p>
+      </div>
+    </section>
+
+    <!-- ====== How to Create ====== -->
+    <section>
+      <h2>직접 만들어보기: 나만의 스킬 모음</h2>
+
+      <p>자, 이론은 충분해요. 직접 만들어봅시다!</p>
+
+      <p>여러분이 마케팅 팀에서 일한다고 가정하고, 마케팅 관련 스킬 3개를 모노레포로 만들어볼게요.</p>
+
+      <h3>1단계: 최상위 폴더 만들기</h3>
+
+      <pre><code>mkdir marketing-skills
+cd marketing-skills</code></pre>
+
+      <h3>2단계: 공유 참조 파일 만들기</h3>
+
+      <pre><code>mkdir shared-references</code></pre>
+
+      <p><code>shared-references/SHARED-PREAMBLE.md</code> 파일을 만들어요:</p>
+
+      <pre><code># 우리 팀 마케팅 원칙
+
+- 타겟 오디언스: 25-35세 한국 직장인
+- 톤앤매너: 친근하지만 전문적
+- 브랜드 컬러: #E85D4A (코럴), #2B8C8C (틸)
+- 절대 하지 않는 것: 과장 광고, 허위 할인
+- 모든 콘텐츠는 모바일 퍼스트로 작성</code></pre>
+
+      <p>이 파일은 마케팅 스킬 전체가 공유하는 "우리 팀의 바이블"이에요.</p>
+
+      <h3>3단계: 개별 스킬 폴더 만들기</h3>
+
+      <pre><code>mkdir -p skill-copy-write/references
+mkdir -p skill-social-post/references
+mkdir -p skill-report/references</code></pre>
+
+      <p>각 스킬의 <code>SKILL.md</code>를 만들면 끝이에요. 우리가 이전 챕터에서 배운 것 그대로요.</p>
+
+      <h3>최종 구조</h3>
+
+      <pre><code>marketing-skills/
+├── shared-references/
+│   └── SHARED-PREAMBLE.md
+├── skill-copy-write/        ← 광고 카피 작성
+│   ├── SKILL.md
+│   └── references/
+│       └── brand-voice.md
+├── skill-social-post/       ← SNS 포스트 생성
+│   ├── SKILL.md
+│   └── references/
+│       └── platform-specs.md
+└── skill-report/            ← 마케팅 리포트 생성
+    ├── SKILL.md
+    └── references/
+        └── report-template.md</code></pre>
+
+      <p>깔끔하죠? 세 스킬이 한 지붕 아래 정리되어 있고, 공유 참조로 연결되어 있어요.</p>
+
+      <div class="callout">
+        <p class="callout-title">한 단계 더: README.md 추가</p>
+        <p>모노레포의 최상위에 <code>README.md</code> 파일을 만들어서 "이 저장소에 어떤 스킬들이 있고, 각각 뭘 하는지" 설명해두면 최고예요. 팀원이나 외부 사람이 저장소를 처음 봤을 때, 바로 이해할 수 있거든요.</p>
+      </div>
+    </section>
+
+    <!-- ILLUSTRATION: A friendly Korean person at a desk, looking at their laptop screen which shows a clean folder structure diagram. They have a satisfied "아하!" expression. On the desk: three small figurines representing the three skills (a pen for copy-write, a phone for social-post, and a chart for report), all connected by a small string to a shared book in the center. Above the laptop, a thought bubble shows the completed marketing-skills monorepo structure with a small checkmark. Warm cream background, coral and teal accents, cozy flat illustration style. -->
+
+    <!-- ====== Common Mistakes ====== -->
+    <section>
+      <h2>주의할 점: 이것만은 피하세요</h2>
+
+      <p>모노레포를 처음 쓸 때 흔히 하는 실수들이에요.</p>
+
+      <p><strong>실수 1: 관련 없는 스킬 몰아넣기</strong></p>
+
+      <p>"모노레포가 좋다니까, 내 모든 스킬을 다 하나에 넣자!" — 이러면 안 돼요. 요리 스킬과 코드 리뷰 스킬은 관련이 없잖아요. 관련 없는 스킬을 억지로 모으면, 오히려 복잡해져요.</p>
+
+      <p><strong>실수 2: shared-references를 너무 크게 만들기</strong></p>
+
+      <p>공유 파일이 너무 많고 복잡하면, 어떤 스킬이 어떤 공유 파일을 쓰는지 파악이 안 돼요. 진짜 공통으로 쓰는 것만 넣으세요.</p>
+
+      <p><strong>실수 3: 한 스킬이 너무 많은 걸 하기</strong></p>
+
+      <p>모노레포 안의 각 스킬은 여전히 "한 가지 일을 잘하는" 원칙을 지켜야 해요. "리뷰도 하고 배포도 하고 모니터링도 하는" 스킬 하나보다, 각각 분리된 3개의 스킬이 낫습니다.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">기억하세요</p>
+        <p>모노레포는 <strong>"관련된 것을 모으는 패턴"</strong>이지, "모든 것을 모으는 패턴"이 아니에요.<br><br>
+        푸드코트에 한식, 중식, 일식이 들어가는 건 자연스러운데,<br>
+        거기에 세탁소와 미용실까지 넣으면 이상하잖아요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>모노레포</strong>는 관련된 여러 스킬을 하나의 저장소에 모아 관리하는 패턴이에요.</li>
+        <li>핵심 장점: <strong>공유 참조 파일</strong>로 중복을 없애고, 일괄 업데이트가 가능해요.</li>
+        <li><strong>3개 이상</strong>의 관련 스킬이 있고, 공통 자원을 공유할 때 쓰면 좋아요.</li>
+        <li>구조: 최상위 폴더 안에 <code>shared-references/</code>와 개별 스킬 폴더들을 배치해요.</li>
+        <li>실제 사례: gstack은 browse, benchmark, canary, review 등 여러 스킬을 하나의 모노레포로 관리해요.</li>
+        <li>주의: 관련 없는 스킬을 억지로 모으지 마세요. <strong>"관련된 것만 모으기"</strong>가 핵심!</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>스킬을 만들었으면 이제 뭐 해야 할까요? <strong>공유!</strong><br>
+      다른 사람에게 스킬을 전달하고, 다른 사람의 스킬을 설치하는 방법을 배워요.<br>
+      생각보다 훨씬 간단합니다. <strong>GitHub에 올리고, 다운받으면 끝이거든요.</strong></p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch13.html" class="prev">이전: 테스트하고 다듬기</a>
+    <a href="ch15.html" class="next">다음: 팀과 함께 쓰는 스킬</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

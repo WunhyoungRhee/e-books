@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="references로 지식 확장하기 — 스킬의 지식을 깔끔하게 분리하고 관리하는 방법">
+  <meta name="author" content="나만의 AI 스킬을 만들자">
+  <title>Chapter 11: references로 지식 확장하기 — 나만의 AI 스킬을 만들자</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+
+  <!-- ====== Chapter Header ====== -->
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 11</span>
+    <h1>references로 지식 확장하기</h1>
+    <p class="chapter-subtitle">요리책의 부록처럼, 지식을 깔끔하게 정리하는 기술</p>
+  </header>
+
+  <!-- ILLUSTRATION: A cozy library scene. A main book labeled "SKILL.md" sits open on a reading desk in the center. Around it, several smaller booklets are connected to the main book by glowing coral threads. The booklets are labeled "TONE-GUIDE.md", "TEMPLATES.md", "COMMON-PHRASES.md". A friendly Korean character is organizing these booklets on nearby shelves labeled "references/". The atmosphere is warm and organized, like a well-kept personal library. Cream background, coral thread connections, teal bookshelf accents, hand-drawn illustration style. -->
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>요리책의 비밀: 부록의 힘</h2>
+
+      <p>요리책을 상상해보세요. 50가지 레시피가 담긴 두꺼운 요리책.</p>
+
+      <p>그런데 모든 레시피마다 이런 설명이 반복된다면?</p>
+
+      <div class="scenario-box">
+        "오븐이란 음식을 뜨거운 공기로 가열하는 조리 기구입니다. 사용하기 전에 원하는 온도로 미리 예열해야 합니다. 예열 시간은 보통 10-15분이며..."
+      </div>
+
+      <p>50개 레시피마다 오븐 설명이 반복되면, 책이 두 배로 두꺼워지겠죠? 그래서 좋은 요리책은 <strong>"기본 도구 사용법"을 부록</strong>에 따로 빼요. 레시피에서는 "오븐 180도로 예열 (부록 A 참고)"라고만 쓰면 되는 거예요.</p>
+
+      <p>AI 스킬도 똑같아요.</p>
+
+      <p>스킬이 복잡해질수록, SKILL.md에 모든 걸 넣으면 너무 길어져요. 읽기 어렵고, 수정하기 어렵고, 관리하기 어렵죠.</p>
+
+      <p>그래서 <strong>references/</strong> 폴더가 있는 거예요. 스킬의 "부록"이에요.</p>
+    </section>
+
+    <!-- ====== When to Use ====== -->
+    <section>
+      <h2>언제 references를 써야 할까?</h2>
+
+      <p>모든 스킬에 references가 필요한 건 아니에요. 챕터 8의 인사하기 스킬처럼 간단한 스킬은 SKILL.md 하나로 충분해요.</p>
+
+      <p>references가 필요한 순간은 이런 때예요:</p>
+
+      <p><strong>1. SKILL.md가 100줄을 넘어갈 때</strong></p>
+      <p>너무 길면 AI도 핵심을 놓칠 수 있어요. 핵심 지시는 SKILL.md에, 부가 지식은 references/에.</p>
+
+      <p><strong>2. 여러 스킬이 같은 지식을 공유할 때</strong></p>
+      <p>"격식체 가이드"를 이메일 스킬, 보고서 스킬, 공지사항 스킬이 모두 참고한다면? 한 곳에 적어두고 세 스킬이 모두 참조하면 돼요.</p>
+
+      <p><strong>3. 지식이 자주 업데이트될 때</strong></p>
+      <p>이메일 템플릿 모음이 매달 바뀐다면? SKILL.md를 통째로 고칠 필요 없이, references/ 안의 템플릿 파일만 업데이트하면 돼요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 판단 기준</p>
+        <p>SKILL.md = <strong>"뭘 해야 하는지"</strong> (지시사항, 행동 규칙)<br>
+        references/ = <strong>"뭘 알아야 하는지"</strong> (배경 지식, 데이터, 템플릿)</p>
+        <p>행동 규칙은 SKILL.md에, 참고 자료는 references/에!</p>
+      </div>
+    </section>
+
+    <!-- ====== Hands-on ====== -->
+    <section>
+      <h2>실전: "한국어 이메일 작성기" 스킬 만들기</h2>
+
+      <p>references/의 힘을 제대로 느끼려면, 직접 만들어보는 게 최고죠. 실용적인 스킬을 하나 만들어봅시다.</p>
+
+      <p><strong>한국어 비즈니스 이메일 작성기</strong> — 상황에 맞는 격식의 비즈니스 이메일을 자동으로 생성해주는 스킬이에요.</p>
+
+      <h3>폴더 구조</h3>
+
+<pre><code>korean-email-writer/
+├── SKILL.md
+└── references/
+    ├── TONE-GUIDE.md
+    ├── TEMPLATES.md
+    └── COMMON-PHRASES.md</code></pre>
+
+      <p>파일이 4개! 근데 걱정 마세요. 하나하나 같이 만들어봐요.</p>
+
+      <h3>1단계: references/ 파일들 먼저 만들기</h3>
+
+      <p>부록부터 만들어볼게요. 먼저 폴더를 만드세요:</p>
+
+<pre><code>mkdir -p korean-email-writer/references</code></pre>
+
+      <p><strong>references/TONE-GUIDE.md — 격식/비격식 가이드:</strong></p>
+
+<pre><code># 한국어 이메일 톤 가이드
+
+## 격식체 (공식적인 상황)
+
+### 사용 상황
+- 처음 연락하는 외부 거래처
+- 임원급 이상에게 보내는 이메일
+- 공식 제안서, 계약 관련
+
+### 어미
+- "~합니다", "~드립니다", "~하겠습니다"
+- "~하시기 바랍니다", "~주시면 감사하겠습니다"
+
+### 호칭
+- [직함]님 (예: 김 부장님, 이 대표님)
+- 성+직함 (예: 박 과장님)
+
+### 주의사항
+- 줄임말 사용 금지
+- 이모티콘/이모지 사용 금지
+- 감탄사(!, ?) 최소화
+
+---
+
+## 비격식체 (편한 상황)
+
+### 사용 상황
+- 같은 팀 동료
+- 자주 연락하는 협력사 담당자
+- 내부 공유 메일
+
+### 어미
+- "~해요", "~예요", "~할게요"
+- "~하면 좋겠어요", "~해주세요"
+
+### 호칭
+- [이름]님 (예: 민수님, 지현님)
+- 친한 사이면 이름만 (예: 민수야)
+
+### 주의사항
+- 너무 캐주얼하지 않게 (비즈니스 상황임을 기억)
+- 이모지는 1-2개 정도 괜찮음</code></pre>
+
+      <p><strong>references/TEMPLATES.md — 이메일 템플릿:</strong></p>
+
+<pre><code># 이메일 템플릿 모음
+
+## 미팅 요청
+
+제목: [주제] 관련 미팅 요청드립니다
+
+[호칭]님, 안녕하세요.
+[소속/이름]입니다.
+
+[주제]에 대해 논의드리고 싶어 연락드립니다.
+[미팅 목적 1-2문장]
+
+아래 일정 중 가능하신 시간이 있으신지 확인 부탁드립니다:
+- [날짜/시간 옵션 1]
+- [날짜/시간 옵션 2]
+- [날짜/시간 옵션 3]
+
+장소는 [장소] 또는 [온라인 미팅 도구]로 진행하면 어떨까요?
+
+바쁘신 와중에 확인해주셔서 감사합니다.
+[마무리 인사]
+
+---
+
+## 진행 상황 공유
+
+제목: [프로젝트명] 진행 현황 공유드립니다 ([날짜])
+
+[호칭]님, 안녕하세요.
+
+[프로젝트명] 진행 현황 공유드립니다.
+
+### 이번 주 완료 사항
+- [완료 항목 1]
+- [완료 항목 2]
+
+### 다음 주 계획
+- [계획 항목 1]
+- [계획 항목 2]
+
+### 이슈/요청 사항
+- [이슈가 있다면 기재, 없으면 "현재 특이사항 없습니다"]
+
+궁금하신 점 있으시면 편하게 말씀해주세요.
+감사합니다.
+
+---
+
+## 감사 이메일
+
+제목: [상황]에 대해 감사드립니다
+
+[호칭]님, 안녕하세요.
+
+[상황]에 대해 진심으로 감사드립니다.
+[구체적으로 어떤 점이 도움이 되었는지 1-2문장]
+
+덕분에 [긍정적 결과]할 수 있었습니다.
+앞으로도 좋은 관계 이어가면 좋겠습니다.
+
+다시 한번 감사드리며, 좋은 하루 되세요.
+[마무리 인사]</code></pre>
+
+      <p><strong>references/COMMON-PHRASES.md — 자주 쓰는 표현:</strong></p>
+
+<pre><code># 이메일 자주 쓰는 표현
+
+## 인사말 (시작)
+- "안녕하세요, [이름/직함]님."
+- "안녕하세요, [소속]의 [이름]입니다."
+- "항상 도움 주셔서 감사합니다."
+- "바쁘신 와중에 연락드려 죄송합니다."
+- "지난번 [상황]에 감사드리며 연락드립니다."
+
+## 본문 연결
+- "다름이 아니라, ..."
+- "말씀드릴 사항이 있어 이메일 드립니다."
+- "아래 내용 공유드립니다."
+- "간략히 정리해서 공유드립니다."
+
+## 요청할 때
+- "확인 부탁드립니다."
+- "검토 후 회신 부탁드리겠습니다."
+- "가능하시다면 [날짜]까지 회신 부탁드립니다."
+- "의견 주시면 반영하겠습니다."
+- "편하신 시간에 확인 부탁드려요." (비격식)
+
+## 마무리 인사
+- "감사합니다." (기본)
+- "좋은 하루 되세요." (격식+친근)
+- "궁금하신 점 있으시면 편하게 말씀해주세요." (친근)
+- "빠른 확인 부탁드리겠습니다." (긴급)
+- "좋은 한 주 보내세요." (금요일에)</code></pre>
+
+      <h3>2단계: SKILL.md 작성하기</h3>
+
+      <p>이제 메인 레시피, SKILL.md를 만들어요:</p>
+
+<pre><code>---
+description: "상황에 맞는 한국어 비즈니스 이메일을 작성해주는 스킬"
+---
+
+# 한국어 이메일 작성기
+
+당신은 10년 경력의 한국 대기업 비서실 출신 커뮤니케이션 전문가입니다.
+한국 비즈니스 문화에 정통하며, 상황에 맞는 완벽한 이메일을 작성할 수
+있습니다.
+
+## 수행 절차
+
+1. 사용자에게 다음 정보를 확인하세요:
+   - 받는 사람 (이름, 직함, 관계)
+   - 이메일 목적 (미팅 요청, 현황 공유, 감사, 기타)
+   - 핵심 내용
+   - 원하는 톤 (격식/비격식, 모르면 관계에 따라 자동 판단)
+
+2. references/TONE-GUIDE.md를 참고하여 적절한 톤을 선택하세요
+
+3. references/TEMPLATES.md에서 상황에 맞는 템플릿을 기반으로 작성하세요
+
+4. references/COMMON-PHRASES.md의 표현들을 자연스럽게 활용하세요
+
+## 출력 형식
+
+```
+📧 이메일
+
+제목: [제목]
+
+---
+
+[이메일 본문]
+
+---
+
+💡 작성 노트:
+- 톤: [격식/비격식] — [선택 이유]
+- 예상 읽기 시간: [N]초
+```
+
+## 규칙
+- 이메일 본문은 스크롤 없이 읽을 수 있는 길이 (최대 15줄)
+- 한 문단은 3줄을 넘지 않게
+- 핵심 내용이 이메일 상단 3줄 안에 나와야 함 (바쁜 사람을 위해)
+- 제목은 20자 이내로, 핵심이 드러나게</code></pre>
+
+      <!-- ILLUSTRATION: A diagram showing the relationship between SKILL.md and references/ files. In the center, a large card labeled "SKILL.md" with arrows pointing to three smaller cards arranged around it: "TONE-GUIDE.md" (with a speech bubble icon), "TEMPLATES.md" (with a document template icon), and "COMMON-PHRASES.md" (with a chat bubbles icon). The arrows are labeled "참고" (reference). Below the diagram, a before/after comparison: "Before" shows one huge unwieldy document, "After" shows the clean organized structure. Warm cream background, coral arrows, teal icons, hand-drawn style. -->
+    </section>
+
+    <!-- ====== The Power ====== -->
+    <section>
+      <h2>references의 진짜 파워</h2>
+
+      <p>이렇게 분리하면 뭐가 좋을까요?</p>
+
+      <p><strong>1. 업데이트가 쉬워요</strong></p>
+      <p>새로운 이메일 템플릿을 추가하고 싶으면? <code>TEMPLATES.md</code>만 수정하면 돼요. SKILL.md는 건드릴 필요 없어요. 마치 요리책의 부록에 새 도구 설명을 추가하는 것처럼요.</p>
+
+      <p><strong>2. 재사용할 수 있어요</strong></p>
+      <p><code>TONE-GUIDE.md</code>를 다른 스킬에서도 쓸 수 있어요. "한국어 보고서 작성기" 스킬을 만들 때, 같은 톤 가이드를 참조하면 되니까요.</p>
+
+      <p><strong>3. 읽기 쉬워요</strong></p>
+      <p>SKILL.md가 300줄짜리 한 파일이면 누가 읽고 싶겠어요? 각 파일이 30-50줄이면 훨씬 관리하기 편하죠.</p>
+
+      <div class="callout">
+        <p class="callout-title">실제 사용 팁</p>
+        <p>references/ 파일은 마크다운(.md) 형식으로 작성하세요. AI가 마크다운을 가장 잘 이해해요. 그리고 파일명은 영어 대문자로, 내용을 바로 알 수 있게 지으세요. <code>ref1.md</code>보다 <code>TONE-GUIDE.md</code>가 훨씬 명확하죠.</p>
+      </div>
+    </section>
+
+    <!-- ====== Best Practices ====== -->
+    <section>
+      <h2>references 잘 쓰는 법</h2>
+
+      <p>마지막으로 references/를 잘 활용하는 팁을 정리할게요.</p>
+
+      <p><strong>1. 한 파일, 한 주제</strong></p>
+      <p>톤 가이드와 템플릿을 하나에 섞지 마세요. 각 파일이 하나의 주제만 다루면, 나중에 찾기도 쉽고 수정하기도 쉬워요.</p>
+
+      <p><strong>2. 파일명으로 내용 파악 가능하게</strong></p>
+      <ul>
+        <li>좋은 예: <code>TONE-GUIDE.md</code>, <code>ERROR-CODES.md</code>, <code>API-REFERENCE.md</code></li>
+        <li>나쁜 예: <code>ref1.md</code>, <code>data.md</code>, <code>misc.md</code></li>
+      </ul>
+
+      <p><strong>3. 너무 많은 파일은 피하기</strong></p>
+      <p>references/ 파일이 10개를 넘어가면, AI가 어떤 파일을 참고해야 할지 헷갈릴 수 있어요. 3-5개 정도가 적당해요.</p>
+
+      <p><strong>4. SKILL.md에서 명시적으로 참조하기</strong></p>
+      <p>"references/TONE-GUIDE.md를 참고하여"처럼 어떤 파일을 언제 참고해야 하는지 SKILL.md에 명확히 적어주세요.</p>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>references/</strong>는 스킬의 "부록"이에요. 배경 지식, 데이터, 템플릿을 분리해서 보관하는 곳.</li>
+        <li><strong>SKILL.md</strong> = "뭘 해야 하는지" (행동 지시), <strong>references/</strong> = "뭘 알아야 하는지" (참고 자료)</li>
+        <li>references 사용이 필요한 때: SKILL.md가 너무 길어질 때, 여러 스킬이 같은 지식을 공유할 때, 지식이 자주 바뀔 때</li>
+        <li><strong>한 파일 한 주제</strong>, <strong>명확한 파일명</strong>, <strong>3-5개 이내</strong>가 베스트 프랙티스</li>
+        <li>references/ 파일을 수정하면 스킬이 <strong>즉시 새 지식을 반영</strong>해요</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>"코드 리뷰 스킬"을 JavaScript용, Python용, Go용으로 만들고 싶은데... 매번 처음부터 만들어야 할까요?<br>
+      쿠키 커터처럼 같은 틀에서 다양한 스킬을 찍어내는 방법이 있어요!<br>
+      다음 챕터에서는 <strong>템플릿과 변수</strong> — <code>SKILL.md.tmpl</code>의 세계를 탐험합니다.</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch10.html" class="prev">이전: 도구 연결하기</a>
+    <a href="ch12.html" class="next">다음: 템플릿과 변수</a>
+  </nav>
+
+</div>
+
+</body>
+</html>
