@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2: gstack이란 무엇인가? — gstack 완전 초보자 가이드</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 2</span>
+    <h1>gstack이란 무엇인가?</h1>
+    <p class="chapter-subtitle">혼자서 20명짜리 팀처럼 일하는 비밀 무기</p>
+  </header>
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>혼자서 다 해야 하는 사람들</h2>
+
+      <p>스타트업 창업자, 1인 기업가, 사이드 프로젝트 하는 직장인, 사회적 기업 활동가... 이런 분들의 공통점이 뭔지 아세요?</p>
+
+      <p><strong>혼자서 전부 다 해야 한다는 거예요.</strong></p>
+
+      <div class="scenario-box">
+        아이디어 구상, 시장 조사, 기획, 디자인, 개발, 테스트, 배포, 마케팅, 고객 응대...
+        대기업이면 각 부서에서 나눠서 하는 일을, 혼자서 다 해야 합니다.
+        월요일엔 기획자, 화요일엔 디자이너, 수요일엔 개발자, 목요일엔 마케터...
+        어? 금요일은요? 그날은 밀린 일 처리하느라 야근이죠.
+      </div>
+
+      <p>이 문제를 해결하려고 만들어진 게 바로 <strong>gstack</strong>이에요.</p>
+    </section>
+
+    <!-- ====== What is gstack ====== -->
+    <section>
+      <h2>gstack = Claude Code를 위한 28개의 전문 스킬</h2>
+
+      <p>gstack은 <strong>Garry Tan</strong>(Y Combinator CEO)이 만든 Claude Code용 스킬 패키지예요.</p>
+
+      <div class="callout">
+        <p class="callout-title">Y Combinator가 뭔데요?</p>
+        <p>미국 실리콘밸리에서 가장 유명한 스타트업 육성 기관이에요. Airbnb, Dropbox, Stripe 같은 세계적인 회사들이 여기서 시작했어요. 그 Y Combinator의 현재 CEO가 직접 만든 도구가 gstack이에요.</p>
+      </div>
+
+      <p>Garry Tan은 매일 스타트업 창업자들을 만나면서 이런 생각을 했어요:</p>
+
+      <p><em>"창업자들이 혼자서 해야 할 일이 너무 많다. AI가 이 과정을 도와줄 수 있지 않을까?"</em></p>
+
+      <p>그래서 Claude Code에게 28가지 전문 스킬을 가르쳤어요. 기획부터 배포까지, 제품을 만드는 전체 과정을 AI가 도와줄 수 있도록.</p>
+
+      <p>결과는? <strong>혼자서 하던 일을 AI와 함께, 훨씬 빠르고 체계적으로</strong> 할 수 있게 됐어요.</p>
+    </section>
+
+    <!-- ====== Not a toolbox, a process ====== -->
+    <section>
+      <h2>도구 상자가 아니라 "프로세스"</h2>
+
+      <p>여기서 중요한 포인트가 있어요. gstack은 단순한 도구 모음이 아니에요.</p>
+
+      <p>드라이버, 망치, 톱을 모아놓은 공구 상자라면 — 뭘 언제 써야 하는지 여러분이 직접 판단해야 하잖아요. 근데 gstack은 다릅니다.</p>
+
+      <p>gstack은 <strong>"어떤 순서로 무엇을 해야 하는지"까지 알려주는 작업 프로세스</strong>예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유: 맛집 오픈하기</p>
+        <p>맛집을 오픈한다고 생각해보세요. 순서가 있잖아요:</p>
+        <p>
+        🍽️ <strong>메뉴 기획</strong> → 어떤 음식을 팔 건지 결정<br>
+        📝 <strong>레시피 개발</strong> → 맛있는 조리법 만들기<br>
+        🥕 <strong>재료 손질</strong> → 미리 준비해놓기<br>
+        🔥 <strong>조리</strong> → 실제로 요리하기<br>
+        👅 <strong>맛 테스트</strong> → 손님에게 내놓기 전 확인<br>
+        🏪 <strong>오픈</strong> → 가게 문 열기<br>
+        💬 <strong>고객 피드백</strong> → 반응 보고 개선하기
+        </p>
+        <p>gstack의 스프린트 모델도 이것과 똑같은 흐름이에요. 아이디어 → 기획 → 구현 → 테스트 → 배포 → 피드백!</p>
+      </div>
+    </section>
+
+    <!-- ====== 4 Card Highlights ====== -->
+    <section>
+      <h2>gstack의 4가지 슈퍼파워</h2>
+
+      <div class="scenario-box">
+        <h3>1. 생산성 폭발</h3>
+        <p>28개 스킬이 서로 연결되어 있어요. 하나의 스킬 결과가 다음 스킬의 입력이 됩니다. 사람이 일일이 전달할 필요 없이, AI가 알아서 흐름을 이어가요.</p>
+      </div>
+
+      <div class="scenario-box">
+        <h3>2. 진짜 브라우저 사용</h3>
+        <p>gstack의 <code>/browse</code> 스킬은 실제 웹 브라우저를 열어서 웹사이트를 테스트해요. 스크린샷도 찍고, 버그도 찾아내고, 반응형 레이아웃도 확인해요. AI가 "눈"을 가지게 된 거예요.</p>
+      </div>
+
+      <div class="scenario-box">
+        <h3>3. 체계적인 워크플로우</h3>
+        <p>13단계 스프린트 모델로 기획부터 배포까지 체계적으로 진행해요. 초보자도 프로처럼 일할 수 있어요. "다음에 뭘 해야 하지?"를 고민할 필요가 없거든요.</p>
+      </div>
+
+      <div class="scenario-box">
+        <h3>4. 안전 장치 내장</h3>
+        <p><code>/careful</code>, <code>/guard</code> 같은 스킬이 위험한 명령어를 실행하기 전에 경고해줘요. 실수로 중요한 파일을 삭제하거나, 서버를 날려버리는 사고를 방지해줍니다.</p>
+      </div>
+    </section>
+
+    <!-- ====== Beginner callout ====== -->
+    <section>
+      <h2>코딩 몰라도 괜찮아요!</h2>
+
+      <div class="callout">
+        <p class="callout-title">완전 초보자를 위한 안내</p>
+        <p>gstack은 원래 개발자를 위해 만들어졌지만, <strong>코딩을 몰라도 사용할 수 있는 스킬이 많아요</strong>.</p>
+        <p><code>/office-hours</code>(아이디어 정리), <code>/plan-ceo-review</code>(계획 검토), <code>/review</code>(품질 점검) 같은 스킬은 코딩 지식이 전혀 필요 없어요.</p>
+        <p>이 책은 그런 스킬부터 시작해서 천천히 나아갈 거예요. 걱정하지 마세요!</p>
+      </div>
+
+      <p>gstack을 쓰면 여러분이 프로그래머가 되는 게 아니에요. <strong>AI가 프로그래밍을 대신 해주는 거예요</strong>. 여러분은 "뭘 만들고 싶은지"만 알려주면 됩니다. 마치 건축주가 설계사에게 "이런 집을 짓고 싶어요"라고 말하듯이.</p>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>gstack</strong>은 Claude Code를 위한 28개의 전문 스킬 패키지예요.</li>
+        <li>Y Combinator CEO <strong>Garry Tan</strong>이 만들었어요. 스타트업 창업자들이 혼자서도 효율적으로 일할 수 있도록.</li>
+        <li>단순한 도구 모음이 아니라 <strong>체계적인 프로세스</strong>예요. 아이디어 → 기획 → 구현 → 테스트 → 배포 → 피드백.</li>
+        <li>진짜 브라우저 사용, 안전 장치 내장 등 <strong>4가지 슈퍼파워</strong>가 있어요.</li>
+        <li><strong>코딩 몰라도 괜찮아요.</strong> AI가 대신 해줍니다.</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>gstack을 설치하기 전에, 먼저 알아야 할 도구들이 있어요.<br>
+      터미널, Git, Node.js... 처음 듣는 이름들이 무섭게 느껴질 수 있지만, 걱정 마세요!<br>
+      <strong>새 직장 첫 날 복합기 사용법 모르는 것처럼, 당연한 거예요.</strong></p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch01.html" class="prev">이전: AI와 대화하기</a>
+    <a href="ch03.html" class="next">다음: 준비하기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

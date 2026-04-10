@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 3: 준비하기: 설치 전에 알아야 할 것들 — gstack 완전 초보자 가이드</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 3</span>
+    <h1>준비하기: 설치 전에 알아야 할 것들</h1>
+    <p class="chapter-subtitle">처음 보는 도구들, 겁먹지 마세요</p>
+  </header>
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>새 직장 첫 날의 복합기</h2>
+
+      <p>새 직장 첫 날, 복합기 사용법 모르는 거 당연하잖아요? "이 버튼이 복사고, 이건 스캔이고, 양면 인쇄는 여기서..." 선배가 알려주면 5분이면 배워요.</p>
+
+      <p>터미널도 마찬가지예요. 처음 보면 까만 화면에 깜빡이는 커서가 무섭게 느껴질 수 있어요. 하지만 사실은 <strong>복합기만큼이나 단순한 도구</strong>예요. 이 챕터에서 천천히 알려드릴게요.</p>
+
+      <p>gstack을 설치하기 전에 알아야 할 도구가 4개 있어요. 하나씩 가볍게 만나봅시다.</p>
+    </section>
+
+    <!-- ====== Terminal/CLI ====== -->
+    <section>
+      <h2>1. 터미널(Terminal): 컴퓨터와 대화하는 창</h2>
+
+      <p>여러분은 평소 컴퓨터를 어떻게 쓰나요? 아이콘을 <strong>클릭</strong>하죠. 폴더를 열고, 파일을 더블클릭하고, 버튼을 누르고.</p>
+
+      <p>터미널은 같은 일을 <strong>글자를 타이핑해서</strong> 하는 거예요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유</p>
+        <p><strong>일반 컴퓨터 사용</strong> = 레스토랑에서 메뉴판 보고 손가락으로 가리키기<br>
+        <strong>터미널</strong> = 셰프에게 직접 말로 주문하기<br>
+        "저기요, 파스타에 버섯 빼고 치즈 두 배로 해주세요!"</p>
+        <p>터미널은 컴퓨터에게 <strong>직접 말(글자)로 명령</strong>하는 방법이에요. 더 자유롭고, 더 빠르고, 더 정밀해요.</p>
+      </div>
+
+      <figure class="illustration">
+        <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;">
+          <!-- Terminal window -->
+          <rect x="50" y="20" width="400" height="210" rx="10" fill="#2D2016" stroke="#6B5647" stroke-width="2"/>
+          <!-- Title bar -->
+          <rect x="50" y="20" width="400" height="30" rx="10" fill="#3D2B1F"/>
+          <rect x="50" y="40" width="400" height="10" fill="#3D2B1F"/>
+          <!-- Traffic lights -->
+          <circle cx="75" cy="35" r="6" fill="#E85D4A"/>
+          <circle cx="95" cy="35" r="6" fill="#E8B84A"/>
+          <circle cx="115" cy="35" r="6" fill="#4AE85D"/>
+          <text x="250" y="39" text-anchor="middle" font-size="11" fill="#9B8A7D" font-family="monospace">Terminal</text>
+          <!-- Terminal content -->
+          <text x="70" y="75" font-size="13" fill="#4AE85D" font-family="monospace">$</text>
+          <text x="85" y="75" font-size="13" fill="#F5E6D3" font-family="monospace">echo "안녕하세요!"</text>
+          <text x="70" y="100" font-size="13" fill="#F5E6D3" font-family="monospace">안녕하세요!</text>
+          <text x="70" y="130" font-size="13" fill="#4AE85D" font-family="monospace">$</text>
+          <text x="85" y="130" font-size="13" fill="#F5E6D3" font-family="monospace">git --version</text>
+          <text x="70" y="155" font-size="13" fill="#F5E6D3" font-family="monospace">git version 2.43.0</text>
+          <text x="70" y="185" font-size="13" fill="#4AE85D" font-family="monospace">$</text>
+          <text x="85" y="185" font-size="13" fill="#9B8A7D" font-family="monospace">▌</text>
+          <!-- Label -->
+          <text x="250" y="215" text-anchor="middle" font-size="10" fill="#9B8A7D" font-family="monospace">↑ 이게 터미널이에요! 무섭지 않죠?</text>
+        </svg>
+      </figure>
+
+      <p><code>$</code> 표시 옆에 명령어를 타이핑하고 엔터를 누르면, 컴퓨터가 결과를 보여줘요. 그게 전부예요!</p>
+
+      <h3>터미널 여는 법</h3>
+
+      <div class="callout">
+        <p class="callout-title">Windows에서 터미널 열기</p>
+        <p><strong>방법 1:</strong> <code>Win + R</code> 키를 누르고 <code>cmd</code>를 타이핑한 후 엔터<br>
+        <strong>방법 2:</strong> 시작 메뉴에서 "터미널" 또는 "Terminal"을 검색<br>
+        <strong>방법 3:</strong> 시작 메뉴에서 "PowerShell"을 검색</p>
+      </div>
+
+      <div class="callout">
+        <p class="callout-title">Mac에서 터미널 열기</p>
+        <p><strong>방법 1:</strong> <code>Cmd + Space</code>로 Spotlight 열고 "Terminal" 타이핑<br>
+        <strong>방법 2:</strong> Finder → 응용 프로그램 → 유틸리티 → 터미널</p>
+      </div>
+    </section>
+
+    <!-- ====== Git ====== -->
+    <section>
+      <h2>2. Git: 게임의 세이브 포인트</h2>
+
+      <p>게임할 때 세이브 하잖아요? 보스전 앞에서 "여기 한 번 저장하고..." 하는 거요. 혹시 지면 다시 돌아올 수 있게.</p>
+
+      <p><strong>Git</strong>은 파일 작업의 세이브 포인트 시스템이에요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유</p>
+        <p><strong>Git 없이 작업</strong> = 세이브 없이 게임하기<br>
+        실수하면 처음부터 다시! 😱</p>
+        <p><strong>Git으로 작업</strong> = 매 구간마다 세이브하기<br>
+        실수해도 "마지막 세이브 포인트"로 돌아가면 됩니다!</p>
+      </div>
+
+      <p>Git은 여러분이 파일을 수정할 때마다 "이 시점의 상태를 기록해둘게"라고 저장해놓는 도구예요. 나중에 "어, 아까 그 버전이 더 좋았는데?"라고 하면 그때로 돌아갈 수 있어요.</p>
+
+      <p>gstack은 작업할 때 Git을 사용해서 변경 사항을 기록해요. 여러분이 직접 Git 명령어를 외울 필요는 없어요. gstack이 알아서 해줍니다. 그냥 "아, 이런 게 있구나" 정도만 알면 돼요.</p>
+    </section>
+
+    <!-- ====== Node.js and Bun ====== -->
+    <section>
+      <h2>3. Node.js와 Bun: 코드를 실행하는 엔진</h2>
+
+      <p>자동차를 타려면 엔진이 있어야 하잖아요? Node.js와 Bun은 <strong>코드를 실행하는 엔진</strong>이에요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유</p>
+        <p><strong>Node.js</strong> = 검증된 현대 엔진. 전 세계에서 가장 많이 쓰여요.<br>
+        <strong>Bun</strong> = 최신형 터보 엔진. Node.js보다 빠르고 편리해요.</p>
+        <p>둘 다 JavaScript라는 프로그래밍 언어를 실행하는 엔진이에요. gstack을 설치할 때 둘 중 하나가 필요합니다.</p>
+      </div>
+
+      <p>"JavaScript? 프로그래밍 언어?" — 걱정 마세요. 여러분이 직접 코드를 쓸 일은 없어요. 엔진이 뒤에서 조용히 돌아가는 것뿐이에요. 자동차 탈 때 엔진 구조를 몰라도 되는 것처럼요.</p>
+    </section>
+
+    <!-- ====== Summary ====== -->
+    <section>
+      <h2>정리: 필요한 도구 4가지</h2>
+
+      <p>gstack을 쓰기 위해 필요한 도구를 정리하면 이렇습니다:</p>
+
+      <ol>
+        <li><strong>터미널</strong> — 컴퓨터에 명령어를 타이핑하는 창 (이미 컴퓨터에 있어요!)</li>
+        <li><strong>Git</strong> — 파일 변경 사항을 기록하는 세이브 시스템</li>
+        <li><strong>Node.js 또는 Bun</strong> — 코드를 실행하는 엔진</li>
+        <li><strong>Claude Code</strong> — AI 에이전트 (gstack이 여기서 돌아가요)</li>
+      </ol>
+
+      <div class="callout">
+        <p class="callout-title">설치는 다음 챕터에서!</p>
+        <p>이 챕터에서는 "이런 게 뭔지" 이해만 하면 됩니다. 실제 설치는 챕터 4에서 하나하나 같이 해볼 거예요.</p>
+      </div>
+    </section>
+
+    <!-- ====== Exercise ====== -->
+    <section>
+      <h2>직접 해보기</h2>
+
+      <div class="exercise-box">
+        <p class="exercise-title">실습: 터미널 열고 3개 명령어 쳐보기</p>
+        <p>위에서 설명한 방법으로 터미널을 열어보세요. 그리고 아래 3개를 하나씩 타이핑하고 엔터를 눌러보세요:</p>
+        <ol>
+          <li><code>echo "Hello, World!"</code> → 화면에 "Hello, World!"가 나오면 성공!</li>
+          <li><code>git --version</code> → "git version 2.xx.x" 같은 게 나오면 Git이 설치된 거예요. "command not found"가 나오면 아직 설치 안 된 거예요. 괜찮아요, 다음 챕터에서 설치해요.</li>
+          <li><code>node --version</code> → "v20.x.x" 같은 게 나오면 Node.js가 설치된 거예요. 역시 없어도 괜찮아요!</li>
+        </ol>
+        <p>이 실습의 목적은 <strong>"터미널이 무섭지 않다"는 걸 느끼는 것</strong>이에요. 명령어를 치고 결과를 확인하는 것, 그게 전부예요!</p>
+      </div>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>터미널</strong>은 컴퓨터에 글자로 명령하는 창이에요. 무서워 보이지만 복합기만큼 단순해요.</li>
+        <li><strong>Git</strong>은 파일 작업의 세이브 포인트 시스템이에요. 실수해도 돌아갈 수 있어요.</li>
+        <li><strong>Node.js/Bun</strong>은 코드를 실행하는 엔진이에요. 뒤에서 조용히 돌아갈 뿐, 여러분이 직접 다룰 일은 없어요.</li>
+        <li>gstack 사용에 필요한 도구는 <strong>터미널, Git, Node.js/Bun, Claude Code</strong> 4가지예요.</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>드디어 설치 시간! "30초면 끝난다"고 했는데, 진짜일까요?<br>
+      앱스토어에서 앱 설치하는 것만큼 쉬운 과정을 같이 해볼 거예요.</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch02.html" class="prev">이전: gstack이란 무엇인가?</a>
+    <a href="ch04.html" class="next">다음: 설치하기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

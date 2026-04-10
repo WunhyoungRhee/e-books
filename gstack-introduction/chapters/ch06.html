@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 6: 스프린트 모델 이해하기 — gstack 완전 초보자 가이드</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 6</span>
+    <h1>스프린트 모델 이해하기</h1>
+    <p class="chapter-subtitle">마라톤이 아니라 단거리 달리기를 반복하는 거예요</p>
+  </header>
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>왜 "스프린트"인가요?</h2>
+
+      <p>마라톤 뛴 적 있으세요? 42km를 한 번에 뛰는 건 프로 선수도 힘들어요. 근데 "100m를 42번 뛰세요"라고 하면? 느낌이 좀 다르죠.</p>
+
+      <p>소프트웨어 개발도 마찬가지예요. "완벽한 앱을 한 번에 만드세요"는 불가능에 가까워요. 하지만 "이번 주에는 이 기능 하나만 만들고, 다음 주에 또 하나"를 반복하면? <strong>어느새 완성된 앱이 나와요.</strong></p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유</p>
+        <p><strong>마라톤 방식</strong> = 6개월 동안 기획하고, 6개월 동안 만들고, 1년 후에 공개<br>
+        → 1년 후에 알게 됨: "아, 이거 사람들이 안 원하는 거였구나..." 😱</p>
+        <p><strong>스프린트 방식</strong> = 1주일 만에 핵심 기능만 만들고, 사용자에게 보여주고, 반응 보고 수정<br>
+        → 1주일 만에 알게 됨: "오, 이 부분은 좋아하네! 이건 필요 없네!" 💡</p>
+      </div>
+
+      <p>gstack은 이 <strong>스프린트 방식</strong>을 13단계로 체계화했어요. 모든 단계를 매번 할 필요는 없어요. 상황에 맞게 골라서 쓰면 됩니다.</p>
+    </section>
+
+    <!-- ====== Full Sprint Table ====== -->
+    <section>
+      <h2>스프린트 13단계 전체 보기</h2>
+
+      <p>전체 스프린트의 흐름을 한눈에 볼게요. 각 단계에 해당하는 슬래시 명령어(스킬)도 같이 표시했어요.</p>
+
+      <table style="width:100%; border-collapse:collapse; margin:1.5em 0;">
+        <thead>
+          <tr style="background:#FFF5EB;">
+            <th style="padding:12px; text-align:left; border-bottom:2px solid #E8DDD4;">#</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid #E8DDD4;">단계</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid #E8DDD4;">슬래시 명령어</th>
+            <th style="padding:12px; text-align:left; border-bottom:2px solid #E8DDD4;">하는 일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">1</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>아이디어 탐색</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/office-hours</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">아이디어를 6가지 질문으로 검증해요. <span title="Y Combinator의 스타트업 상담 시간을 모방한 것">[YC 오피스 아워 방식]</span></td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">2</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>계획 수립</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/conductor</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">프로젝트 전체 계획서(PLAN.md)를 작성해요.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">3</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>CEO 리뷰</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/plan-ceo-review</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">계획을 창업자/CEO 관점에서 검토해요.</td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">4</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>디자인 리뷰</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/plan-design-review</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">디자인 관점에서 사용자 경험을 검토해요. <span title="User Experience: 사용자가 제품을 사용할 때의 경험과 만족도">[UX 검토]</span></td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">5</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>엔지니어링 리뷰</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/plan-eng-review</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">기술적 관점에서 구현 방법을 검토해요. <span title="Architecture: 소프트웨어의 전체 구조와 설계">[아키텍처 검토]</span></td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">6</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>디자인 시스템</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/design-consultation</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">색상, 글꼴, 레이아웃 등 디자인 가이드를 만들어요.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">7</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>구현</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">(직접 코딩 또는 AI에게 요청)</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">실제로 코드를 작성하고 기능을 만들어요.</td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">8</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>디자인 QA</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/design-review</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">만든 결과물의 시각적 품질을 점검해요.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">9</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>기능 QA</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/qa</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">기능이 제대로 작동하는지 테스트해요. <span title="Quality Assurance: 품질 보증, 제품이 기대대로 동작하는지 확인하는 과정">[QA]</span></td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">10</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>코드 리뷰</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/review</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">코드 품질을 전반적으로 검토해요.</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">11</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>보안 점검</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/cso</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">보안 취약점이 없는지 확인해요. <span title="Chief Security Officer: 최고 보안 책임자 모드">[CSO 모드]</span></td>
+          </tr>
+          <tr style="background:#FAFAFA;">
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">12</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>배포</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/ship</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">완성된 코드를 세상에 공개해요. <span title="Deploy: 만든 것을 서버에 올려서 사용자가 접근할 수 있게 하는 것">[배포]</span></td>
+          </tr>
+          <tr>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">13</td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><strong>회고</strong></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;"><code>/retro</code></td>
+            <td style="padding:10px; border-bottom:1px solid #F0E8E0;">이번 스프린트에서 뭘 잘했고 뭘 개선할지 정리해요. <span title="Retrospective: 되돌아보기, 무엇이 잘 됐고 무엇을 개선할지 반성하는 시간">[회고]</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ====== Key Point ====== -->
+    <section>
+      <h2>매번 13단계를 다 할 필요 없어요!</h2>
+
+      <div class="callout">
+        <p class="callout-title">핵심 포인트</p>
+        <p>13단계 전부를 항상 해야 하는 건 아니에요. 상황에 따라 필요한 단계만 골라서 하면 됩니다.</p>
+        <p>레스토랑에서도 매번 코스 요리를 다 시키진 않잖아요? 가볍게 파스타 하나만 먹을 수도 있고, 특별한 날에는 풀코스를 즐길 수도 있어요.</p>
+      </div>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유: 상황별 스킬 조합</p>
+        <p><strong>작은 버그 수정:</strong><br>
+        <code>/review</code> → <code>/ship</code><br>
+        2단계면 끝! 리뷰하고 바로 배포해요.</p>
+        <p><strong>새로운 기능 추가:</strong><br>
+        <code>/office-hours</code> → <code>/conductor</code> → <code>/plan-ceo-review</code> → 구현 → <code>/qa</code> → <code>/ship</code><br>
+        6단계 정도면 충분해요.</p>
+        <p><strong>완전히 새로운 프로젝트:</strong><br>
+        13단계 풀코스! 꼼꼼하게 전부 해보세요.</p>
+      </div>
+
+      <p>처음에는 2~3개 스킬만 써보고, 익숙해지면 점점 더 많은 단계를 활용하세요. 급하지 않아요!</p>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li><strong>스프린트</strong>는 마라톤이 아닌 단거리 달리기예요. 작게 만들고, 빨리 확인하고, 빠르게 개선해요.</li>
+        <li>gstack의 스프린트는 <strong>13단계</strong>로 구성되어 있어요. 아이디어 → 계획 → 리뷰 → 구현 → QA → 배포 → 회고.</li>
+        <li><strong>매번 13단계 전부를 할 필요 없어요.</strong> 작은 수정은 2단계, 새 기능은 6단계, 새 프로젝트는 13단계.</li>
+        <li>각 단계에는 대응하는 <strong>슬래시 명령어</strong>(스킬)가 있어요.</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>gstack의 28개 스킬을 한눈에 볼 거예요.<br>
+      전부 외울 필요 없어요. <strong>5개만 기억하면</strong> 충분하다고요? 네, 진짜로!</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch05.html" class="prev">이전: 처음 만나는 gstack</a>
+    <a href="ch07.html" class="next">다음: 핵심 스킬 28개 한눈에 보기</a>
+  </nav>
+
+</div>
+
+</body>
+</html>

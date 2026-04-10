@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 11: 교육자와 강사를 위한 가이드 — gstack 완전 초보자 가이드</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="chapter-content">
+  <header class="chapter-header">
+    <span class="chapter-number">CHAPTER 11</span>
+    <h1>교육자와 강사를 위한 가이드</h1>
+    <p class="chapter-subtitle">12시간 커리큘럼, 바로 쓸 수 있어요</p>
+  </header>
+
+  <article>
+
+    <!-- ====== Opening Hook ====== -->
+    <section>
+      <h2>강의 준비, 가장 힘든 게 뭔지 아세요?</h2>
+
+      <p>새로운 기술을 가르치는 건 배우는 것보다 3배는 힘들어요. 교재 만들고, 실습 환경 세팅하고, 학생들이 막히는 부분 예상하고, 시간 배분하고... "차라리 내가 다 해주는 게 빠르겠다"는 생각이 매 수업 10번씩 드시죠?</p>
+
+      <p>좋은 소식이 있어요. 여기 <strong>바로 쓸 수 있는 12시간짜리 커리큘럼</strong>이 있습니다. 모듈별로 나눠져 있으니, 전체를 쓰셔도 되고, 필요한 모듈만 골라서 쓰셔도 돼요.</p>
+
+      <div class="fun-box">
+        <p class="fun-box-title">쉬운 비유</p>
+        <p>이 커리큘럼은 밀키트 같은 거예요. 재료가 다 손질되어 있으니, 순서대로 넣고 볶기만 하면 됩니다. 물론 본인 취향에 맞게 간을 조절하는 건 자유예요!</p>
+      </div>
+    </section>
+
+    <!-- ====== 6-Module Curriculum ====== -->
+    <section>
+      <h2>6개 모듈 커리큘럼 (총 12시간)</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>모듈</th>
+            <th>주제</th>
+            <th>시간</th>
+            <th>핵심 활동</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>M1</strong></td>
+            <td>AI 에이전트 이해하기</td>
+            <td>2시간</td>
+            <td>ChatGPT vs Claude Code 비교 체험, 프롬프팅 기초</td>
+          </tr>
+          <tr>
+            <td><strong>M2</strong></td>
+            <td>gstack 설치와 첫 실행</td>
+            <td>2시간</td>
+            <td>설치, 기본 명령어, /browse 실습</td>
+          </tr>
+          <tr>
+            <td><strong>M3</strong></td>
+            <td>스킬 읽기와 분석</td>
+            <td>2시간</td>
+            <td>SKILL.md 구조 파악, 기존 스킬 분석</td>
+          </tr>
+          <tr>
+            <td><strong>M4</strong></td>
+            <td>스킬 수정과 커스터마이징</td>
+            <td>2시간</td>
+            <td>기존 스킬 복사 후 수정, 테스트</td>
+          </tr>
+          <tr>
+            <td><strong>M5</strong></td>
+            <td>나만의 스킬 만들기</td>
+            <td>2시간</td>
+            <td>새 SKILL.md 작성, 팀별 프로젝트</td>
+          </tr>
+          <tr>
+            <td><strong>M6</strong></td>
+            <td>실전 프로젝트와 발표</td>
+            <td>2시간</td>
+            <td>팀별 스킬 완성, 시연, 피드백</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ====== Module Teaching Tips ====== -->
+    <section>
+      <h2>모듈별 교수법 가이드</h2>
+
+      <h3>M1: AI 에이전트 이해하기 (2시간)</h3>
+
+      <p><strong>목표:</strong> 학생들이 "AI = ChatGPT"라는 고정관념에서 벗어나기</p>
+
+      <p>수업 시작 때 학생들에게 물어보세요: "ChatGPT 써본 사람?" 대부분 손을 들 거예요. 그다음 물어보세요: "ChatGPT로 10단계 넘는 복잡한 작업을 해본 사람?" 거의 없을 거예요.</p>
+
+      <p>여기서 시작하세요. ChatGPT는 "질문-답변" 도구이고, AI 에이전트는 "계획-실행-검증"까지 하는 도구라는 차이를 보여주세요.</p>
+
+      <div class="callout">
+        <p class="callout-title">수업 팁</p>
+        <p>라이브 데모가 가장 효과적이에요. 같은 작업을 ChatGPT와 gstack으로 동시에 시키고 결과를 비교하면, 학생들이 "아, 이게 다르구나!"를 즉시 체감합니다.</p>
+      </div>
+
+      <h3>M2: gstack 설치와 첫 실행 (2시간)</h3>
+
+      <p><strong>목표:</strong> 모든 학생이 gstack을 실행하고 기본 명령어를 사용할 수 있기</p>
+
+      <p>설치에서 막히는 학생이 반드시 있어요. 미리 대비하세요:</p>
+      <ul>
+        <li>Node.js가 설치 안 된 학생 — 사전 안내 메일에 설치 링크 포함</li>
+        <li>Windows에서 터미널 찾기 어려운 학생 — 스크린샷 준비</li>
+        <li>API 키 설정 실패 — 대체 방법 준비</li>
+      </ul>
+
+      <p>설치가 끝나면 바로 <code>/browse</code>로 학교 홈페이지를 열어보게 하세요. "와, 진짜 되네!" 하는 반응이 나오면 성공이에요.</p>
+
+      <h3>M3: 스킬 읽기와 분석 (2시간)</h3>
+
+      <p><strong>목표:</strong> SKILL.md 파일의 구조를 이해하기</p>
+
+      <p>코드를 한 번도 안 본 학생이 있을 수 있어요. SKILL.md는 코드가 아니라 "마크다운 문서"라는 점을 강조하세요. 글을 잘 쓰는 사람이 좋은 스킬을 만들 수 있어요.</p>
+
+      <p>추천 활동: 간단한 스킬 하나를 같이 읽으면서 "이 줄은 무슨 뜻일까?" 퀴즈를 내세요.</p>
+
+      <h3>M4: 스킬 수정과 커스터마이징 (2시간)</h3>
+
+      <p><strong>목표:</strong> 기존 스킬을 복사해서 자기 것으로 바꿔보기</p>
+
+      <p>처음부터 만드는 건 어려워요. 기존 스킬을 복사하고 일부만 수정하는 것부터 시작하세요. "파란색을 빨간색으로 바꾸기" 수준의 작은 변경이 자신감을 만들어줍니다.</p>
+
+      <h3>M5: 나만의 스킬 만들기 (2시간)</h3>
+
+      <p><strong>목표:</strong> 팀별로 새로운 스킬 초안 작성</p>
+
+      <p>3~4명씩 팀을 나누고, "우리 학교/조직에 필요한 스킬"을 기획하게 하세요. 실제 필요한 것을 만들면 동기부여가 확 달라져요.</p>
+
+      <h3>M6: 실전 프로젝트와 발표 (2시간)</h3>
+
+      <p><strong>목표:</strong> 완성된 스킬을 시연하고 피드백 주고받기</p>
+
+      <p>발표 형식은 간단하게: 3분 시연 + 2분 질의응답. 가장 좋은 학습은 다른 팀의 접근 방식을 보는 거예요.</p>
+    </section>
+
+    <!-- ====== Safety Warning ====== -->
+    <section>
+      <h2>교실 안전 가이드</h2>
+
+      <div class="callout">
+        <p class="callout-title">수업 시작 전 반드시! /careful 먼저 실행하세요</p>
+        <p>gstack에는 파일을 삭제하거나, 시스템을 변경할 수 있는 강력한 명령어가 있어요. 학생들이 실수로 중요한 파일을 날리지 않도록, 수업 시작 때 반드시 <code>/careful</code> 스킬을 실행하세요.</p>
+        <p><code>/careful</code>은 위험한 명령어를 실행하기 전에 경고를 띄워주는 안전장치예요. 학생들에게도 "이건 안전벨트 같은 거야. 항상 먼저 채우자"라고 설명해주세요.</p>
+      </div>
+
+      <p>추가 안전 팁:</p>
+      <ul>
+        <li>실습용 별도 폴더를 만들어서 그 안에서만 작업하게 하세요</li>
+        <li><code>/freeze</code>로 작업 디렉토리를 제한하면 더 안전해요</li>
+        <li>API 키는 절대 화면에 공유하지 않도록 미리 안내하세요</li>
+        <li>학생들끼리 API 키를 공유하지 않도록 주의시키세요</li>
+      </ul>
+    </section>
+
+    <!-- ====== Instructor Tips ====== -->
+    <section>
+      <h2>강사를 위한 꿀팁</h2>
+
+      <ul>
+        <li><strong>라이브 데모 > 슬라이드:</strong> AI 도구는 직접 보여주는 게 100배 효과적이에요. 슬라이드는 최소화하세요.</li>
+        <li><strong>실패를 보여주세요:</strong> AI가 실수하는 모습을 일부러 보여주면 학생들이 안심해요. "선생님도 한 번에 안 되네? 그럼 나도 괜찮구나."</li>
+        <li><strong>"정답"을 강요하지 마세요:</strong> 같은 결과를 내는 프롬프트는 여러 가지예요. 학생 나름의 표현을 존중해주세요.</li>
+        <li><strong>페어 프로그래밍:</strong> 2명이 한 컴퓨터로 번갈아가며 하면 토론이 자연스럽게 일어나요.</li>
+        <li><strong>시간 여유:</strong> 기술 수업은 항상 예상보다 오래 걸려요. 각 모듈에 10분 여유를 두세요.</li>
+      </ul>
+    </section>
+
+    <!-- ====== Recap ====== -->
+    <aside class="recap-box">
+      <h3>잠깐, 정리!</h3>
+      <ul>
+        <li>6개 모듈, 총 12시간짜리 커리큘럼으로 gstack을 <strong>체계적으로</strong> 가르칠 수 있어요</li>
+        <li>라이브 데모와 실습 중심으로 수업을 설계하세요</li>
+        <li>수업 시작 전 <code>/careful</code>로 안전장치 세팅은 필수!</li>
+        <li>학생의 실패를 격려하고, 다양한 접근 방식을 존중하세요</li>
+        <li>커리큘럼을 통째로 쓰셔도, 필요한 모듈만 골라 쓰셔도 괜찮아요</li>
+      </ul>
+    </aside>
+
+    <!-- ====== Next Teaser ====== -->
+    <div class="next-teaser">
+      <h3>다음 챕터에서는...</h3>
+      <p>gstack을 관통하는 <strong>빌더 철학(Builder Ethos)</strong>에 대해 이야기해요. "대충 하지 마세요. AI와 함께라면 '제대로'가 더 빨라요." 이 말의 진짜 의미를 함께 알아봅시다.</p>
+    </div>
+
+  </article>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="chapter-nav">
+    <a href="ch10.html" class="prev">이전: 학습자를 위한 가이드</a>
+    <a href="ch12.html" class="next">다음: Builder Ethos: 빌더 철학</a>
+  </nav>
+
+</div>
+
+</body>
+</html>
